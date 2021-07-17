@@ -41,7 +41,7 @@
 											<th class="text-center">ID</th>
 											<th class="text-center"  style="width:100px;">Hình</th>
 											<th class="text-center">Tiêu đề bài viết</th>
-											<th class="text-center"">Trạng thái</th>
+											<th class="text-center">Trạng thái</th>
 											<th class="text-center" colspan="2">Thao tác</th>
 											
 										</tr>

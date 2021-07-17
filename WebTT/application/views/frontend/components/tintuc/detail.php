@@ -14,7 +14,7 @@
 				</div>
 				<?php $this->load->view('frontend/modules/news'); ?> 
 			</div>
-			<div class = "col-xs-12 col-sm-12 col-md-9 col-lg-9 product-content" id="list-content">
+			<div class = "col-xs-12 col-sm-12 col-md-6 col-lg-6 product-content" id="list-content">
 				<div class="product-wrap" id="info-content">
 					<div class="content-ct">
 						<div class="fs-ne2-it clearfix" style="padding-top: 5px">
@@ -35,6 +35,9 @@
 						</div>
 					</div>
 				</div>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+				<?php $this->load->view('frontend/modules/tips-news'); ?> 
 			</div>
 		</div>
 	</section>

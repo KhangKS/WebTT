@@ -28,6 +28,11 @@
                     <i class="fa fa-gift"></i><span>Nhà cung cấp</span>
                 </a>
             </li>
+            <li class="treeview">
+                <a href="<?php echo base_url()?>admin/info">
+                    <i class="fa fa-gift"></i><span>Thông tin</span>
+                </a>
+            </li>
             <li class="header">QUẢN LÝ BÁN HÀNG</li>
             <li class="treeview">
                 <a href="<?php echo base_url() ?>admin/coupon">
@@ -70,7 +75,7 @@
                 </li>
                 <?php if($user['role'] == 1){
                 echo  '<li>
-                    <a href="<?php echo base_url() ?>admin/useradmin">
+                    <a href="admin/useradmin">
                         <i class="fa fa-users"></i> Nhân viên
                     </a>
                 </li>';

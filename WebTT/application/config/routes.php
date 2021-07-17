@@ -2,6 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 $route['default_controller'] = 'trangchu/index';
+
 $route['trang-chu'] = 'trangchu/index';
 $route['tin-tuc'] = 'tintuc/index';
 $route['san-pham/(:num)'] = 'sanpham/index/$1';
@@ -65,6 +66,9 @@ $route['producer/update/(:num)'] ='producer/update/$1';
 $route['producer/recyclebin'] ='producer/recyclebin';
 $route['producer/trash/(:num)'] ='producer/trash/$1';
 $route['producer/recyclebin/(:num)'] ='producer/recyclebin/$1';
+
+// QL thông tin
+$route['admin/info'] = 'admin/info';
 
 $route['admin/category'] ='admin/category';
 $route['admin/category/(:num)'] ='admin/category/index/$1';
