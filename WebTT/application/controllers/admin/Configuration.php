@@ -20,7 +20,6 @@ class Configuration extends CI_Controller {
 	public function update($id=1)
 	{
 		$this->data['row']=$this->Mconfiguration->configuration_detail($id);
-
 		$this->load->library('form_validation');
 		$this->load->library('session');	
 		$this->form_validation->set_rules('mail_smtp', 'Địa chỉ email ', 'required');
