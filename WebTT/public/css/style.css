@@ -531,7 +531,7 @@
 
 .menu-pri{
 	width: 100%;
-	background: #0f9ed8;
+	/*background: #0f9ed8;*/
 }
 
 /* Định dạng CSS MOBILE */
@@ -2241,4 +2241,12 @@ a.fright {
 	-ms-transform: scale(1.1);
 	-o-transform: scale(1.1);
 	transform: scale(1.1);
+}
+
+.font-weight-bold {
+	font-weight: bold;
+}
+
+.font-italic {
+	font-style: italic;
 }

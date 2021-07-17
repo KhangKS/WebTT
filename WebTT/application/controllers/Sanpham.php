@@ -9,6 +9,7 @@ class Sanpham extends CI_Controller {
         $this->data['com']='sanpham';
         $this->load->library('session');
         $this->load->library('phantrang');
+        $this->load->model('frontend/Mcontent');
     }
        
     public function index(){
