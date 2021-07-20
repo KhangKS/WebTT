@@ -7,6 +7,7 @@ class Contact extends CI_Controller {
 		$this->load->model('backend/Mcontact');
         $this->load->model('backend/Muser');
         $this->load->model('backend/Morders');
+        $this->load->model('backend/Mrole_has_permission');
 		if(!$this->session->userdata('sessionadmin')){
 			redirect('admin/user/login','refresh');
 		}

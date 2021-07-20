@@ -70,6 +70,15 @@ $route['producer/recyclebin/(:num)'] ='producer/recyclebin/$1';
 // QL thông tin
 $route['admin/info'] = 'admin/info';
 
+// QL kho
+$route['admin/warehouse'] = 'admin/warehouse';
+$route['admin/warehouse/(:num)'] ='admin/warehouse/index/$1';
+
+// QL quyền
+$route['admin/role'] ='admin/role';
+$route['admin/role/(:num)'] ='admin/role/index/$1';
+$route['role/update/(:num)'] ='role/update/$1';
+
 $route['admin/category'] ='admin/category';
 $route['admin/category/(:num)'] ='admin/category/index/$1';
 $route['category/insert'] ='category/insert';

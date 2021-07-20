@@ -33,6 +33,7 @@
 										<option value="3">Tuyển dụng</option>
 										<option value="4">Dịch vụ</option>
 										<option value="5">Nông nghiệp</option>
+										<option value="7">Tin thủ thuật</option>
 									</select>
 								</div>
 								<div class="form-group">
