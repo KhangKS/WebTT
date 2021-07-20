@@ -13,6 +13,7 @@ class Orders extends CI_Controller {
     $this->load->model('backend/Mdistrict');
     $this->load->model('backend/Morderdetail');
     $this->load->model('backend/Mconfiguration');
+    $this->load->model('backend/Mrole_has_permission');
     if(!$this->session->userdata('sessionadmin'))
     {
       redirect('admin/user/login','refresh');

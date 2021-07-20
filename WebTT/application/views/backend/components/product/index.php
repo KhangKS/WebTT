@@ -48,7 +48,7 @@
 												<th class="text-center" style="width:20px">ID</th>
 												<th>Hình</th>
 												<th>Tên sản phẩm</th>
-												<th>Số lượng trong kho</th>
+												<!-- <th>Số lượng trong kho</th> -->
 												<th>Loại sản phẩm</th>
 												<th class="text-center">Trạng thái</th>
 												<th class="text-center">Nhập hàng</th>
@@ -63,7 +63,7 @@
 														<img src="public/images/products/<?php echo $row['avatar'] ?>" alt="<?php echo $row['name'] ?>" class="img-responsive">
 													</td>
 													<td style="font-size: 16px;"><?php echo $row['name'] ?></td>
-													<td class="text-center"> <?php echo $row['number'] - $row['number_buy'] ?></td>
+													<!-- <td class="text-center"> <?php echo $row['number'] - $row['number_buy'] ?></td> -->
 													<?php 
 													$namecat = $this->Mcategory->category_name($row['catid']);
 													?>
