@@ -1,5 +1,11 @@
 <section id="content">
 	<div class="container account">
+        <?php  if($this->session->flashdata('success')):?>
+                <div class="alert alert-success" style="margin-top: 20px;">
+                    <?php echo $this->session->flashdata('success'); ?>
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                </div>
+        <?php  endif;?>
         <aside class="col-right sidebar col-md-3 col-xs-12">
             <div class="block block-account">
                 <div class="general__title">

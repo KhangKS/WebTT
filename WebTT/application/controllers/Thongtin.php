@@ -86,4 +86,51 @@ class Thongtin extends CI_Controller {
         return TRUE;
     }
 
+    public function updateProfile()
+    {
+        $customer = $this->Mcustomer->customer_detail_id($this->session->userdata('id'));
+        $is_unique_email = '|is_unique[db_customer.email]';
+        $is_unique_phone = '|is_unique[db_customer.phone]';
+
+        if (isset($_POST['email']) == $customer['email']) {
+            $is_unique_email = '';
+        }
+
+        if (isset($_POST['phone']) == $customer['phone']) {
+            $is_unique_phone = '';
+        }
+
+        $row = $this->Mcustomer->customer_check_username($this->session->userdata('username'));
+        $this->data['row']=$row;
+        $this->data['customer']=$customer;
+
+        $this->load->library('session');
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('fullname', 'Họ và tên', 'required|min_length[5]');
+        $this->form_validation->set_rules('email', 'Email', 'required'.$is_unique_email);
+        $this->form_validation->set_rules('phone', 'Số điện thoại', 'required|min_length[6]|numeric'.$is_unique_phone.'|max_length[11]');
+
+        if ($this->form_validation->run() ==TRUE) { 
+            if ($this->session->userdata('sessionKhachHang')) {
+                $mydata= array(
+                    'fullname' => $_POST['fullname'],
+                    'email' => $_POST['email'],
+                    'phone' => $_POST['phone'],
+                );
+
+                $this->Mcustomer->customer_update($mydata, $this->session->userdata('id'));
+
+                $this->session->set_flashdata('success', 'Cập nhật thông tin cá nhân thành công');
+                echo '<script>alert("Thông tin cá nhân đã được thay đổi thành công !")</script>';
+                redirect('thong-tin-khach-hang','refresh');
+            } else {
+               redirect('/thong-tin-khach-hang','refresh');
+            }
+
+       }
+       $this->data['title']='Huy Minh Cần Thơ - Đổi mật khẩu';
+       $this->data['view']='update';
+       $this->load->view('frontend/layout',$this->data);
+   }
+
 }

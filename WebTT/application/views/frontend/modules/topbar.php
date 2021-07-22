@@ -1,5 +1,4 @@
-
-<section id="header"">
+<section id="header">
 	<nav class="navbar" style="z-index: 9999">
 		<div class="container">
 			<div class="col-md-12 col-lg-12">
@@ -33,7 +32,7 @@
                 		<li><a href="thong-tin-tai-khoan">Tài khoản</a></li>
                 		<?php 
                 		if($this->session->userdata('sessionKhachHang')){
-                			echo "<li><a href='dang-xuat'>Thoát</a></li>";
+                			echo "<li><a href='dang-xuat'>Đăng xuất</a></li>";
                 		}else{
                 			echo "<li><a href='dang-ky'>Đăng ký</a></li>";
                 			echo "<li><a href='dang-nhap'>Đăng nhập</a></li>";
@@ -44,8 +43,15 @@
                 		<?php 
                 		if($this->session->userdata('sessionKhachHang')){
                 			$name=$this->session->userdata('sessionKhachHang_name');
-                			echo "<li><a href='#'>Xin chào: $name</a></li>";
-                			echo "<li><a href='dang-xuat'>Thoát</a></li>";
+                			echo "
+                            <li class='dropdown'>
+                                <a class='dropdown-toggle' data-toggle='dropdown' href='javascript:void(0)'>$name
+                                <span class='caret'></span></a>
+                                <ul class='dropdown-menu'>
+                                    <li><a href='cap-nhat-thong-tin'>Cập nhật thông tin</a></li>
+                                </ul>
+                            </li>";
+                			echo "<li><a href='dang-xuat'>Đăng xuất</a></li>";
                 		}else{
                 			echo "<li><a href='dang-ky'>Đăng ký</a></li>";
                 			echo "<li><a href='dang-nhap'>Đăng nhập</a></li>";

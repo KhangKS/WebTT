@@ -9,6 +9,7 @@ class Dangnhap extends CI_Controller {
         $this->load->model('frontend/Mcustomer');
         $this->load->model('frontend/Mcoupon');
         $this->load->model("frontend/Mproduct");
+        $this->load->model('backend/Mconfiguration');
         $this->data['com']='dangnhap';
     }
 
@@ -91,7 +92,7 @@ class Dangnhap extends CI_Controller {
                 'trash' => 1,
                 'status' => 1,
             );
-                       
+
             //Lưu tt mã và ngày giới hạn để gửi mail
             $tempcoupon = $newcoupon['code'];
             $tempdatelimit = $newcoupon['expiration_date'];
@@ -148,6 +149,7 @@ class Dangnhap extends CI_Controller {
     }
 
     public function forget_password(){
+        $config = $this->Mconfiguration->configuration_detail(1);
         $this->form_validation->set_rules('email', 'Email', 'required|callback_check_mail_forget');
         if($this->form_validation->run() ==TRUE){
 
@@ -161,22 +163,22 @@ class Dangnhap extends CI_Controller {
             $config['smtp_host']    = 'ssl://smtp.gmail.com';
             $config['smtp_port']    = '465';
             $config['smtp_timeout'] = '7';
-            $config['smtp_user']    = 'sale.smart.store.2019@gmail.com';
-            $config['smtp_pass']    = 'cqfmfmrtudhcmahw';
+            $config['smtp_user']    = $config['mail_smtp'];
+            $config['smtp_pass']    = $config['mail_smtp_password'];
             $config['charset']    = 'utf-8';
             $config['newline']    = "\r\n";
             $config['wordwrap'] = TRUE;
             $config['mailtype'] = 'html';
             $config['validation'] = TRUE;   
             $this->email->initialize($config);
-            $this->email->from('sale.smart.store.2019@gmail.com', 'Smart Store');
+            $this->email->from($config['mail_smtp'], 'Huy Minh Cần Thơ');
             $this->email->to($list['email']);
-            $this->email->subject('Hệ thống Smart Store - Lấy lại mật khẩu');
+            $this->email->subject('Huy Minh Cần Thơ - Lấy lại mật khẩu');
             $this->email->message('Vui lòng truy cập đường dẫn để lấy lại mật khẩu <button class="btn"><a href="'.base_url().'dangnhap/reset_password_new/'.$list['id'].'">Lấy lại mật khẩu</a></button>'); 
             $this->email->send();
             $this->data['success']='Bạn vui lòng kiểm tra mail để lấy lại mật khẩu!';   
         }  
-        $this->data['title']='Smart store - Quên mật khẩu';   
+        $this->data['title']='Huy Minh Cần Thơ - Quên mật khẩu';   
         $this->data['view']='forget_password';
         $this->load->view('frontend/layout',$this->data);  
     }
@@ -203,26 +205,25 @@ class Dangnhap extends CI_Controller {
         $this->form_validation->set_rules('re_password', 'Nhập lại mật khẩu', 'required|matches[password]');
         
         if($this->form_validation->run() ==TRUE){ 
-           $email = $_POST['email'];
-           if($this->Mcustomer->customer_check_id_email($id, $email)!=FALSE){
-               $password_new = md5($_POST['re_password']);
-               $mydata= array( 'password' => $password_new,);
-               $this->Mcustomer->customer_update($mydata, $list['id']);
-               $this->data['success']='Đổi mật khẩu thành công';
-               echo '<script>alert("Mật khẩu đã được thay đổi thành công !")</script>';
-               redirect('dang-nhap','refresh');
-           }
-           else{
-            $this->data['error']='Email không đúng, vui lòng nhập đúng email cần lấy lại mật khẩu !';
-            $this->data['title']='Smart Store - Cập nhật mật khẩu mới';
-            $this->data['view']='reset_password_new';
-            $this->load->view('frontend/layout',$this->data);
+            $email = $_POST['email'];
+            if($this->Mcustomer->customer_check_id_email($id, $email)!=FALSE){
+                $password_new = md5($_POST['re_password']);
+                $mydata= array( 'password' => $password_new,);
+                $this->Mcustomer->customer_update($mydata, $list['id']);
+                $this->data['success']='Đổi mật khẩu thành công';
+                echo '<script>alert("Mật khẩu đã được thay đổi thành công !")</script>';
+                redirect('dang-nhap','refresh');
+            }
+            else{
+                $this->data['error']='Email không đúng, vui lòng nhập đúng email cần lấy lại mật khẩu !';
+                $this->data['title']='Smart Store - Cập nhật mật khẩu mới';
+                $this->data['view']='reset_password_new';
+                $this->load->view('frontend/layout',$this->data);
+            }
         }
-
+        $this->data['title']='Smart Store - Cập nhật mật khẩu mới';
+        $this->data['view']='reset_password_new';
+        $this->load->view('frontend/layout',$this->data);
     }
-    $this->data['title']='Smart Store - Cập nhật mật khẩu mới';
-    $this->data['view']='reset_password_new';
-    $this->load->view('frontend/layout',$this->data);
-}
 
 }
