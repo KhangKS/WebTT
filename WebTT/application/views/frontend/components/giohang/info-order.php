@@ -3,7 +3,7 @@
 if(!$this->session->userdata('cart')){
     redirect('gio-hang');
 }else{
-    $user=$this->session->userdata('sessionKhachHang');
+    $user = $this->Mcustomer->customer_detail_id($this->session->userdata('id'));
 }
 ?>
 <section id="checkout-cart">

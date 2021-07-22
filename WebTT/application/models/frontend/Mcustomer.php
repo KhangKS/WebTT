@@ -9,8 +9,8 @@ class Mcustomer extends CI_Model {
 
     function customer_login($username, $password){
     	$this->db->where('username', $username);
-        $this->db->or_where('email', $username);
     	$this->db->where('password', $password);
+        $this->db->or_where('email', $username);
     	$query = $this->db->get($this->table);
         if(count($query->result_array())==1){
         	return $query->row_array();

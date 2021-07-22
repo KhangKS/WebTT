@@ -137,9 +137,9 @@
 		display: none !important;
 	}
 
-	#header .navbar-nav li a:first-child{
+	/*#header .navbar-nav li a:first-child{
 		padding-left: 0 !important;
-	}
+	}*/
 
 	.product-view-content{
 		padding-left: 15px !important;

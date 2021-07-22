@@ -32,6 +32,7 @@ $route['gioi-thieu'] = 'gioithieu/index';
 $route['account/orders/(:num)'] = 'thongtin/order';
 $route['account/orders/update/(:num)'] = 'thongtin/update/(:num)';
 $route['reset_password'] = 'thongtin/reset_password';
+$route['cap-nhat-thong-tin'] = 'thongtin/updateProfile';
 
 $route['admin'] = 'admin/dashboard';
 
