@@ -4,8 +4,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Sanpham extends CI_Controller {
     function __construct() {
         parent::__construct();
+        $this->load->model('frontend/Mcomment');
         $this->load->model('frontend/Mproduct');
         $this->load->model('frontend/Mcategory');
+        $this->load->model('frontend/Mcustomer');
         $this->data['com']='sanpham';
         $this->load->library('session');
         $this->load->library('phantrang');
@@ -93,9 +95,28 @@ class Sanpham extends CI_Controller {
     }
     public function detail($link){   
         $row = $this->Mproduct->product_detail($link);
+        $this->data['comments'] = $this->Mcomment->comment_by_product($row['id']);
         $this->data['row']=$row;
         $this->data['title']='Smart Store - '.$row['name'];  
         $this->data['view']='detail';
+
+        $time = date("Y-m-d H:i:s");
+        $customer = $this->session->userdata('sessionKhachHang');
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('content', 'Hãy bình luận gì đó!', 'required');
+        if ($this->form_validation->run() == TRUE){
+            $mydata= array(
+                'customer_id' => $customer['id'],
+                'content' => $_POST['content'], 
+                'created_at' => $time, 
+                'post_id' => NULL,
+                'product_id'  => $_POST['product_id'], 
+            );
+
+            $this->Mcomment->create($mydata);
+            redirect('/'.$link, 'refresh');
+        }
+
         $this->load->view('frontend/layout',$this->data);
     }
     public function addcart(){
@@ -141,5 +162,26 @@ class Sanpham extends CI_Controller {
         $this->session->set_userdata('coupon_price');
         echo json_encode( $cart );
 
+    }
+
+    public function deleteComment ($id) {
+        $this->Mcomment->delete($id);
+    }
+
+    public function updateComment ($id) {
+        header('Content-Type: application/json');
+        $comment = $this->Mcomment->comment_by_product($id);
+
+        if (!empty($_POST['content'])){
+            $mydata = [
+                'content' => $_POST['content'],
+            ];
+
+            $this->Mcomment->update($id, $mydata);
+            echo json_encode($_POST['content']);
+        }
+        else {
+            echo json_encode($comment['content']);
+        }
     }
 }

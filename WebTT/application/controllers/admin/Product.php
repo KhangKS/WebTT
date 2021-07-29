@@ -75,12 +75,12 @@ class Product extends CI_Controller {
 	         //Định dạng file được phép tải
 			$config['allowed_types'] = 'jpg|png|gif';
 	         //Dung lượng tối đa
-			$config['max_size']      = '500';
+			// $config['max_size']      = '500';
 			$config['encrypt_name'] = TRUE;
 	         //Chiều rộng tối đa
-			$config['max_width']     = '1028';
+			// $config['max_width']     = '1028';
 	         //Chiều cao tối đa
-			$config['max_height']    = '768';
+			// $config['max_height']    = '768';
 	         //load thư viện upload
 	         //bien chua cac ten file upload
 			$name_array = array();
@@ -135,65 +135,86 @@ class Product extends CI_Controller {
         }
 
         public function update($id){
-          $user_role=$this->session->userdata('sessionadmin');
-    if($user_role['role']==2){
-      redirect('admin/E403/index','refresh');
-    }
-         $this->data['row']=$this->Mproduct->product_detail($id);
-         $d=getdate();
-         $today=$d['year']."/".$d['mon']."/".$d['mday']." ".$d['hours'].":".$d['minutes'].":".$d['seconds'];
-         $this->load->library('form_validation');
-         $this->load->library('session');
-         $this->load->library('alias');
-         $this->form_validation->set_rules('name', 'Tên sản phẩm', 'required');
-         $this->form_validation->set_rules('catid', 'Loại sản phẩm', 'required');
-         $this->form_validation->set_rules('producer', 'Nhà cung cấp', 'required');
-         $this->form_validation->set_rules('price_buy','Giá bán','required|callback_check');
-         if ($this->form_validation->run() == TRUE){
-          $mydata= array(
-           'catid'=>$_POST['catid'],
-           'producer'=>$_POST['producer'],
-           'name' =>$_POST['name'], 
-           'alias' =>$string=$this->alias->str_alias($_POST['name']),
-           'detail'=>$_POST['detail'], 
-           'sortDesc'=>$_POST['sortDesc'],
-           'sale'=>$_POST['sale_of'],
-           'price'=>$_POST['price_root'],
-           'price_sale'=>$_POST['price_buy'],
-           'modified'=>$today,
-           'modified_by'=>$this->session->userdata('id'),
-           'status'=>$_POST['status']
-         );
-              $this->Mproduct->product_update($mydata, $id);
-              $this->session->set_flashdata('success', 'Cập nhật sản phẩm thành công');
-              redirect('admin/product','refresh');
+            $user_role=$this->session->userdata('sessionadmin');
+            if($user_role['role']==2){
+                redirect('admin/E403/index','refresh');
+            }
+            $this->data['row']=$this->Mproduct->product_detail($id);
+            $d=getdate();
+            $today=$d['year']."/".$d['mon']."/".$d['mday']." ".$d['hours'].":".$d['minutes'].":".$d['seconds'];
+            $this->load->library('form_validation');
+            $this->load->library('session');
+            $this->load->library('alias');
+            $this->form_validation->set_rules('name', 'Tên sản phẩm', 'required');
+            $this->form_validation->set_rules('catid', 'Loại sản phẩm', 'required');
+            $this->form_validation->set_rules('producer', 'Nhà cung cấp', 'required');
+            $this->form_validation->set_rules('price_buy','Giá bán','required|callback_check');
+            if ($this->form_validation->run() == TRUE){
+                $mydata= array(
+                    'catid'=>$_POST['catid'],
+                    'producer'=>$_POST['producer'],
+                    'name' =>$_POST['name'], 
+                    'alias' =>$string=$this->alias->str_alias($_POST['name']),
+                    'detail'=>$_POST['detail'], 
+                    'sortDesc'=>$_POST['sortDesc'],
+                    'sale'=>$_POST['sale_of'],
+                    'price'=>$_POST['price_root'],
+                    'price_sale'=>$_POST['price_buy'],
+                    'modified'=>$today,
+                    'modified_by'=>$this->session->userdata('id'),
+                    'status'=>$_POST['status']
+                );
+
+                $config = array();
+                $config['upload_path']   = './public/images/products/';
+                $config['allowed_types'] = 'jpg|png|gif';
+                $config['encrypt_name'] = TRUE;
+                $this->load->library('upload', $config);
+
+                if (!$_FILES['img']['error']) {
+                    if ( $this->upload->do_upload('img')){
+                        $data = $this->upload->data();
+                        $mydata['avatar']=$data['file_name'];
+                    }
+                }
+
+                if (!$_FILES['image_list']['error']) {
+                    if ( $this->upload->do_upload('image_list')){
+                        $data = $this->upload->data();
+                        $mydata['img']=$data['file_name'];
+                    }
+                }
+
+                $this->Mproduct->product_update($mydata, $id);
+                $this->session->set_flashdata('success', 'Cập nhật sản phẩm thành công');
+                redirect('admin/product','refresh');
             } 
             $this->data['view']='update';
             $this->data['title']='Cập nhật sản phẩm';
             $this->load->view('backend/layout', $this->data);
-          }
+        }
 
-          public function status($id){
-           $row=$this->Mproduct->product_detail($id);
-           $status=($row['status']==1)?0:1;
-           $mydata= array('status' => $status,'modified_by'=>$this->session->userdata('id'),);
-           $this->Mproduct->product_update($mydata, $id);
-           $this->session->set_flashdata('success', 'Cập nhật sản phẩm thành công');
-           redirect('admin/product/','refresh');
-         }
+        public function status($id){
+            $row=$this->Mproduct->product_detail($id);
+            $status=($row['status']==1)?0:1;
+            $mydata= array('status' => $status,'modified_by'=>$this->session->userdata('id'),);
+            $this->Mproduct->product_update($mydata, $id);
+            $this->session->set_flashdata('success', 'Cập nhật sản phẩm thành công');
+            redirect('admin/product/','refresh');
+        }
 
-         public function recyclebin(){
-           $this->load->library('phantrang');
-           $limit=10;
-           $current=$this->phantrang->PageCurrent();
-           $first=$this->phantrang->PageFirst($limit, $current);
-           $total=$this->Mproduct->product_trash_count();
-           $this->data['strphantrang']=$this->phantrang->PagePer($total, $current, $limit, $url='admin/product/recyclebin');
-           $this->data['list']=$this->Mproduct->product_trash($limit, $first);
-           $this->data['view']='recyclebin';
-           $this->data['title']='Thùng rác sản phẩm';
-           $this->load->view('backend/layout', $this->data);
-         }
+        public function recyclebin(){
+            $this->load->library('phantrang');
+            $limit=10;
+            $current=$this->phantrang->PageCurrent();
+            $first=$this->phantrang->PageFirst($limit, $current);
+            $total=$this->Mproduct->product_trash_count();
+            $this->data['strphantrang']=$this->phantrang->PagePer($total, $current, $limit, $url='admin/product/recyclebin');
+            $this->data['list']=$this->Mproduct->product_trash($limit, $first);
+            $this->data['view']='recyclebin';
+            $this->data['title']='Thùng rác sản phẩm';
+            $this->load->view('backend/layout', $this->data);
+        }
 
          public function trash($id){
            $row = $this->Morderdetail->orderdetail_detail($id);

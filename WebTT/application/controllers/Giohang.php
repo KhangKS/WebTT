@@ -57,9 +57,9 @@ class Giohang extends CI_Controller {
                     $row = $this->Mproduct->product_detail_id($key);
                     $total=0;
                     if($row['price_sale'] > 0){
-                        $total=$row['price_sale']*$value;
+                        $total = ($row['price_sale'] - ($row['price_sale'] * $row['sale'] / 100)) * $value;
                     }else{
-                        $total=$row['price'] * $value;
+                        $total = ($row['price'] - ($row['price'] * $row['sale'] / 100)) * $value;
                     }
                     $money+=$total;
                 }

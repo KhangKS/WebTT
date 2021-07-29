@@ -1,8 +1,7 @@
 <section id="product-detail">
-	
 	<div class="container">
 		<div class="products-wrap">
-			<form action="" method="post" id="ProductDetailsForm">
+			<!-- <form action="" method="post" id="ProductDetailsForm"> -->
 				<?php if($row):?>
 					<div class="breadcrumbs">
 						<ul>
@@ -28,11 +27,11 @@
 							<div class="product-view-price">
 								<div class="pull-left">
 									<span class="price-label">Giá bán:</span>
-									<span class="price"><?php echo number_format($row['price_sale'])?>₫</span>
+									<span class="price"><?php echo number_format($row['price_sale'] - ($row['price_sale'] * $row['sale'] / 100)) ?>₫</span>
 								</div>
 								<?php if($row['price_sale']>0 && $row['sale']>0): ?>
 									<div class="product-view-price-old">
-										<span class="price"><?php echo $row['price'] ?>₫</span>
+										<span class="price"><?php echo number_format($row['price_sale'])?>₫</span>
 										<span class="sale-flag">-<?php echo $row['sale'] ?>%</span>
 									</div>
 								<?php endif; ?>
@@ -95,9 +94,60 @@
 					</div>
 					<div class="product-comment product-v-desc">
 						<h3>Bình luận</h3>
-						<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
+						<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 mb-1">
+					    	<?php $session_customer = $this->session->userdata('sessionKhachHang'); ?>
+						    <?php if ($session_customer) :?>
+							<div class="form-group">
+								<form method="post" action="">
+									<label for="comment">Bình luận:</label>
+									<textarea required="" class="form-control" rows="3" id="comment" style="resize: none;" name="content"></textarea>
+									<div class="error" id="content_error"><?php echo form_error('content')?></div>
+									<input type="text" name="product_id" value="<?php echo $row['id'] ?>" hidden>
+									<button class="btn-primary btn mt-1">Bình luận</button>
+								</form>
+							</div>
+						    <?php else :?>
+						    	<p>Hãy đăng nhập để cùng bình luận!</p>
+							<?php endif; ?>
 
-							<div class="fb-comments" data-href="<?php echo base_url() ?><?php echo $row['alias'] ?>" data-numposts="5"></div>
+						    <!-- <span class="font-italic text-dark">(Chưa có bình luận nào)</span> -->
+						    <?php foreach ($comments as $comment) :?>
+					    	<?php 
+						    	$datetime1 = new DateTime($comment['created_at']);//start time
+						    	$datetime2 = new DateTime("now");
+						    	$interval = $datetime1->diff($datetime2);
+						    	
+						    	$time_date = (int)$interval->format('%d');
+						    	$time_hours = (int)$interval->format('%H');
+						    	$time_minutes = (int)$interval->format('%i');
+
+						    	if ($time_date > 0) {
+						    		$time = $time_date.' ngày trước';
+						    	}
+						    	elseif ($time_hours > 0) {
+						    		$time = $time_hours.' giờ trước';
+						    	}
+						    	elseif ($time_minutes > 0) {
+						    		$time = $time_minutes.' phút trước';
+						    	}
+					    	?>
+
+					    	<?php $customer = $this->Mcustomer->customer_detail_id($comment['customer_id']); ?>
+						    <div class="comment mt-1" id="deleteComment<?php echo $comment['id'] ?>">
+						        <span class="font-weight-bold"><?php echo $customer['fullname']; ?></span> <span><?php echo $time; ?></span><br>
+						        <span class="ml-5" id="comment<?php echo $comment['id'] ?>"><?php echo $comment['content'] ?></span>
+						        <br>
+
+						        <?php if ($session_customer && $comment['customer_id'] != $session_customer['id']) :?>
+					            	<span class="text-warning position-absolute btnEditHistory" onclick="replyComment('<?php echo $customer['fullname']; ?>')" style="top: 0; right: 40px; cursor: pointer">Trả lời</span>
+						    	<?php endif; ?>
+
+						        <?php if ($comment['customer_id'] == $session_customer['id'] ) :?>
+						            <span class="text-warning position-absolute btnEditHistory" onclick="showModalEdit(<?php echo $comment['id']; ?>, '<?php echo $comment['content']; ?>')" style="top: 0; right: 40px; cursor: pointer">Sửa</span>
+						            <span class="text-danger position-absolute deleteComment" onclick="deleteComment(<?php echo $comment['id'] ?>)" style="top: 0; right: 10px; cursor: pointer">Xóa</span>
+						    	<?php endif; ?>
+						    </div>
+						    <?php endforeach; ?>
 						</div>
 					</div>
 					<div class="product-comment product-v-desc product">
@@ -156,13 +206,14 @@
 									<?php endif; ?>
 								</div>
 							<?php endif; ?>	
-						</form>
-
+						<!-- </form>
+ -->
 					</div>
+				</div>
+				<div class="modal" id="modalEditComment">
 				</div>
 			</section>
 			<script>
-
 				function onAddCart(id){
 					var strurl="<?php echo base_url();?>"+'/sanpham/addcart';
 					jQuery.ajax({
@@ -176,4 +227,54 @@
 						}
 					});
 				}
+
+				function deleteComment(id) {
+					var result = confirm('Bạn có chắc chắn muốn xóa bình luận?');
+					if (result) {
+			            $.ajax({
+			                url: "<?php echo base_url();?>/sanpham/deleteComment/" + id,
+			                method: "POST",
+			                data: {id: id},
+			                success: function (respon) {
+			                	console.log('Xóa thành công');
+			                	$(`#deleteComment${id}`).remove();
+			                }
+			            })
+					}
+		        }
+
+		        function showModalEdit(id, text) {
+		            let html = `<div class="modal-dialog">
+		                    <div class="modal-content">
+		                        <div class="modal-body">
+		                            <textarea class="form-control" id="history">${text}</textarea>
+		                        </div>
+		                        <div class="modal-footer">
+		                            <button type="button" class="btn btn-primary" id="updateComment" onclick="updateComment(${id})">Cập nhật</button>
+		                            <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+		                        </div>
+		                    </div>
+		                </div>`;
+		            $('#modalEditComment').html(html).modal('show');
+		        }
+
+		        function replyComment(name) {
+		            $('#comment').val(name+': ');
+		        }
+
+		        function updateComment(id) {
+		            let $this = $('#updateComment');
+		            $.ajax({
+		                url: "<?php echo base_url();?>/sanpham/updateComment/" + id,
+		                method: "POST",
+		                data: {
+		                	id: id,
+		                	content: $('#history').val(),
+		                },
+		                success: function (respon) {
+		                    $(`#comment${id}`).html(respon);
+		                }
+		            });
+		            $('#modalEditComment').modal('hide');
+		        }
 			</script>

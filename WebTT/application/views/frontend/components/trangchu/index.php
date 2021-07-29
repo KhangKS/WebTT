@@ -18,187 +18,367 @@
         </div>
 
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-            <!-- Sản phẩm khuyến mãi HOT -->
+            <!-- Camera -->
             <div class="sale-title">
-                <span>SẢN PHẨM KHUYẾN MÃI HOT</span>
-            </div>
-            <div class="owl-carousel owl-carousel-product owl-theme" style="border: 1px solid #0f9ed8;">
+                <a href="san-pham/camera"><span>Camera (<?php echo $number_product_camera; ?> sản phẩm)</span></a>
                 <?php 
-                $product_sale = $this->Mproduct->product_sale(10);
-                foreach ($product_sale as $row) :?>
-                    <div class="item" style="margin: 0px;">
-                        <div class="products-sale">
-                            <div class="lt-product-group-image">
-                                <a href="<?php echo $row['alias'] ?>" title="<?php echo $row['name'] ?>" >
-                                    <img class="img-p"src="public/images/products/<?php echo $row['avatar'] ?>" alt="">
-                                </a>
-
+                    foreach ($sub_category_camera as $row) :?>
+                        <a href="san-pham/<?php echo $row['link'] ?>" class="float-right d-block mr-1"><span><?php echo $row['name']; ?></span></a>
+                <?php endforeach; ?>
+            </div>
+            <div class="row">
+                <?php 
+                    foreach ($product_camera as $row) :?>
+                        <div class="col-lg-4 padding-5">
+                            <div class="product ">
                                 <?php if($row['sale'] > 0) :?>
                                     <div class="giam-percent">
                                         <span class="text-giam-percent">Giảm <?php echo $row['sale'] ?>%</span>
                                     </div>
                                 <?php endif; ?>
-                            </div>
-                            <div class="lt-product-group-info">
-                                <a href="<?php echo $row['alias'] ?>" title="<?php echo $row['name'] ?>" style="text-align: left;">
-                                    <h3><?php echo $row['name'] ?></h3>
+                                <a href="<?php echo $row['alias'] ?>" title="<?php echo $row['name'] ?>" >
+                                    <img class="img-p border"src="public/images/products/<?php echo $row['avatar'] ?>" alt="" style="height:60px;max-width:100px;">
                                 </a>
-                                <div class="price-box">
-                                    <?php if($row['sale'] > 0) :?>
-
-                                        <p class="old-price">
-                                            <span class="price"><?php echo(number_format($row['price'])); ?>₫</span>
-                                        </p>
-                                        <p class="special-price">
-                                            <span class="price"><?php echo(number_format($row['price_sale'])); ?>₫</span>
-                                        </p>
-                                        <?php else: ?>
-                                           <p class="old-price">
-                                            <span class="price" style="color: #fff"><?php echo(number_format($row['price'])); ?>₫</span>
-                                        </p>
-                                        <p class="special-price">
-                                            <span class="price"><?php echo(number_format($row['price'])); ?>₫</span>
-                                        </p>
-                                    <?php endif;?>
-                                </div>
-                                <div class="clear"></div>
+                                <a href="<?php echo $row['alias'] ?>" title="<?php echo $row['name'] ?>" class="text-center title-product">
+                                    <h3>
+                                        <?php
+                                            $str = strip_tags($row['name']);
+                                            if(strlen($str)>21) {
+                                                $strCut = substr($str, 0, 21);
+                                                $str = substr($strCut, 0, strrpos($strCut, ' ')).' ... ';
+                                            }
+                                            echo $str;
+                                        ?>
+                                    </h3>
+                                </a>
+                                <p class="price-product1">
+                                    <?php echo number_format($row['price_sale'] - ($row['price_sale'] * $row['sale'] / 100)) ?>₫
+                                </p>
                             </div>
                         </div>
-                    </div>
                 <?php endforeach; ?>
             </div>
-        
-            <!-- Sản phẩm bán chạy -->
-            <div class="sale-title" style="margin-top: 20px;">
-                <span>SẢN PHẨM BÁN CHẠY</span>
+
+            <!-- Laptop -->
+            <div class="sale-title">
+                <?php $number = $this->Mproduct->count_product_by_category(3); ?>
+                <a href="san-pham/laptop"><span>Laptop (<?php echo $number; ?> sản phẩm)</span></a>
             </div>
-            <div class="owl-carousel owl-carousel-product owl-theme" style="border: 1px solid #0f9ed8;">
+            <div class="row">
                 <?php 
-                $product_sale = $this->Mproduct->product_selling(10);
-                foreach ($product_sale as $row) :?>
-                    <div class="item" style="margin: 0px;">
-                        <div class="products-sale">
-                            <div class="lt-product-group-image">
-                                <a href="<?php echo $row['alias'] ?>" title="<?php echo $row['name'] ?>" >
-                                    <img class="img-p"src="public/images/products/<?php echo $row['avatar'] ?>" alt="">
-                                </a>
+                    $product_sale = $this->Mproduct->product_by_category(3, 3);
+                    foreach ($product_sale as $row) :?>
+                        <div class="col-lg-4 padding-5">
+                            <div class="product ">
                                 <?php if($row['sale'] > 0) :?>
                                     <div class="giam-percent">
                                         <span class="text-giam-percent">Giảm <?php echo $row['sale'] ?>%</span>
                                     </div>
                                 <?php endif; ?>
-                            </div>
-                            <div class="lt-product-group-info">
-                                <a href="<?php echo $row['alias'] ?>" title="<?php echo $row['name'] ?>" style="text-align: left;">
-                                    <h3><?php echo $row['name'] ?></h3>
+                                <a href="<?php echo $row['alias'] ?>" title="<?php echo $row['name'] ?>" >
+                                    <img class="img-p border"src="public/images/products/<?php echo $row['avatar'] ?>" alt="" style="height:60px;max-width:100px;">
                                 </a>
-                                <div class="price-box">
-                                    <?php if($row['sale'] > 0) :?>
-
-                                        <p class="old-price">
-                                            <span class="price"><?php echo(number_format($row['price'])); ?>₫</span>
-                                        </p>
-                                        <p class="special-price">
-                                            <span class="price"><?php echo(number_format($row['price_sale'])); ?>₫</span>
-                                        </p>
-                                        <?php else: ?>
-                                         <p class="old-price">
-                                            <span class="price" style="color: #fff"><?php echo(number_format($row['price'])); ?>₫</span>
-                                        </p>
-                                        <p class="special-price">
-                                            <span class="price"><?php echo(number_format($row['price'])); ?>₫</span>
-                                        </p>
-                                    <?php endif;?>
-                                </div>
-                                <div class="clear"></div>
+                                <a href="<?php echo $row['alias'] ?>" title="<?php echo $row['name'] ?>" class="text-center title-product">
+                                    <h3>
+                                        <?php
+                                            $str = strip_tags($row['name']);
+                                            if(strlen($str)>21) {
+                                                $strCut = substr($str, 0, 21);
+                                                $str = substr($strCut, 0, strrpos($strCut, ' ')).' ... ';
+                                            }
+                                            echo $str;
+                                        ?>
+                                    </h3>
+                                </a>
+                                <p class="price-product1">
+                                    <?php echo number_format($row['price_sale'] - ($row['price_sale'] * $row['sale'] / 100)) ?>₫
+                                </p>
                             </div>
                         </div>
-                    </div>
                 <?php endforeach; ?>
             </div>
-            
-            <!-- Laptop nổi bật -->
-            <?php 
-            $listCategory=$this->Mcategory->category_list(0,'10');
-            foreach ($listCategory as $rowCategory):
-                // row dien thoai
-                $subCategory=$this->Mcategory->category_list($rowCategory['id'],'10');
-                // Id dien thoai
-                $catId=$this->Mcategory->category_id($rowCategory['link']);
-                // list id dt ss, apple,...
-                $listCatId=$this->Mcategory->category_listcat($catId);
-                // list dt ss, apple
-                $listProducts=$this->Mproduct->product_home_limit($listCatId,10);
-                if((count($listProducts) >= 3)):?>
-                    <div class="list-product">
-                        <div class="list-header-z">
-                            <h2><a href="<?php echo  $rowCategory['link']?>"><?php echo  $rowCategory['name']?> nổi bật</a></h2>
-                            <ul class="sub-category">
-                                <?php foreach ($subCategory as $rowSubCategory) :?>
-                                    <li>
-                                        <a href="san-pham/<?php echo $rowSubCategory['link'] ?>" ' 
-                                            title="<?php echo $rowSubCategory['name'] ?>"
-                                            class="ws-nw overflow ellipsis"
-                                            >
-                                            <?php echo $rowSubCategory['name'] ?>
-                                        </a>
-                                    </li>
-                                <?php endforeach; ?>
-                            </ul>
-                        </div>
-                        <div class="product-container">
-                            <?php foreach ($listProducts as $sp) :?>
-                                <div class="p-box-5">
-                                    <div class="product-lt">
-                                        <div class="lt-product-group-image">
-                                            <a href="<?php echo $sp['alias'] ?>" title="<?php echo $sp['name'] ?>" >
-                                                <img class="img-p"src="public/images/products/<?php echo $sp['avatar'] ?>" alt="">
-                                            </a>
 
-                                            <?php if($sp['sale'] > 0) :?>
-                                                <div class="giam-percent">
-                                                    <span class="text-giam-percent">Giảm <?php echo $sp['sale'] ?>%</span>
-                                                </div>
-                                            <?php endif; ?>
-                                        </div>
-
-                                        <div class="lt-product-group-info">
-                                            <a href="<?php echo $sp['alias'] ?>" title="<?php echo $sp['name'] ?>" style="text-align: left;">
-                                                <h3><?php echo $sp['name'] ?></h3>
-                                            </a>
-                                            <div class="price-box">
-                                                <?php if($sp['sale'] > 0) :?>
-
-                                                    <p class="old-price">
-                                                        <span class="price"><?php echo(number_format($sp['price'])); ?>₫</span>
-                                                    </p>
-                                                    <p class="special-price">
-                                                        <span class="price"><?php echo(number_format($sp['price_sale'])); ?>₫</span>
-                                                    </p>
-                                                    <?php else: ?>
-                                                     <p class="old-price">
-                                                        <span class="price" style="color: #fff"><?php echo(number_format($sp['price'])); ?>₫</span>
-                                                    </p>
-                                                    <p class="special-price">
-                                                        <span class="price"><?php echo(number_format($sp['price'])); ?>₫</span>
-                                                    </p>
-                                                <?php endif;?>
-                                            </div>
-                                            <div class="clear"></div>
-                                        </div>
+            <!-- Máy tính để bàn -->
+            <div class="sale-title">
+                <?php $number = $this->Mproduct->count_product_by_category(2); ?>
+                <a href="san-pham/may-tinh-de-ban"><span>Máy tính để bàn (<?php echo $number; ?> sản phẩm)</span></a>
+            </div>
+            <div class="row">
+                <?php 
+                    $product_sale = $this->Mproduct->product_by_category(2, 3);
+                    foreach ($product_sale as $row) :?>
+                        <div class="col-lg-4 padding-5">
+                            <div class="product ">
+                                <?php if($row['sale'] > 0) :?>
+                                    <div class="giam-percent">
+                                        <span class="text-giam-percent">Giảm <?php echo $row['sale'] ?>%</span>
                                     </div>
-                                </div>
-                            <?php endforeach;?>
+                                <?php endif; ?>
+                                <a href="<?php echo $row['alias'] ?>" title="<?php echo $row['name'] ?>" >
+                                    <img class="img-p border"src="public/images/products/<?php echo $row['avatar'] ?>" alt="" style="height:60px;max-width:100px;">
+                                </a>
+                                <a href="<?php echo $row['alias'] ?>" title="<?php echo $row['name'] ?>" class="text-center title-product">
+                                    <h3>
+                                        <?php
+                                            $str = strip_tags($row['name']);
+                                            if(strlen($str)>21) {
+                                                $strCut = substr($str, 0, 21);
+                                                $str = substr($strCut, 0, strrpos($strCut, ' ')).' ... ';
+                                            }
+                                            echo $str;
+                                        ?>
+                                    </h3>
+                                </a>
+                                <p class="price-product1">
+                                    <?php echo number_format($row['price_sale'] - ($row['price_sale'] * $row['sale'] / 100)) ?>₫
+                                </p>
+                            </div>
                         </div>
-                    </div>
-                <?php endif;?>
-            <?php endforeach;?>
+                <?php endforeach; ?>
+            </div>
+
+            <!-- Máy in - photo -->
+            <div class="sale-title">
+                <?php $number = $this->Mproduct->count_product_by_category(1); ?>
+                <a href="san-pham/may-in-photo"><span>Máy in - photo (<?php echo $number; ?> sản phẩm)</span></a>
+            </div>
+            <div class="row">
+                <?php 
+                    $product_sale = $this->Mproduct->product_by_category(1, 3);
+                    foreach ($product_sale as $row) :?>
+                        <div class="col-lg-4 padding-5">
+                            <div class="product ">
+                                <?php if($row['sale'] > 0) :?>
+                                    <div class="giam-percent">
+                                        <span class="text-giam-percent">Giảm <?php echo $row['sale'] ?>%</span>
+                                    </div>
+                                <?php endif; ?>
+                                <a href="<?php echo $row['alias'] ?>" title="<?php echo $row['name'] ?>" >
+                                    <img class="img-p border"src="public/images/products/<?php echo $row['avatar'] ?>" alt="" style="height:60px;max-width:100px;">
+                                </a>
+                                <a href="<?php echo $row['alias'] ?>" title="<?php echo $row['name'] ?>" class="text-center title-product">
+                                    <h3>
+                                        <?php
+                                            $str = strip_tags($row['name']);
+                                            if(strlen($str)>21) {
+                                                $strCut = substr($str, 0, 21);
+                                                $str = substr($strCut, 0, strrpos($strCut, ' ')).' ... ';
+                                            }
+                                            echo $str;
+                                        ?>
+                                    </h3>
+                                </a>
+                                <p class="price-product1">
+                                    <?php echo number_format($row['price_sale'] - ($row['price_sale'] * $row['sale'] / 100)) ?>₫
+                                </p>
+                            </div>
+                        </div>
+                <?php endforeach; ?>
+            </div>
+
+            <!-- Thiết bị y tế -->
+            <div class="sale-title">
+                <?php $number = $this->Mproduct->count_product_by_category(5); ?>
+                <a href="san-pham/thiet-bi-y-te"><span>Thiết bị y tế (<?php echo $number; ?> sản phẩm)</span></a>
+            </div>
+            <div class="row">
+                <?php 
+                    $product_sale = $this->Mproduct->product_by_category(5, 3);
+                    foreach ($product_sale as $row) :?>
+                        <div class="col-lg-4 padding-5">
+                            <div class="product ">
+                                <?php if($row['sale'] > 0) :?>
+                                    <div class="giam-percent">
+                                        <span class="text-giam-percent">Giảm <?php echo $row['sale'] ?>%</span>
+                                    </div>
+                                <?php endif; ?>
+                                <a href="<?php echo $row['alias'] ?>" title="<?php echo $row['name'] ?>" >
+                                    <img class="img-p border"src="public/images/products/<?php echo $row['avatar'] ?>" alt="" style="height:60px;max-width:100px;">
+                                </a>
+                                <a href="<?php echo $row['alias'] ?>" title="<?php echo $row['name'] ?>" class="text-center title-product">
+                                    <h3>
+                                        <?php
+                                            $str = strip_tags($row['name']);
+                                            if(strlen($str)>21) {
+                                                $strCut = substr($str, 0, 21);
+                                                $str = substr($strCut, 0, strrpos($strCut, ' ')).' ... ';
+                                            }
+                                            echo $str;
+                                        ?>
+                                    </h3>
+                                </a>
+                                <p class="price-product1">
+                                    <?php echo number_format($row['price_sale'] - ($row['price_sale'] * $row['sale'] / 100)) ?>₫
+                                </p>
+                            </div>
+                        </div>
+                <?php endforeach; ?>
+            </div>
+
+            <!-- Phần mềm -->
+            <div class="sale-title">
+                <?php $number = $this->Mproduct->count_product_by_category(7); ?>
+                <a href="san-pham/phan-mem"><span>Phần mềm (<?php echo $number; ?> sản phẩm)</span></a>
+            </div>
+            <div class="row">
+                <?php 
+                    $product_sale = $this->Mproduct->product_by_category(7, 3);
+                    foreach ($product_sale as $row) :?>
+                        <div class="col-lg-4 padding-5">
+                            <div class="product ">
+                                <?php if($row['sale'] > 0) :?>
+                                    <div class="giam-percent">
+                                        <span class="text-giam-percent">Giảm <?php echo $row['sale'] ?>%</span>
+                                    </div>
+                                <?php endif; ?>
+                                <a href="<?php echo $row['alias'] ?>" title="<?php echo $row['name'] ?>" >
+                                    <img class="img-p border"src="public/images/products/<?php echo $row['avatar'] ?>" alt="" style="height:60px;max-width:100px;">
+                                </a>
+                                <a href="<?php echo $row['alias'] ?>" title="<?php echo $row['name'] ?>" class="text-center title-product">
+                                    <h3>
+                                        <?php
+                                            $str = strip_tags($row['name']);
+                                            if(strlen($str)>21) {
+                                                $strCut = substr($str, 0, 21);
+                                                $str = substr($strCut, 0, strrpos($strCut, ' ')).' ... ';
+                                            }
+                                            echo $str;
+                                        ?>
+                                    </h3>
+                                </a>
+                                <p class="price-product1">
+                                    <?php echo number_format($row['price_sale'] - ($row['price_sale'] * $row['sale'] / 100)) ?>₫
+                                </p>
+                            </div>
+                        </div>
+                <?php endforeach; ?>
+            </div>
+
+            <!-- Báo trộm - Báo cháy -->
+            <div class="sale-title">
+                <?php $number = $this->Mproduct->count_product_by_category(13); ?>
+                <a href="san-pham/bao-trom-bao-chay"><span>Báo trộm - Báo cháy (<?php echo $number; ?> sản phẩm)</span></a>
+            </div>
+            <div class="row">
+                <?php 
+                    $product_sale = $this->Mproduct->product_by_category(13, 3);
+                    foreach ($product_sale as $row) :?>
+                        <div class="col-lg-4 padding-5">
+                            <div class="product ">
+                                <?php if($row['sale'] > 0) :?>
+                                    <div class="giam-percent">
+                                        <span class="text-giam-percent">Giảm <?php echo $row['sale'] ?>%</span>
+                                    </div>
+                                <?php endif; ?>
+                                <a href="<?php echo $row['alias'] ?>" title="<?php echo $row['name'] ?>" >
+                                    <img class="img-p border"src="public/images/products/<?php echo $row['avatar'] ?>" alt="" style="height:60px;max-width:100px;">
+                                </a>
+                                <a href="<?php echo $row['alias'] ?>" title="<?php echo $row['name'] ?>" class="text-center title-product">
+                                    <h3>
+                                        <?php
+                                            $str = strip_tags($row['name']);
+                                            if(strlen($str)>21) {
+                                                $strCut = substr($str, 0, 21);
+                                                $str = substr($strCut, 0, strrpos($strCut, ' ')).' ... ';
+                                            }
+                                            echo $str;
+                                        ?>
+                                    </h3>
+                                </a>
+                                <p class="price-product1">
+                                    <?php echo number_format($row['price_sale'] - ($row['price_sale'] * $row['sale'] / 100)) ?>₫
+                                </p>
+                            </div>
+                        </div>
+                <?php endforeach; ?>
+            </div>
+
+            <!-- Vật tư ngành vàng -->
+            <div class="sale-title">
+                <?php $number = $this->Mproduct->count_product_by_category(8); ?>
+                <a href="san-pham/vat-tu-nganh-vang"><span>Vật tư ngành vàng (<?php echo $number; ?> sản phẩm)</span></a>
+            </div>
+            <div class="row">
+                <?php 
+                    $product_sale = $this->Mproduct->product_by_category(8, 3);
+                    foreach ($product_sale as $row) :?>
+                        <div class="col-lg-4 padding-5">
+                            <div class="product ">
+                                <?php if($row['sale'] > 0) :?>
+                                    <div class="giam-percent">
+                                        <span class="text-giam-percent">Giảm <?php echo $row['sale'] ?>%</span>
+                                    </div>
+                                <?php endif; ?>
+                                <a href="<?php echo $row['alias'] ?>" title="<?php echo $row['name'] ?>" >
+                                    <img class="img-p border"src="public/images/products/<?php echo $row['avatar'] ?>" alt="" style="height:60px;max-width:100px;">
+                                </a>
+                                <a href="<?php echo $row['alias'] ?>" title="<?php echo $row['name'] ?>" class="text-center title-product">
+                                    <h3>
+                                        <?php
+                                            $str = strip_tags($row['name']);
+                                            if(strlen($str)>21) {
+                                                $strCut = substr($str, 0, 21);
+                                                $str = substr($strCut, 0, strrpos($strCut, ' ')).' ... ';
+                                            }
+                                            echo $str;
+                                        ?>
+                                    </h3>
+                                </a>
+                                <p class="price-product1">
+                                    <?php echo number_format($row['price_sale'] - ($row['price_sale'] * $row['sale'] / 100)) ?>₫
+                                </p>
+                            </div>
+                        </div>
+                <?php endforeach; ?>
+            </div>
+
+            <!-- Điện - Điện Máy -->
+            <div class="sale-title">
+                <?php $number = $this->Mproduct->count_product_by_category(10); ?>
+                <a href="san-pham/dien-dien-may"><span>Điện - Điện Máy (<?php echo $number; ?> sản phẩm)</span></a>
+            </div>
+            <div class="row">
+                <?php 
+                    $product_sale = $this->Mproduct->product_by_category(10, 3);
+                    foreach ($product_sale as $row) :?>
+                        <div class="col-lg-4 padding-5">
+                            <div class="product ">
+                                <?php if($row['sale'] > 0) :?>
+                                    <div class="giam-percent">
+                                        <span class="text-giam-percent">Giảm <?php echo $row['sale'] ?>%</span>
+                                    </div>
+                                <?php endif; ?>
+                                <a href="<?php echo $row['alias'] ?>" title="<?php echo $row['name'] ?>" >
+                                    <img class="img-p border"src="public/images/products/<?php echo $row['avatar'] ?>" alt="" style="height:60px;max-width:100px;">
+                                </a>
+                                <a href="<?php echo $row['alias'] ?>" title="<?php echo $row['name'] ?>" class="text-center title-product">
+                                    <h3>
+                                        <?php
+                                            $str = strip_tags($row['name']);
+                                            if(strlen($str)>21) {
+                                                $strCut = substr($str, 0, 21);
+                                                $str = substr($strCut, 0, strrpos($strCut, ' ')).' ... ';
+                                            }
+                                            echo $str;
+                                        ?>
+                                    </h3>
+                                </a>
+                                <p class="price-product1">
+                                    <?php echo number_format($row['price_sale'] - ($row['price_sale'] * $row['sale'] / 100)) ?>₫
+                                </p>
+                            </div>
+                        </div>
+                <?php endforeach; ?>
+            </div>
+
         </div>
 
         <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
             <?php $this->load->view('frontend/modules/tips-news'); ?> 
         </div>
     </div>
+
+
 
 
 <!--<div class="home-blog">
