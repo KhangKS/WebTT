@@ -121,9 +121,9 @@ if(!$this->session->userdata('cart')){
                                         <td>
                                             <?php
                                             if($row['price_sale'] > 0){
-                                                $price_end=$row['price_sale'];
+                                                $price_end = $row['price_sale'] - ($row['price_sale'] * $row['sale'] / 100);
                                             }else{
-                                                $price_end=$row['price'];
+                                                $price_end = $row['price'] - ($row['price'] * $row['sale'] / 100);
                                             }
                                             echo number_format($price_end).' VNĐ';
                                             ?>

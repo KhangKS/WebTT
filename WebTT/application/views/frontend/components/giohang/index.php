@@ -38,9 +38,9 @@
 												<span class="amount">
 													<?php 
 													if($row['price_sale'] > 0){
-														echo (number_format($row['price_sale'])).' VNĐ';
+														echo (number_format($row['price_sale'] - ($row['price_sale'] * $row['sale'] / 100))).' VNĐ';
 													}else{
-														echo (number_format($row['price'])).' VNĐ';
+														echo (number_format($row['price'] - ($row['price'] * $row['sale'] / 100))).' VNĐ';
 													}
 													?>
 												</span>
@@ -54,9 +54,9 @@
 												<span class="amount">
 													<?php 
 													if($row['price_sale'] > 0){
-														echo (number_format($row['price_sale']*$value)).' VNĐ';
+														echo (number_format(($row['price_sale'] - ($row['price_sale'] * $row['sale'] / 100)) * $value)).' VNĐ';
 													}else{
-														echo (number_format($row['price'] * $value)).' VNĐ';
+														echo (number_format(($row['sale'] - ($row['sale'] * $row['sale'] / 100)) * $value)).' VNĐ';
 													}
 													?>
 												</span>
@@ -75,9 +75,9 @@
 							$row = $this->Mproduct->product_detail_id($key);?>
 							<?php
 							if($row['price_sale'] > 0)
-								$sum = $row['price_sale'] * $value;
+								$sum = ($row['price_sale'] - ($row['price_sale'] * $row['sale'] / 100)) * $value;
 							else
-								$sum = $row['price'] * $value;
+								$sum = ($row['price'] - ($row['price'] * $row['sale'] / 100)) * $value;
 							$total += $sum;
 							?>	
 						<?php endforeach; ?>

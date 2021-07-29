@@ -9,6 +9,8 @@ $route['san-pham/(:num)'] = 'sanpham/index/$1';
 $route['san-pham/(:any)'] = 'sanpham/category';
 $route['san-pham/(:any)/(:num)'] = 'sanpham/category/$1';
 
+$route['comment/delete/(:num)'] ='sanpham/deleteComment/$1';
+
 $route['tin-tuc/(:num)'] = 'tintuc/index/$1';
 $route['tin-tuc/(:any)'] = 'tintuc/detail';
 $route['lien-he'] = 'lienhe/index';

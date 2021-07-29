@@ -150,4 +150,38 @@ class Mproduct extends CI_Model {
         $query = $this->db->get($this->table);
         return $query->result_array();
     }
+
+    public function product_by_category($category_id, $limit)
+    {
+        $this->db->where('status', 1);
+        $this->db->where('trash', 1);
+        $this->db->where('catid', $category_id);
+        $this->db->limit($limit);
+        $this->db->order_by('sale', 'desc');
+        $this->db->order_by('modified', 'desc');
+        $query = $this->db->get($this->table);
+        return $query->result_array();
+    }
+
+    public function count_product_by_category($category_id)
+    {
+        $this->db->where('status', 1);
+        $this->db->where('trash', 1);
+        $this->db->where('catid', $category_id);
+        $query = $this->db->get($this->table);
+        return count($query->result_array());
+    }
+
+    public function product_list_cat_camera($listcat, $limit)
+    {
+        $this->db->where('trash', 1);
+        $this->db->group_start();
+        //$d=0;
+        foreach ($listcat as $value) {
+            $this->db->or_where('catid', $value);
+        }
+        $this->db->group_end();
+        $query = $this->db->get($this->table, $limit);
+        return $query->result_array();
+    }
 }
