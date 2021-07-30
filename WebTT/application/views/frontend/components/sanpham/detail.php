@@ -130,6 +130,9 @@
 						    	elseif ($time_minutes > 0) {
 						    		$time = $time_minutes.' phút trước';
 						    	}
+						    	else {
+						    		$time = 'Vài giây trước';
+						    	}
 					    	?>
 
 					    	<?php $customer = $this->Mcustomer->customer_detail_id($comment['customer_id']); ?>
