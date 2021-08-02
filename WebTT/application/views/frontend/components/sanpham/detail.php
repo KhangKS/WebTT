@@ -55,7 +55,7 @@
 								}
 								?>
 							</div>
-							<div class="fk-boxs" id="km-all" data-comt="False">
+							<!-- <div class="fk-boxs" id="km-all" data-comt="False">
 								<div id="km-detail">
 									<p class="fk-tit">Khuyến mại đặc biệt (SL có hạn)</p>
 									<div class="fk-main">
@@ -85,7 +85,7 @@
 								<b>Bảo hành</b>
 								<br>
 								<span>Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi nhà sản xuất.</span><a href="#" style="color:red"> (Chi tiết)</a>
-							</div>
+							</div> -->
 						</div>
 					</div>
 					<div class="product-v-desc col-md-10 col-12 col-xs-12">

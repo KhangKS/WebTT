@@ -72,7 +72,7 @@ class Mproduct extends CI_Model {
     {
         $this->db->where('catid', $catid);
         $this->db->where('status', 1);
-        $this->db->where('trash', 1);
+        // $this->db->where('trash', 1);
         $query = $this->db->get($this->table);
         return count($query->result_array());
     }
@@ -92,4 +92,10 @@ class Mproduct extends CI_Model {
             return $this->db->get();
     }
 
+    public function number_product_by_producer($producer_id)
+    {
+        $this->db->where('producer', $producer_id);
+        $query = $this->db->get($this->table);
+        return count($query->result_array());
+    }
 }

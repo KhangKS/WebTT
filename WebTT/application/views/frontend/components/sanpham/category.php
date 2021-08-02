@@ -87,7 +87,7 @@
                             <p class="no-products"> Danh mục hiện chưa có sản phẩm nào !</p>
                             <?php else : ?>
                                 <?php foreach ($list as $sp) :?>
-                                 <div class="col-md-3 col-lg-3 col-xs-6 col-6">
+                                 <div class="col-md-4 col-lg-4 col-xs-6 col-6">
                                     <div class="product-lt">
                                         <div class="lt-product-group-image">
                                             <a href="<?php echo $sp['alias'] ?>" title="<?php echo $sp['name'] ?>" >

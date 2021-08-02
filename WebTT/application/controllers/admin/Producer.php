@@ -5,6 +5,7 @@ class Producer extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load->model('backend/Mproducer');
+		$this->load->model('backend/Mproduct');
         $this->load->model('backend/Muser');
         $this->load->model('backend/Morders');
         $this->load->model('backend/Mrole_has_permission');
@@ -131,8 +132,16 @@ class Producer extends CI_Controller {
 	}
 	public function delete($id)
 	{
-		$this->Mproducer->producer_delete($id);
-		$this->session->set_flashdata('success', 'Xóa nhà cung cấp thành công');
+		$number_product = $this->Mproduct->number_product_by_producer($id);
+
+		if($number_product > 0) {
+			$this->session->set_flashdata('error', 'Đang có sản phẩm thuộc nhà cung cấp này! Xóa nhà cung cấp thất bại');
+		}
+		else {
+			$this->Mproducer->producer_delete($id);
+			$this->session->set_flashdata('success', 'Xóa nhà cung cấp thành công');
+		}
+		
 		redirect('admin/producer/recyclebin','refresh');
 	}
 

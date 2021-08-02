@@ -237,7 +237,7 @@ class Product extends CI_Controller {
 
        public function delete($id){
          $this->load->helper('file');
-         $row = $this->Mproduct->product_delete_detail($id);
+         $row = $this->Mproduct->product_delete($id);
          delete_files(base_url("public/images/products" . $row['img']));
          $this->Mproduct->product_delete($id);
          $this->session->set_flashdata('success', 'Xóa sản phẩm thành công');
