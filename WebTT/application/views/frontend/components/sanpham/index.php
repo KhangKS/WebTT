@@ -78,66 +78,43 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="collection-filter" id = "list-product">
-                            <div class="category-products clearfix">
-                                <div class="products-grid clearfix">
-                                    <?php if(count($list)==0): ?>
-                                        <p>Không có sản phẩm !</p>
-                                    <?php else : ?>
-                                        <?php foreach ($list as $sp) :?>
-                                            <div class="col-md-4 col-lg-4 col-xs-6 col-6">
-                                                <div class="product-lt">
-                                                    <div class="lt-product-group-image">
-                                                        <a href="<?php echo $sp['alias'] ?>" title="<?php echo $sp['name'] ?>" >
-                                                            <img class="img-p"src="public/images/products/<?php echo $sp['avatar'] ?>" alt="">
-                                                        </a>
-
-                                                        <?php if($sp['sale'] > 0) :?>
-                                                            <div class="giam-percent">
-                                                                <span class="text-giam-percent">Giảm <?php echo $sp['sale'] ?>%</span>
-                                                            </div>
-                                                        <?php endif; ?>
-                                                    </div>
-
-                                                    <div class="lt-product-group-info">
-                                                        <a href="<?php echo $sp['alias'] ?>" title="<?php echo $sp['name'] ?>">
-                                                            <h3><?php echo $sp['name'] ?></h3>
-                                                        </a>
-                                                        <div class="price-box">
-                                                            <?php if($sp['sale'] > 0) :?>
-
-                                                            <p class="old-price">
-                                                                <span class="price"><?php echo number_format($sp['price_sale'])?>₫</span>
-                                                            </p>
-                                                            <p class="special-price">
-                                                                <span class="price"><?php echo number_format($sp['price_sale'] - ($sp['price_sale'] * $sp['sale'] / 100)) ?>₫</span>
-                                                            </p>
-                                                            <?php else: ?>
-                                                                <p class="old-price">
-                                                                    <span class="price" style="color: #fff"><?php echo(number_format($sp['price'])); ?>₫</span>
-                                                                </p>
-                                                                <p class="special-price">
-                                                                    <span class="price"><?php echo(number_format($sp['price'])); ?>₫</span>
-                                                                </p>
-                                                            <?php endif;?>
-                                                        </div>
-                                                        <div class="clear"></div>
-                                                    </div>
+                        
+                        <div class="row" id="list-product">
+                            <?php 
+                                foreach ($list as $row) :?>
+                                    <div class="col-lg-4 padding-5">
+                                        <div class="product ">
+                                            <?php if($row['sale'] > 0) :?>
+                                                <div class="giam-percent">
+                                                    <span class="text-giam-percent">Giảm <?php echo $row['sale'] ?>%</span>
                                                 </div>
-                                            </div>
-                                        <?php endforeach; ?>
-                                </div>
-
-                                <div class = "text-center pull-right">
-                                    <ul class ="pagination">
-                                        <?php echo $strphantrang; ?>
-                                    </ul>
-                                </div>
-                                    <?php endif; ?>
-                            </div>
+                                            <?php endif; ?>
+                                            <a href="<?php echo $row['alias'] ?>" title="<?php echo $row['name'] ?>" >
+                                                <img class="img-p border"src="public/images/products/<?php echo $row['avatar'] ?>" alt="" style="height:60px;max-width:100px;">
+                                            </a>
+                                            <a href="<?php echo $row['alias'] ?>" title="<?php echo $row['name'] ?>" class="text-center title-product">
+                                                <h3>
+                                                    <?php
+                                                        $str = strip_tags($row['name']);
+                                                        if(strlen($str)>21) {
+                                                            $strCut = substr($str, 0, 21);
+                                                            $str = substr($strCut, 0, strrpos($strCut, ' ')).' ... ';
+                                                        }
+                                                        echo $str;
+                                                    ?>
+                                                </h3>
+                                            </a>
+                                            <p class="price-product1">
+                                                <?php echo number_format($row['price_sale'] - ($row['price_sale'] * $row['sale'] / 100)) ?>₫
+                                            </p>
+                                        </div>
+                                    </div>
+                            <?php endforeach; ?>
                         </div>
                     </div>
                 </div>
+
+                
             </div>
             <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
                 <?php $this->load->view('frontend/modules/tips-news'); ?> 
