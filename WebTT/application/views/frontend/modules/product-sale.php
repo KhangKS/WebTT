@@ -21,8 +21,8 @@
                                 $html_menu.='</div>';
                                 $html_menu.='<ul class="entry-meta">';
                                     $html_menu.='<li class="color">';
-                                        $html_menu.="<ins>".number_format($menu['price_sale']).'₫'."</ins>";
-                                        $html_menu.="<del>".number_format($menu['price']).'₫'."</del>";
+                                        $html_menu.="<ins>".number_format($menu['price_sale'] - ($menu['price_sale'] * $menu['sale'] / 100)).'₫'."</ins>";
+                                        $html_menu.="<del>".number_format($menu['price_sale']).'₫'."</del>";
                                     $html_menu.='</li>';
                                 $html_menu.='</ul>';
                             $html_menu.='</div>';
