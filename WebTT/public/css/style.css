@@ -1881,7 +1881,7 @@ select {
 }
 .spost:first-child {
 	margin-top: 0;
-	padding-top: 0;
+	/*padding-top: 0;*/
 	border-top: 0;
 }
 .spost {
@@ -1897,7 +1897,7 @@ select {
 	text-align: center;
 }
 .entry-image img {
-	width: 60px;
+	width: 155px;
 	height: auto;
 	display: block;
 	position: relative;

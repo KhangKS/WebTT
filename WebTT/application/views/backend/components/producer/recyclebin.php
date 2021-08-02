@@ -23,6 +23,14 @@
 	                            </div>
 	                        </div>
 	                    <?php  endif;?>
+	                    <?php  if($this->session->flashdata('error')):?>
+	                        <div class="row">
+	                            <div class="alert alert-error">
+	                                <?php echo $this->session->flashdata('error'); ?>
+	                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+	                            </div>
+	                        </div>
+	                    <?php  endif;?>
 						<div class="row" style='padding:0px; margin:0px;'>
 							<!--ND-->
 							<div class="table-responsive">
