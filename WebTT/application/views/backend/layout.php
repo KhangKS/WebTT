@@ -11,7 +11,9 @@
   <!-- Bootstrap 3.3.7 -->
   <link rel="stylesheet" href="public/css/bootstrap.min.css">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="public/css/font-awesome.css">
+  <!-- <link rel="stylesheet" href="public/css/font-awesome.css"> -->
+  <link rel="stylesheet" href="public/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="public/css/ionicons.min.css">
   <!-- Theme style -->

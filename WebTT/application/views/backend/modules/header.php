@@ -4,13 +4,14 @@
     </a>
     <nav class="navbar navbar-static-top" style="height: 52px">
         <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+      <!-- <i class="fas fa-bars"></i> -->
             <span class="sr-only">Toggle navigation</span>
         </a>
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav" style="height: 52px;  padding: 1px">
                 <li class="dropdown notifications-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                      <i class="fa fa-bell-o"></i>
+                      <i class="far fa-bell"></i>
                       <span class="label label-warning">
                           <?php
                           $approved = $this->Morders->orders_count_header();

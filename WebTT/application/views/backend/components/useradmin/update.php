@@ -2,7 +2,7 @@
 <div class="content-wrapper">
     <form action="<?php echo base_url() ?>admin/useradmin/update.html" enctype="multipart/form-data" method="POST" accept-charset="utf-8">
         <section class="content-header">
-            <h1><i class="fa fa-user-plus"></i> Sửa thành viên</h1>
+            <h1><i class="fa fa-user-plus"></i> Cập nhật tài khoản</h1>
             <div class="breadcrumb">
                 <button type = "submit" class="btn btn-primary btn-sm">
                     <span class="glyphicon glyphicon-floppy-save"></span>
@@ -19,33 +19,52 @@
                 <div class="col-md-12">
                     <div class="box" id="view">
                         <div class="box-body">
+                            <?php  if($this->session->flashdata('success')):?>
+                                <div class="row">
+                                    <div class="alert alert-success">
+                                        <?php echo $this->session->flashdata('success'); ?>
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                    </div>
+                                </div>
+                            <?php  endif;?>
+                            <?php  if($this->session->flashdata('error')):?>
+                                <div class="row">
+                                    <div class="alert alert-error">
+                                        <?php echo $this->session->flashdata('error'); ?>
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                    </div>
+                                </div>
+                            <?php  endif;?>
                             <div class="col-md-9">
                                 <div class="form-group">
                                     <label>Họ và tên <span class = "maudo">(*)</span></label>
-                                    <input type="text" class="form-control" name="fullname"" value="<?php echo $row['fullname'] ?>" >
-                                    <div class="error" id="password_error"  style="color: red;"><?php echo form_error('fullname')?></div>
+                                    <input type="text" class="form-control" name="fullname" value="<?php echo $row['fullname'] ?>" >
+                                    <div class="error"  style="color: red;"><?php echo form_error('fullname')?></div>
                                 </div>
                                 <div class="form-group">
                                     <label>Email <span class = "maudo">(*)</span></label>
-                                    <input type="email" class="form-control" name="email"" value="<?php echo $row['email'] ?>" disabled>
+                                    <input type="email" class="form-control" name="email" value="<?php echo $row['email'] ?>" >
+                                    <div class="error"  style="color: red;"><?php echo form_error('email')?></div>
                                 </div>
                                 <div class="form-group">
                                     <label>Tên đăng nhập <span class = "maudo">(*)</span></label>
-                                    <input type="text" class="form-control" name="username"" value="<?php echo $row['username']?>" disabled>
+                                    <input type="text" class="form-control" name="username" value="<?php echo $row['username']?>" >
+                                    <div class="error"  style="color: red;"><?php echo form_error('username')?></div>
                                 </div>
                                 <div class="form-group">
                                     <label>Mật khẩu <span class = "maudo">(*)</span></label>
-                                    <input type="password" class="form-control" name="password"">
-                                    <div class="error" id="password_error"  style="color: red;"><?php echo form_error('password')?></div>
+                                    <input type="password" class="form-control" name="password">
+                                    <div class="error"  style="color: red;"><?php echo form_error('password')?></div>
                                 </div>
                                 <div class="form-group">
-                                    <label>Điện thoại <span class = "maudo">(*)</span></label>
-                                    <input type="text" class="form-control" name="phone"" value="<?php echo $row['phone'] ?>" disabled>
+                                    <label>Số điện thoại <span class = "maudo">(*)</span></label>
+                                    <input type="text" class="form-control" name="phone" value="<?php echo $row['phone'] ?>" >
+                                    <div class="error"  style="color: red;"><?php echo form_error('phone')?></div>
                                 </div>
                                 <div class="form-group">
                                     <label>Địa chỉ <span class = "maudo">(*)</span></label>
-                                    <input type="text" class="form-control" name="address"" value="<?php echo $row['address'] ?>" >
-                                    <div class="error" id="password_error" style="color: red;"><?php echo form_error('address')?></div>
+                                    <input type="text" class="form-control" name="address" value="<?php echo $row['address'] ?>" >
+                                    <div class="error" style="color: red;"><?php echo form_error('address')?></div>
                                 </div>
                                 
                             </div>

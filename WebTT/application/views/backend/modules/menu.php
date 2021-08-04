@@ -8,7 +8,7 @@
                 echo 
                     '<li class="treeview">
                         <a href="admin">
-                            <i class="fa fa-bar-chart"></i> <span>Thống kê</span>
+                            <i class="fas fa-chart-bar"></i> <span>Thống kê</span>
                         </a>
                     </li>';
                 } 
@@ -64,7 +64,7 @@
                 echo 
                     '<li class="treeview">
                         <a href="admin/info">
-                            <i class="fa fa-gift"></i><span>Thông tin</span>
+                            <i class="fas fa-info" style="margin-right: 7px; margin-left: 5px;"></i> <span>Thông tin</span>
                         </a>
                     </li>';
                 } 
@@ -77,7 +77,7 @@
                 echo 
                     '<li class="treeview">
                         <a href="admin/warehouse">
-                            <i class="fa fa-diamond"></i> <span>Kho</span>
+                            <i class="fas fa-warehouse" style="margin-right: 5px;"></i> <span>Kho</span>
                         </a>
                     </li>';
                 } 
@@ -88,7 +88,7 @@
                 echo 
                     ' <li class="treeview">
                         <a href="admin/coupon">
-                            <i class="fa fa-diamond"></i> <span>Mã giảm giá</span>
+                            <i class="fas fa-cart-arrow-down" style="margin-right: 5px;"></i> <span>Mã giảm giá</span>
                         </a>
                     </li>';
                 } 
@@ -182,7 +182,7 @@
                     ?>
                 </ul>
             </li>
-            <li><a href="admin/user/logout.html"><i class="fa fa-sign-out text-red"></i> <span>Thoát</span></a></li>
+            <li><a href="admin/user/logout.html"><i class="fas fa-sign-out-alt"></i> <span>Thoát</span></a></li>
     </ul>
 </section>
 <!-- /.sidebar -->
