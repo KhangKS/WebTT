@@ -13,13 +13,18 @@ class User extends CI_Controller {
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('username', 'Tên đăng nhập', 'required|min_length[5]|max_length[32]');
 		$this->form_validation->set_rules('password', 'Mật khẩu', 'required|min_length[5]|max_length[32]');
-        if ($this->form_validation->run() ==TRUE)
+        if ($this->form_validation->run() == TRUE)
         {
         	$username = $_POST['username'];
         	$password = sha1($_POST['password']);
-        	if($this->Muser->user_login($username, $password)!=FALSE)
+    		$row = $this->Muser->user_login($username, $password);
+
+    		if ($row['status'] === '0') {
+    			$data['error']='Tài khoản chưa kích hoạt';
+        		$this->load->view('backend/components/user/login', $data);
+    		}
+        	elseif($row!=FALSE)
         	{
-        		$row = $this->Muser->user_login($username, $password);
         		$this->session->set_userdata('sessionadmin',$row);
         		$this->session->set_userdata('id',$row['id']);
         		redirect('admin','refresh');

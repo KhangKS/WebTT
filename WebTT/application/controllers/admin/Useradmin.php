@@ -84,9 +84,9 @@ class Useradmin extends CI_Controller {
 
 	public function update($id){
 		$user_role=$this->session->userdata('sessionadmin');
-		if($user_role['role']==2){
-			redirect('admin/E403/index','refresh');
-		}
+		// if($user_role['role']==2){
+		// 	redirect('admin/E403/index','refresh');
+		// }
 		$row=$this->Muser->user_detail_id($id);
 		$this->data['row']=$row;
 		$d=getdate();
@@ -96,29 +96,61 @@ class Useradmin extends CI_Controller {
 		$this->form_validation->set_rules('fullname', 'Họ và tên', 'required');
 		$this->form_validation->set_rules('address', 'Địa chỉ', 'required');
 		$this->form_validation->set_rules('password', 'Mật khẩu', 'required|min_length[5]|max_length[32]');
+
+		$is_unique_email = '|is_unique[db_user.email]';
+		$is_unique_username = '|is_unique[db_user.username]';
+		$is_unique_phone = '|is_unique[db_user.phone]';
+		$message_phone = ['is_unique' => 'Số điện thoại đã tồn tại trong hệ thống!'];
+
+		if (isset($_POST['email'])) {
+			if ($_POST['email'] == $row['email']) {
+				$is_unique_email = '';
+			}
+		}
+
+		if (isset($_POST['username'])) {
+			if ($_POST['username'] == $row['username']) {
+				$is_unique_username = '';
+			}
+		}
+
+		if (isset($_POST['phone'])) {
+			if ($_POST['phone'] == $row['phone']) {
+				$is_unique_phone = '';
+			}
+		}
+
+		$this->form_validation->set_rules('email', 'Email', 'required'.$is_unique_email);
+		$this->form_validation->set_rules('username', 'Tên đăng nhập', 'required'.$is_unique_username);
+		$this->form_validation->set_rules('phone', 'Số điện thoại', 'required'.$is_unique_phone, $message_phone);
+
 		if ($this->form_validation->run() == TRUE) 
 		{
 			$mydata= array(
-				'fullname' =>$_POST['fullname'], 
-				'address' =>$_POST['address'], 
-				'password' =>sha1($_POST['password']), 
-				'gender'=>$_POST['gender']
+				'fullname' => $_POST['fullname'], 
+				'address' => $_POST['address'], 
+				'password' => sha1($_POST['password']), 
+				'gender' => $_POST['gender'],
+				'status' => $_POST['status'],
+				'email' => $_POST['email'],
+				'username' => $_POST['username'],
+				'phone' => $_POST['phone'],
 			);
-         	$config = array();
-	         $config['upload_path']   = './public/images/admin/';
-	         $config['allowed_types'] = 'jpg|png';
-	         $config['encrypt_name'] = TRUE;
-	         $config['max_size']      = '500';
-	         $config['max_width']     = '1028';
-	         $config['max_height']    = '1028';
-	         $this->load->library('upload', $config);
-	         if($this->upload->do_upload('image')){
-	             $data = $this->upload->data();
-	             $mydata['img']=$data['file_name'];
-	         }
+			$config = array();
+			$config['upload_path']   = './public/images/admin/';
+			$config['allowed_types'] = 'jpg|png';
+			$config['encrypt_name'] = TRUE;
+			$config['max_size']      = '500';
+			$config['max_width']     = '1028';
+			$config['max_height']    = '1028';
+			$this->load->library('upload', $config);
+			if($this->upload->do_upload('image')){
+				$data = $this->upload->data();
+				$mydata['img']=$data['file_name'];
+			}
 			$this->Muser->user_update($mydata, $id);
 			$this->session->set_flashdata('success', 'Cập nhật tài khoản thành công');
-			redirect('admin/useradmin/','refresh');
+			redirect('admin/useradmin/update/'.$id,'refresh');
 		} 
 		$this->data['view']='update';
 		$this->data['title']='Cập nhật tài khoản';
