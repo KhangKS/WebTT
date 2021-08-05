@@ -53,7 +53,7 @@
                                 
                             </div>
                             <div class="col-md-3">
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <label>Quyền<span class = "maudo">(*)</span></label>
                                     <select name="role" class="form-control">
                                         <option value = "">[--Chọn danh mục--]</option>
@@ -66,7 +66,7 @@
                                                 echo $option_parentid;
                                             ?>
                                     </select>
-                                </div>
+                                </div> -->
                                 <div class="form-group">
                                     <label>Ảnh đại diện</label>
                                     <input type="file"  id="image_list" name="img">
