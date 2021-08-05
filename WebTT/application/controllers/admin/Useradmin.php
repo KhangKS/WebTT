@@ -55,7 +55,7 @@ class Useradmin extends CI_Controller {
 				'email' =>$_POST['email'], 
 				'username' =>$_POST['username'], 
 				'password' =>sha1($_POST['password']), 
-				'role' =>$_POST['role'], 
+				'role' => 2, 
 				'status' =>$_POST['status'],
 				'created' =>$today,
 				'trash'=>1
@@ -83,10 +83,7 @@ class Useradmin extends CI_Controller {
 	}
 
 	public function update($id){
-		$user_role=$this->session->userdata('sessionadmin');
-		// if($user_role['role']==2){
-		// 	redirect('admin/E403/index','refresh');
-		// }
+		$user=$this->session->userdata('sessionadmin');
 		$row=$this->Muser->user_detail_id($id);
 		$this->data['row']=$row;
 		$d=getdate();
@@ -131,7 +128,7 @@ class Useradmin extends CI_Controller {
 				'address' => $_POST['address'], 
 				'password' => sha1($_POST['password']), 
 				'gender' => $_POST['gender'],
-				'status' => $_POST['status'],
+				// 'status' => $_POST['status'],
 				'email' => $_POST['email'],
 				'username' => $_POST['username'],
 				'phone' => $_POST['phone'],
@@ -152,6 +149,7 @@ class Useradmin extends CI_Controller {
 			$this->session->set_flashdata('success', 'Cập nhật tài khoản thành công');
 			redirect('admin/useradmin/update/'.$id,'refresh');
 		} 
+		// $this->data['user'] = $user;
 		$this->data['view']='update';
 		$this->data['title']='Cập nhật tài khoản';
 		$this->load->view('backend/layout', $this->data);

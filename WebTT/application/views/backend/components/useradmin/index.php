@@ -47,13 +47,15 @@
 								<table class="table table-hover table-bordered">
 									<thead>
 										<tr>
-											<th class="text-center"">ID</th>
+											<th class="text-center">ID</th>
 											<th>Hình ảnh</th>
 											<th>Họ và tên</th>
 											<th>Email</th>
 											<th>Phone</th>
 											<th>Địa chỉ</th>
-											<th class="text-center">Trạng thái</th>
+											<!-- <?php if ($user['role'] == 1): ?> -->
+												<th class="text-center">Trạng thái</th>
+											<!-- <?php endif ?> -->
 											<th class="text-center" colspan="2">Thao tác</th>
 										</tr>
 									</thead>
@@ -68,15 +70,17 @@
 											<td><?php echo $row['email'] ?></td>
 											<td><?php echo $row['phone'] ?></td>
 											<td><?php echo $row['address'] ?></td>
-											<td class="text-center">
-												<a href="<?php echo base_url() ?>admin/useradmin/status/<?php echo $row['id'] ?>">
-													<?php if($row['status']==1):?>
-														<span class="glyphicon glyphicon-ok-circle mauxanh18"></span>
-													<?php else: ?>
-														<span class="glyphicon glyphicon-remove-circle maudo"></span>
-													<?php endif; ?>
-												</a>
-											</td>
+											<!-- <?php if ($user['role'] == 1): ?> -->
+												<td class="text-center">
+													<a href="<?php echo base_url() ?>admin/useradmin/status/<?php echo $row['id'] ?>">
+														<?php if($row['status']==1):?>
+															<span class="glyphicon glyphicon-ok-circle mauxanh18"></span>
+														<?php else: ?>
+															<span class="glyphicon glyphicon-remove-circle maudo"></span>
+														<?php endif; ?>
+													</a>
+												</td>
+											<!-- <?php endif ?> -->
 											<?php  
 												$quyen='';
 												if($user['role']==1){

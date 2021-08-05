@@ -80,13 +80,15 @@
                                     <label>Ảnh đại diện</label>
                                     <input type="file"  id="image_list" name="image" style="width: 100%">
                                 </div>
-                                <div class="form-group">
-                                    <label>Trạng thái</label>
-                                    <select name="status" class="form-control">
-                                        <option value="1" <?php if($row['status'] == 1) {echo 'selected';}?> >Kích hoạt</option>
-                                        <option value="0" <?php if($row['status'] == 0) {echo 'selected';}?>>Chưa kích hoạt</option>
-                                    </select>
-                                </div>
+                                <!-- <?php if ($user['role'] == 1): ?>
+                                    <div class="form-group">
+                                        <label>Trạng thái</label>
+                                        <select name="status" class="form-control">
+                                            <option value="1" <?php if($row['status'] == 1) {echo 'selected';}?> >Kích hoạt</option>
+                                            <option value="0" <?php if($row['status'] == 0) {echo 'selected';}?>>Chưa kích hoạt</option>
+                                        </select>
+                                    </div>
+                                <?php endif ?> -->
                             </div>
                         </div>
                     </div><!-- /.box -->
