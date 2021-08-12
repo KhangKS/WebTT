@@ -187,7 +187,6 @@ class Dangnhap extends CI_Controller {
         $email = $this->input->post('email');
         if($this->Mcustomer->customer_detail_email($email))
         {
-
             return TRUE;
         }
         else{
