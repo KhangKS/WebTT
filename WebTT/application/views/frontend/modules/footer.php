@@ -169,11 +169,11 @@ font-family: Arial;" href="tel:0939771987">
     <div class="container">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <ul class="list-unstyled social pull-right">
-              <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-              <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-              <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-              <li><a href="#"><i class="fab fa-youtube"></i></a></li>
-          </ul>
+              <li><a href="https://www.facebook.com/huyminhcantho"><i class="fab fa-facebook-f"></i></a></li>
+              <!-- <li><a href="#"><i class="fab fa-twitter"></i></a></li> -->
+              <li><a href="huyminhcantho@gmail.com"><i class="fa fa-envelope"></i></a></li>
+             <!--  <li><a href="#"><i class="fab fa-youtube"></i></a></li> -->
+            </ul>
       </div>
   </div>
 </div>

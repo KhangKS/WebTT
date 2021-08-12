@@ -38,7 +38,7 @@
                             <div class="col-md-9">
                                 <div class="form-group">
                                     <label>Họ và tên <span class = "maudo">(*)</span></label>
-                                    <input type="text" class="form-control" name="fullname" value="<?php echo $row['fullname'] ?>" >
+                                    <input type="text"  class="form-control" name="fullname" value="<?php echo $row['fullname'] ?>" >
                                     <div class="error"  style="color: red;"><?php echo form_error('fullname')?></div>
                                 </div>
                                 <div class="form-group">

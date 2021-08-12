@@ -37,11 +37,11 @@
 								<?php endif; ?>
 							</div>
 							<div class="product-status">
-								<p style=" float: left;margin-right: 10px;">Thương hiệu: <?php $name=$this->Mcategory->category_name($row['catid']); echo $name; ?></p>
+								<h4 style=" float: left;margin-right: 10px;">Thương hiệu: <?php $name=$this->Mcategory->category_name($row['catid']); echo $name; ?></h4>
 								<p>| Tình trạng: <?php if($row['number'] - $row['number_buy']==0 || $row['status'] == 0) echo 'Hết hàng'; else echo 'Còn hàng' ?></p>
 							</div>
 							<div class="product-view-desc">
-								<h4>Mô tả:</h4>
+								<h3 style="font-weight:bold;">Mô tả:</h3>
 								<p><?php echo $row['sortDesc'] ?></p>
 							</div>
 							<div class="actions-qty">
