@@ -10,6 +10,17 @@
  * Core: General Layout Style
  * -------------------------
  */
+ .clear {
+  clear: both;
+ }
+ .pagination a, strong{
+  border: 1px solid #3c8dbc;
+  padding: 3px;
+  margin: 0 2px;
+ }
+.mt-2 {
+  margin-top: 20px;
+}
  html,
  body {
   height: 100%;
@@ -2585,13 +2596,13 @@ the class .animated-dropdown-menu to the .dropdown-menu ul (or ol)*/
   border-top-color: #d2d6de;
 }
 /* PAGINATION */
-.pagination > li > a {
+/*.pagination > li > a {
   background: #fafafa;
   color: #666;
 }
 .pagination.pagination-flat > li > a {
   border-radius: 0 !important;
-}
+}*/
 /*
  * Component: Products List
  * ------------------------

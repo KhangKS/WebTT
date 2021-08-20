@@ -7,6 +7,23 @@ class Mcategory extends CI_Model {
 		parent::__construct();
 		$this->table = $this->db->dbprefix('category');
 	}
+
+	public function count_search_category ($search) {
+        $this->db->where('trash', 1);
+        $this->db->like('name', $search);
+        $query = $this->db->get($this->table);
+        return count($query->result_array());
+	}
+
+	public function all_category($limit, $start, $search) 
+    {
+        $this->db->limit($limit, $start);
+        $this->db->where('trash', 1);
+        $this->db->like('name', $search);
+        $query = $this->db->get($this->table);
+        return $query->result_array();
+    }
+
 	// Lấy lên danh sách danh mục
 	public function category_all($limit,$first)
 	{

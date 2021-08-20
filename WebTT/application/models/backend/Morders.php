@@ -7,13 +7,23 @@ class Morders extends CI_Model {
 
     }
 
-    public function orders_listorders($limit, $first)
+    public function orders_listorders($limit, $start, $search)
     {
+        $this->db->limit($limit, $start);
         $this->db->where('trash', 1);
+        $this->db->like('fullname', $search);
         $this->db->order_by('orderdate', 'desc');
-        $query = $this->db->get($this->table, $limit, $first);
+        $query = $this->db->get($this->table);
         return $query->result_array();
     } 
+
+    public function count_search_order ($search) {
+        $this->db->where('trash', 1);
+        $this->db->like('fullname', $search);
+        $query = $this->db->get($this->table);
+        return count($query->result_array());
+    }
+
     public function orders_count()
     {
         $this->db->where('trash', 1);

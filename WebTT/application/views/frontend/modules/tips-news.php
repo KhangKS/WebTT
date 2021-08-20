@@ -13,7 +13,16 @@
 				<div class="entry-c">
 					<div class="entry-title e-title">
 						<h4 style="padding-right: 10px;">
-							<a href="tin-tuc/<?php echo $value['alias'] ?>"><?php echo $value['title']; ?></a>
+							<a href="tin-tuc/<?php echo $value['alias'] ?>">
+								<?php
+                                    $str = strip_tags($value['title']);
+                                    if(strlen($str)>58) {
+                                        $strCut = substr($str, 0, 58);
+                                        $str = substr($strCut, 0, strrpos($strCut, ' ')).' ... ';
+                                    }
+                                    echo $str;
+                                ?>
+							</a>
 						</h4>
 					</div>
 				</div>

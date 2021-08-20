@@ -1,6 +1,6 @@
 <div class="content-wrapper">
 	<section class="content-header">
-		<h1><i class="glyphicon glyphicon-cd"></i> Danh sách tài khoản cửa hàng</h1>
+		<h1><i class="glyphicon glyphicon-cd"></i> Danh sách nhân viên cửa hàng</h1>
 		<div class="breadcrumb">
 			<?php  
 				$QuyenThem='';
@@ -22,6 +22,12 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="box" id="view">
+					<form class="mt-2" action="<?php echo base_url() ?>admin/useradmin" method="GET" accept-charset="utf-8">
+						<div class="form-group col-md-3">
+							<input type="text" name="search" class="form-control" placeholder="Tên nhân viên">
+						</div>
+						<button type="submit" class="btn btn-success">Tìm kiếm</button>
+					</form>
 					<div class="box-header with-border">
 					<!-- /.box-header -->
 					<div class="box-body">
@@ -113,7 +119,7 @@
 							<div class="row">
 								<div class="col-md-12 text-center">
 									<ul class="pagination">
-										<?php echo $strphantrang ?>
+										<?php echo $pagination ?>
 									</ul>
 								</div>
 							</div>

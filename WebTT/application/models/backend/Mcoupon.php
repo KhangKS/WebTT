@@ -16,14 +16,25 @@ class Mcoupon extends CI_Model {
         return $query->result_array();
     }
     //index
-    public function coupon_all($limit, $first)
+    public function coupon_all($limit, $start, $search)
     {
+        $this->db->limit($limit, $start);
         $this->db->where('trash', 1);
+        $this->db->like('code', $search);
         $this->db->order_by('orders', 'desc');
         $this->db->order_by('created', 'desc');
-        $query = $this->db->get($this->table, $limit, $first);
+        $query = $this->db->get($this->table);
         return $query->result_array();
     }
+
+    public function count_search_coupon($search) 
+    {
+        $this->db->where('trash', 1);
+        $this->db->like('code', $search);
+        $query = $this->db->get($this->table);
+        return count($query->result_array());
+    }
+
     public function coupon_count()
     {
         $this->db->where('status', 1);

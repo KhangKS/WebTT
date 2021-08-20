@@ -44,7 +44,7 @@ foreach ($listProducer as $r) {
 								<div class="form-group">
 									<label>Tên sản phẩm <span class = "maudo">(*)</span></label>
 									<input type="text" class="form-control" name="name" style="width:100%" placeholder="Tên sản phẩm" value="<?php echo $row['name'] ?>">
-									<div class="error" id="password_error"><?php echo form_error('name')?></div>
+									<div class="error maudo" id="password_error"><?php echo form_error('name')?></div>
 								</div>
 								<div class="row">
 									<div class="col-md-12">
@@ -58,7 +58,7 @@ foreach ($listProducer as $r) {
 													echo $option_parentid;
 													?>
 												</select>
-												<div class="error" id="password_error"><?php echo form_error('catid')?></div>
+												<div class="error maudo" id="password_error"><?php echo form_error('catid')?></div>
 											</div>
 										</div>
 										<div class="col-md-6" style="padding-right: 0px;">
@@ -68,7 +68,7 @@ foreach ($listProducer as $r) {
 													<option value = "">[--Chọn nhà cung cấp--]</option>
 													<?php echo $option;?>
 												</select>
-												<div class="error" id="password_error"><?php echo form_error('catid')?></div>
+												<div class="error maudo" id="password_error"><?php echo form_error('catid')?></div>
 											</div>
 										</div>
 									</div>
@@ -95,7 +95,7 @@ foreach ($listProducer as $r) {
 								<div class="form-group">
 									<label>Giá bán</label>
 									<input name="price_buy" class="form-control" type="number" value="<?php echo $row['price_sale'] ?>" min="0" step="10000" max="1000000000">
-									<div class="error" id="password_error"><?php echo form_error('price_buy')?></div>
+									<div class="error maudo" id="password_error"><?php echo form_error('price_buy')?></div>
 								</div>
 								<div class="form-group">
 									<label>Số lượng tồn kho</label>

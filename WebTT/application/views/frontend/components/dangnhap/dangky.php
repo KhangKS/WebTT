@@ -18,33 +18,33 @@
 								<input name="utf8" type="hidden" value="true"> 
 								<div class="col_full">
 									<label for="first_name">Tên đăng nhập:<span class="require_symbol">*</span></label>
-									<input type="text" id="first_name" name="username" value="" class="form-control" placeholder="Tên đăng nhập">
+									<input type="text" id="first_name" name="username" class="form-control" placeholder="Tên đăng nhập" value="<?php echo set_value('username');?>">
 									<div class="error" id="username_error"><?php echo form_error('username')?></div>
 								</div> 
 								<div class="col_full">
 									<label for="register-form-password">Mật khẩu:<span class="require_symbol">*</span></label>
-									<input type="password" id="register-form-password" name="password" placeholder="Mật khẩu" class="form-control">
+									<input type="password" id="register-form-password" name="password" placeholder="Mật khẩu" class="form-control" value="<?php echo set_value('password');?>">
 									<div class="error" id="password_error"><?php echo form_error('password')?></div>
 								</div>
 
 								<div class="col_full">
 									<label for="register-form-repassword">Nhập lại mật khẩu:<span class="require_symbol">* </span></label>
-									<input type="password" id="register-form-repassword" name="re_password" value="" class="form-control" placeholder="Nhập lại mật khẩu">
+									<input type="password" id="register-form-repassword" name="re_password" value="<?php echo set_value('re_password');?>" class="form-control" placeholder="Nhập lại mật khẩu">
 									<div class="error" id="re_password_error"><?php echo form_error('re_password')?></div>
 								</div>
 								<div class="col_full">
 									<label for="first_name">Họ tên:<span class="require_symbol">*</span></label>
-									<input type="text" id="first_name" name="name" placeholder="Họ tên" class="form-control">
+									<input type="text" id="first_name" name="name" placeholder="Họ tên" class="form-control" value="<?php echo set_value('name');?>">
 									<div class="error" id="name_error"><?php echo form_error('name')?></div>
 								</div>              
 								<div class="col_full">
 									<label for="register-form-email">Email:<span class="require_symbol">*</span></label>
-									<input type="text" id="register-form-email" name="email" class="form-control" placeholder="Nhập email">
+									<input type="text" id="register-form-email" name="email" class="form-control" placeholder="Nhập email" value="<?php echo set_value('email');?>">
 									<div class="error" id="email_error"><?php echo form_error('email')?></div>
 								</div>
 								<div class="col_full">
 									<label for="first_name">Số điện thoại:<span class="require_symbol">*</span></label>
-									<input type="text" id="first_name" name="phone" placeholder="Số điện thoại" class="form-control">
+									<input type="text" id="first_name" name="phone" placeholder="Số điện thoại" class="form-control" value="<?php echo set_value('phone');?>">
 									<div class="error" id="name_error"><?php echo form_error('phone')?></div>
 								</div>
 								<div class="col_full nobottommargin">

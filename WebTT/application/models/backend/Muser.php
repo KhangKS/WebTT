@@ -6,6 +6,14 @@ class Muser extends CI_Model {
         parent::__construct();
         $this->table = $this->db->dbprefix('user');
     }
+
+    public function count_search_staff ($search) {
+        $this->db->where('trash', 1);
+        $this->db->like('fullname', $search);
+        $query = $this->db->get($this->table);
+        return count($query->result_array());
+    } 
+
     //login
     function user_login($username, $password){
     	$this->db->where('username', $username);
@@ -21,11 +29,13 @@ class Muser extends CI_Model {
         }	
     }
     //index
-    public function users_all($limit, $first){
+    public function users_all($limit, $start, $search) {
+        $this->db->limit($limit, $start);
         $this->db->where('trash', 1);
         $this->db->where('id !=', 1);
+        $this->db->like('fullname', $search);
         $this->db->order_by('created', 'desc');
-        $query = $this->db->get($this->table, $limit, $first);
+        $query = $this->db->get($this->table);
         return $query->result_array();
     }
     public function users_count(){

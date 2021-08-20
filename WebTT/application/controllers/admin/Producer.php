@@ -16,16 +16,27 @@ class Producer extends CI_Controller {
 		$this->data['com']='producer';
 	}
 
-	public function index(){
-		$this->load->library('phantrang');
-		$limit=10;
-		$current=$this->phantrang->PageCurrent();
-		$first=$this->phantrang->PageFirst($limit, $current);
-		$total=$this->Mproducer->producer_count();
-		$this->data['strphantrang']=$this->phantrang->PagePer($total, $current, $limit, $url='admin/producer');
-		$this->data['list']=$this->Mproducer->producer_all($limit,$first);
-		$this->data['view']='index';
-		$this->data['title']='Danh sách nhà cung cấp ';
+	public function index() {
+		$this->load->library('pagination');
+
+        $limit = 10;
+        $start_index = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+        $config['base_url'] = 'http://localhost/WebTT/WebTT/admin/producer/';
+        $config['total_rows'] = $this->Mproducer->producer_count();
+        $config['per_page'] = $limit;
+        $config['reuse_query_string'] = true;
+
+		$this->data['list']=$this->Mproducer->producer_all($limit, $start_index, '');
+        $this->data['view']='index';
+		$this->data['title']='Danh sách nhà cung cấp';
+
+        if (isset($_GET['search'])) {
+            $this->data['list'] = $this->Mproducer->producer_all($limit, $start_index, $_GET['search']);
+            $config['total_rows'] = $this->Mproducer->count_search_supplier($_GET['search']);
+        }
+
+        $this->pagination->initialize($config);
+		$this->data['pagination'] = $this->pagination->create_links();
 		$this->load->view('backend/layout', $this->data);
 	}
 

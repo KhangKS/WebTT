@@ -22,32 +22,32 @@
                             <div class="col-md-9">
                                 <div class="form-group">
                                     <label>Họ và tên <span class = "maudo">(*)</span></label>
-                                    <input type="text" class="form-control" name="fullname" >
+                                    <input type="text" class="form-control" name="fullname" value="<?php echo set_value('fullname');?>">
                                     <div class="error" id="password_error" style="color: red;"><?php echo form_error('fullname')?></div>
                                 </div>
                                 <div class="form-group">
                                     <label>Email <span class = "maudo">(*)</span></label>
-                                    <input type="email" class="form-control" name="email" >
+                                    <input type="email" class="form-control" name="email" value="<?php echo set_value('email');?>">
                                     <div class="error" id="password_error" style="color: red;"><?php echo form_error('email')?></div>
                                 </div>
                                 <div class="form-group">
                                     <label>Tên đăng nhập <span class = "maudo">(*)</span></label>
-                                    <input type="text" class="form-control" name="username" >
+                                    <input type="text" class="form-control" name="username" value="<?php echo set_value('username');?>">
                                     <div class="error" id="password_error"  style="color: red;"><?php echo form_error('username')?></div>
                                 </div>
                                 <div class="form-group">
                                     <label>Mật khẩu <span class = "maudo">(*)</span></label>
-                                    <input type="password" class="form-control" name="password" >
+                                    <input type="password" class="form-control" name="password" value="<?php echo set_value('password');?>">
                                     <div class="error" id="password_error"  style="color: red;"><?php echo form_error('password')?></div>
                                 </div>
                                 <div class="form-group">
                                     <label>Số điện thoại <span class = "maudo">(*)</span></label>
-                                    <input type="text" class="form-control" name="phone" >
+                                    <input type="text" class="form-control" name="phone" value="<?php echo set_value('phone');?>">
                                     <div class="error" id="password_error" style="color: red;"><?php echo form_error('phone')?></div>
                                 </div>
                                 <div class="form-group">
                                     <label>Địa chỉ <span class = "maudo">(*)</span></label>
-                                    <input type="text" class="form-control" name="address" >
+                                    <input type="text" class="form-control" name="address" value="<?php echo set_value('address');?>">
                                     <div class="error" id="password_error" style="color: red;"><?php echo form_error('address')?></div>
                                 </div>
                                 
@@ -69,13 +69,13 @@
                                 </div> -->
                                 <div class="form-group">
                                     <label>Ảnh đại diện</label>
-                                    <input type="file"  id="image_list" name="img">
+                                    <input type="file"  id="image_list" name="img" value="<?php echo set_value('img');?>">
                                 </div>
                                 <div class="form-group">
                                     <label>Trạng thái</label>
                                     <select name="status" class="form-control">
-                                        <option value = "1">Kích hoạt</option>
-                                        <option value = "0">Chưa kích hoạt</option>
+                                        <option <?php if (set_value('status') == 1) echo 'selected' ?> value="1">Kích hoạt</option>
+                                        <option <?php if (set_value('status') == "0") echo 'selected' ?> value="0">Chưa kích hoạt</option>
                                     </select>
                                 </div>
                             </div>

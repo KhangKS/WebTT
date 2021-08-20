@@ -28,16 +28,27 @@ class Coupon extends CI_Controller {
 				$this->Mcoupon->coupon_delete($row['id']);
 			}
 		}
-		//
-		$this->load->library('phantrang');
-		$limit=10;
-		$current=$this->phantrang->PageCurrent();
-		$first=$this->phantrang->PageFirst($limit, $current);
-		$total=$this->Mcoupon->coupon_count();
-		$this->data['strphantrang']=$this->phantrang->PagePer($total, $current, $limit, $url='admin/coupon');
-		$this->data['list']=$this->Mcoupon->coupon_all($limit,$first);
-		$this->data['view']='index';
+
+		$this->load->library('pagination');
+
+        $limit = 10;
+        $start_index = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+        $config['base_url'] = 'http://localhost/WebTT/WebTT/admin/coupon/';
+        $config['total_rows'] = $this->Mcoupon->coupon_count();
+        $config['per_page'] = $limit;
+        $config['reuse_query_string'] = true;
+
+		$this->data['list']=$this->Mcoupon->coupon_all($limit, $start_index, '');
+        $this->data['view']='index';
 		$this->data['title']='Danh sách mã giảm giá';
+
+        if (isset($_GET['search'])) {
+            $this->data['list'] = $this->Mcoupon->coupon_all($limit, $start_index, $_GET['search']);
+            $config['total_rows'] = $this->Mcoupon->count_search_coupon($_GET['search']);
+        }
+
+        $this->pagination->initialize($config);
+		$this->data['pagination'] = $this->pagination->create_links();
 		$this->load->view('backend/layout', $this->data);
 	}
 
@@ -53,7 +64,7 @@ class Coupon extends CI_Controller {
 		$this->load->library('session');
 		$this->form_validation->set_rules('discount', 'Số tiền giảm giá', 'required');
 		$this->form_validation->set_rules('limit_number', 'Số lần giới hạn nhập', 'required');
-		$this->form_validation->set_rules('code', 'Tên mã giảm giá', 'required|is_unique[db_discount.code]|min_length[5]|max_length[10]');
+		$this->form_validation->set_rules('code', 'Mã giảm giá', 'required|is_unique[db_discount.code]|min_length[5]|max_length[10]');
 		if ($this->form_validation->run() == TRUE) 
 		{
 			$mydata= array(
@@ -90,7 +101,7 @@ class Coupon extends CI_Controller {
 		$this->load->library('form_validation');
 		$this->load->library('session');
 		$this->form_validation->set_rules('discount', 'Số tiền giảm giá', 'required');
-		$this->form_validation->set_rules('code', 'Tên mã giảm giá', 'required|min_length[6]|max_length[10]');
+		$this->form_validation->set_rules('code', 'Mã giảm giá', 'required|min_length[6]|max_length[10]');
 		if ($this->form_validation->run() == TRUE) 
 		{
 			$mydata= array(

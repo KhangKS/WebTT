@@ -23,7 +23,7 @@
 								<div class="form-group">
 									<label>Tiêu bài viết</label>
 									<input type="text" class="form-control" name="name" style="width:100%" placeholder="Tiêu đề bài viết" value="<?php echo $row['title'] ?>">
-									<div class="error" id="password_error"><?php echo form_error('name')?></div>
+									<div class="error maudo" id="password_error"><?php echo form_error('name')?></div>
 								</div>
 								<div class="form-group">
 									<label>Loại bài viết</label>

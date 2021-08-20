@@ -23,12 +23,12 @@
                             <div class="form-group">
                                 <label>Tên sliders<span class = "maudo">(*)</span></label>
                                 <input type="text" name="name" placeholder="Tên sliders" class="form-control" value="<?php echo $row['name'] ?>">
-                                <div class="error" id="password_error"><?php echo form_error('name')?></div>
+                                <div class="error maudo" id="password_error"><?php echo form_error('name')?></div>
                             </div>
                             <div class="form-group">
                                 <label>Liên kết <span class = "maudo">(*)</span></label>
                                 <input type="text" name="link" class="form-control" placeholder="http://link.com" value="<?php echo $row['link'] ?>">
-                                <div class="error" id="password_error"><?php echo form_error('link')?></div>
+                                <div class="error maudo" id="password_error"><?php echo form_error('link')?></div>
                             </div>
 
                             <!--/.ND-->
@@ -37,7 +37,7 @@
                                <div class="form-group">
                                 <label>Hình ảnh <span class = "maudo">(*)</span></label>
                                 <input type="file" name="img" class="form-control">
-                                <div class="error" id="password_error"><?php echo form_error('img')?></div>
+                                <div class="error maudo" id="password_error"><?php echo form_error('img')?></div>
                             </div>
                             <div class="form-group">
                                 <label>Trạng thái</label>

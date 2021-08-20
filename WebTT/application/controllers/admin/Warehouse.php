@@ -19,16 +19,27 @@ class Warehouse extends CI_Controller {
     }
 
     public function index(){
-        $this->load->library('phantrang');
         $this->load->library('session');
-        $limit=10;
-        $current=$this->phantrang->PageCurrent();
-        $first=$this->phantrang->PageFirst($limit, $current);
-        $total=$this->Mproduct->product_sanpham_count();
-        $this->data['strphantrang']=$this->phantrang->PagePer($total, $current, $limit, $url='admin/warehouse');
-        $this->data['list']=$this->Mproduct->product_sanpham($limit,$first);
+        $this->load->library('pagination');
+
+        $limit = 10;
+        $start_index = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+        $config['base_url'] = 'http://localhost/WebTT/WebTT/admin/warehouse/';
+        $config['total_rows'] = $this->Mproduct->product_sanpham_count();
+        $config['per_page'] = $limit;
+        $config['reuse_query_string'] = true;
+
+        $this->data['list'] = $this->Mproduct->all_product($limit, $start_index, '');
         $this->data['view']='index';
         $this->data['title']='Quản lý kho';
+
+        if (isset($_GET['search'])) {
+            $this->data['list'] = $this->Mproduct->all_product($limit, $start_index, $_GET['search']);
+            $config['total_rows'] = $this->Mproduct->count_search_product($_GET['search']);
+        }
+
+        $this->pagination->initialize($config);
+        $this->data['pagination'] = $this->pagination->create_links();
         $this->load->view('backend/layout', $this->data);
     }
 }

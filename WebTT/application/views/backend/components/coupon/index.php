@@ -20,6 +20,12 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="box" id="view">
+					<form class="mt-2" action="<?php echo base_url() ?>admin/coupon" method="GET" accept-charset="utf-8">
+						<div class="form-group col-md-3">
+							<input type="text" name="search" class="form-control" placeholder="Mã giảm giá">
+						</div>
+						<button type="submit" class="btn btn-success">Tìm kiếm</button>
+					</form>
 					<div class="box-header with-border">
 					<!-- /.box-header -->
 					<?php  if($this->session->userdata('message')):?>
@@ -46,10 +52,10 @@
 											<th class="text-center">ID</th>
 											<th class="text-center">Mã giảm giá</th>
 											<th class="text-center">Số tiền giảm</th>
-											<th class="text-center"">Số tiền đơn hàng áp dụng tối thiểu</th>
-											<th class="text-center"">Số lần giới hạn nhập</th>
-											<th class="text-center"">Hạn nhập</th>
-											<th class="text-center"">Trạng thái</th>
+											<th class="text-center">Số tiền đơn hàng áp dụng tối thiểu</th>
+											<th class="text-center">Số lần giới hạn nhập</th>
+											<th class="text-center">Hạn nhập</th>
+											<th class="text-center">Trạng thái</th>
 											<th class="text-center" colspan="2">Thao tác</th>
 										</tr>
 									</thead>
@@ -101,7 +107,7 @@
 							<div class="row">
 								<div class="col-md-12 text-center">
 									<ul class="pagination">
-										<?php echo $strphantrang ?>
+										<?php echo $pagination ?>
 									</ul>
 								</div>
 							</div>

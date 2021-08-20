@@ -22,7 +22,8 @@ class Configuration extends CI_Controller {
 		$this->data['row']=$this->Mconfiguration->configuration_detail($id);
 		$this->load->library('form_validation');
 		$this->load->library('session');	
-		$this->form_validation->set_rules('mail_smtp', 'Địa chỉ email ', 'required');
+		$this->form_validation->set_rules('mail_smtp', 'Mail smtp', 'required');
+		$this->form_validation->set_rules('mail_smtp_password', 'Password Mail smtp', 'required');
 		if ($this->form_validation->run() == TRUE) 
 		{
 			$mydata= array(

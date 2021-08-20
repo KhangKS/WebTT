@@ -23,8 +23,8 @@
                             <!--ND-->
                             <div class="form-group">
                                 <label>Tên sliders<span class = "maudo">(*)</span></label>
-                                <input type="text" name="name" placeholder="Tên sliders" class="form-control">
-                                <div class="error" id="password_error"><?php echo form_error('name')?></div>
+                                <input type="text" name="name" placeholder="Tên sliders" class="form-control" value="<?php echo set_value('name');?>">
+                                <div class="error maudo" id="password_error"><?php echo form_error('name')?></div>
                             </div>
                             <!--/.ND-->
                         </div>
@@ -32,14 +32,14 @@
                                 
                             <div class="form-group">
                                 <label>Hình ảnh <span class = "maudo">(*)</span></label>
-                                <input type="file" name="img" class="form-control" required="">
-                                <div class="error" id="password_error"><?php echo form_error('img')?></div>
+                                <input type="file" name="img" class="form-control" required="" value="<?php echo set_value('img');?>">
+                                <div class="error maudo" id="password_error"><?php echo form_error('img')?></div>
                             </div>
                             <div class="form-group">
                                 <label>Trạng thái </label>
                                 <select name="status" class="form-control">
-                                    <option value="1">Hoạt động</option>
-                                    <option value="0">Ngừng hoạt động</option>
+                                    <option <?php if (set_value('status') == 1) echo 'selected' ?> value="1">Hoạt động</option>
+                                    <option <?php if (set_value('status') == "0") echo 'selected' ?> value="0">Ngừng hoạt động</option>
                                 </select>
                             </div>
                             </div>

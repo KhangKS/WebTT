@@ -20,11 +20,10 @@
 					<div class="box" id="view">
 						<div class="box-body">
 							<div class="col-md-9">
-							<?php //echo validation_errors(); ?>
 								<div class="form-group">
 									<label>Tên sản phẩm <span class = "maudo">(*)</span></label>
 									<input type="text" class="form-control" name="name" value="<?php echo set_value('name');?>" placeholder="Tên sản phẩm" style="width:100%">
-									<div class="error" id="password_error"><?php echo form_error('name')?></div>
+									<div class="error maudo" id="password_error"><?php echo form_error('name')?></div>
 								</div>
 								<div class="row">
 									<div class="col-md-12">
@@ -33,16 +32,11 @@
 									<label>Loại sản phẩm<span class = "maudo">(*)</span></label>
 									<select name="catid" class="form-control">
 										<option value = "">[--Chọn loại sản phẩm--]</option>
-											<?php  
-												$list=$this->Mcategory->category_list();
-												$option_parentid="";
-												foreach ($list as $r) {
-													$option_parentid.="<option value='".$r['id']."'>".$r['name']."</option>";
-												}
-												echo $option_parentid;
-											?>
+										<?php foreach ($this->Mcategory->category_list() as $category):?>
+											<option <?php if (set_value('catid') == $category['id']) echo 'selected' ?> value="<?php echo $category['id'] ?>"><?php echo $category['name'] ?></option>
+										<?php endforeach; ?>
 									</select>
-									<div class="error" id="password_error"><?php echo form_error('catid')?></div>
+									<div class="error maudo" id="password_error"><?php echo form_error('catid')?></div>
 								</div>
 									</div>
 									<div class="col-md-6" style="padding-right: 0px;">
@@ -50,16 +44,11 @@
 									<label>Nhà cung cấp <span class = "maudo">(*)</span></label>
 									<select name="producer" class="form-control">
 										<option value = "">[--Chọn nhà cung cấp--]</option>
-											<?php  
-												$list=$this->Mproducer->producer_list();
-												$option_parentid="";
-												foreach ($list as $r) {
-													$option_parentid.="<option value='".$r['id']."'>".$r['name']."</option>";
-												}
-												echo $option_parentid;
-											?>
+										<?php foreach ($this->Mproducer->producer_list() as $supplier):?>
+											<option <?php if (set_value('producer') == $supplier['id']) echo 'selected' ?> value="<?php echo $supplier['id'] ?>"><?php echo $supplier['name'] ?></option>
+										<?php endforeach; ?>
 									</select>
-									<div class="error" id="password_error"><?php echo form_error('producer')?></div>
+									<div class="error maudo" id="password_error"><?php echo form_error('producer')?></div>
 								</div>
 							</div>
 								</div>
@@ -87,7 +76,7 @@
 								<div class="form-group">
 									<label>Giá bán</label>
 									<input name="price_buy" value="<?php echo set_value('price_buy');?>" class="form-control" type="number" value="0" min="0" step="1" max="1000000000">
-									<div class="error" id="password_error"><?php echo form_error('price_buy')?></div>
+									<div class="error maudo" id="password_error"><?php echo form_error('price_buy')?></div>
 								</div>
 								<div class="form-group">
 									<label>Số lượng</label>
@@ -103,9 +92,9 @@
 								</div>
 								<div class="form-group">
 									<label>Trạng thái</label>
-									<select name="status" class="form-control"value="<?php echo set_value('status');?>">
-										<option value="1">Kinh doanh</option>
-										<option value="0">Chưa Kinh doanh</option>
+									<select name="status" class="form-control">
+										<option <?php if (set_value('status') == 1) echo 'selected' ?> value="1">Kinh doanh</option>
+										<option <?php if (set_value('status') == "0") echo 'selected' ?> value="0">Chưa Kinh doanh</option>
 									</select>
 								</div>
 							</div>
