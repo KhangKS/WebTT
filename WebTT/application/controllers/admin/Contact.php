@@ -15,16 +15,27 @@ class Contact extends CI_Controller {
 		$this->data['com']='contact';
 	}
 	
-	public function index(){
-		$this->load->library('phantrang');
-		$limit=8;
-		$current=$this->phantrang->PageCurrent();
-		$first=$this->phantrang->PageFirst($limit, $current);
-		$total=$this->Mcontact->contact_count();
-		$this->data['strphantrang']=$this->phantrang->PagePer($total, $current, $limit, $url='admin/contact');
-		$this->data['list']=$this->Mcontact->contact_all($limit,$first);
-		$this->data['view']='index';
+	public function index() {
+		$this->load->library('pagination');
+
+        $limit = 10;
+        $start_index = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+        $config['base_url'] = 'http://localhost/WebTT/WebTT/admin/contact/';
+        $config['total_rows'] = $this->Mcontact->contact_count();
+        $config['per_page'] = $limit;
+        $config['reuse_query_string'] = true;
+
+        $this->data['list'] = $this->Mcontact->contact_all($limit, $start_index, '');
+        $this->data['view']='index';
 		$this->data['title']='Quản lý liên hệ ';
+
+        if (isset($_GET['search'])) {
+            $this->data['list'] = $this->Mcontact->contact_all($limit, $start_index, $_GET['search']);
+            $config['total_rows'] = $this->Mcontact->count_search_contact($_GET['search']);
+        }
+
+        $this->pagination->initialize($config);
+		$this->data['pagination'] = $this->pagination->create_links();
 		$this->load->view('backend/layout', $this->data);
 	}
 		public function status($id)

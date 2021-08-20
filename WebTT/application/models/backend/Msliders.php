@@ -8,13 +8,23 @@ class Msliders extends CI_Model {
 		$this->table = $this->db->dbprefix('slider');
 	}
 	//index
-	public function slider_all($limit,$first)
+	public function slider_all($limit, $start, $search)
     {
+    	$this->db->limit($limit, $start);
         $this->db->where('trash', 1);
+        $this->db->like('name', $search);
         $this->db->order_by('created', 'desc');
-        $query = $this->db->get($this->table, $limit,$first);
+        $query = $this->db->get($this->table);
         return $query->result_array();
     }
+
+    public function count_search_slider ($search) {
+        $this->db->where('trash', 1);
+        $this->db->like('name', $search);
+        $query = $this->db->get($this->table);
+        return count($query->result_array());
+    } 
+
     public function slider_count()
     {
         $this->db->where('status', 1);

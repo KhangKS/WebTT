@@ -19,15 +19,26 @@ class Sliders extends CI_Controller {
 	
 	public function index()
 	{
-		$this->load->library('phantrang');
-		$limit=10;
-		$current=$this->phantrang->PageCurrent();
-		$first=$this->phantrang->PageFirst($limit, $current);
-		$total=$this->Msliders->slider_count();
-		$this->data['strphantrang']=$this->phantrang->PagePer($total, $current, $limit, $url='admin/sliders');
-		$this->data['list']=$this->Msliders->slider_all($limit,$first);
+		$this->load->library('pagination');
+
+		$limit = 10;
+		$start_index = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+		$config['base_url'] = 'http://localhost/WebTT/WebTT/admin/sliders/';
+		$config['total_rows'] = $this->Msliders->slider_count();
+		$config['per_page'] = $limit;
+		$config['reuse_query_string'] = true;
+
+		$this->data['list']=$this->Msliders->slider_all($limit, $start_index, '');
 		$this->data['view']='index';
 		$this->data['title']='Quản lý slider';
+
+		if (isset($_GET['search'])) {
+			$this->data['list'] = $this->Msliders->slider_all($limit, $start_index, $_GET['search']);
+			$config['total_rows'] = $this->Msliders->count_search_slider($_GET['search']);
+		}
+
+		$this->pagination->initialize($config);
+		$this->data['pagination'] = $this->pagination->create_links();
 		$this->load->view('backend/layout', $this->data);
 	}
 
@@ -42,7 +53,7 @@ class Sliders extends CI_Controller {
 		$this->load->library('form_validation');
 		$this->load->library('session');
 		$this->load->library('alias');
-		$this->form_validation->set_rules('name', 'Tên hình ảnh', 'required');
+		$this->form_validation->set_rules('name', 'Tên sliders', 'required');
 		if ($this->form_validation->run() == TRUE) 
 		{
 			$mydata= array(
@@ -89,7 +100,7 @@ class Sliders extends CI_Controller {
 		$this->load->library('form_validation');
 		$this->load->library('session');
 		$this->load->library('alias');
-		$this->form_validation->set_rules('name', 'Tên sản phẩm', 'required');
+		$this->form_validation->set_rules('name', 'Tên sliders', 'required');
 		$this->form_validation->set_rules('link', 'Liên kết', 'required');
 		if ($this->form_validation->run() == TRUE) 
 		{

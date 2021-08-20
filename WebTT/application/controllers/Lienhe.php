@@ -20,10 +20,10 @@ class Lienhe extends CI_Controller {
 		$today=$d['year']."/".$d['mon']."/".$d['mday'];
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('fullname', 'Họ và tên','required' );
-		$this->form_validation->set_rules('email', 'email','required|valid_email' );
+		$this->form_validation->set_rules('email', 'Email','required|valid_email' );
 		$this->form_validation->set_rules('phone', 'Số điện thoại','required' );
-		$this->form_validation->set_rules('title', 'tiêu đề','required' );
-		$this->form_validation->set_rules('content', 'nội dụng','required' );
+		$this->form_validation->set_rules('title', 'Tiêu đề','required' );
+		$this->form_validation->set_rules('content', 'Nội dụng','required' );
 		if($this->form_validation->run()==TRUE){
 			$mydata=array(
 				'fullname'=>$_POST['fullname'],

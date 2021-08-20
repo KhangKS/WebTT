@@ -20,6 +20,12 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="box" id="view">
+					<form class="mt-2" action="<?php echo base_url() ?>admin/producer" method="GET" accept-charset="utf-8">
+						<div class="form-group col-md-3">
+							<input type="text" name="search" class="form-control" placeholder="Tên nhà cung cấp">
+						</div>
+						<button type="submit" class="btn btn-success">Tìm kiếm</button>
+					</form>
 					<div class="box-header with-border">
 						<!-- /.box-header -->
 						<?php  if($this->session->userdata('message')):?>
@@ -90,7 +96,7 @@
 									<div class="row">
 										<div class="col-md-12 text-center">
 											<ul class="pagination">
-												<?php echo $strphantrang ?>
+												<?php echo $pagination ?>
 											</ul>
 										</div>
 									</div>

@@ -23,24 +23,24 @@
 								<div class="form-group">
 									<label>Tên nhà cung cấp <span class = "maudo">(*)</span></label>
 									<input type="text" class="form-control" name="name" value="<?php echo set_value('name');?>" placeholder="Tên nhà cung cấp">
-									<div class="error" id="password_error" style="color: red"><?php echo form_error('name')?></div>
+									<div class="error maudo" id="password_error"><?php echo form_error('name')?></div>
 								</div>
 								<div class="form-group">
 									<label>Mã code <span class = "maudo">(*)</span></label>
 									<input type="text" class="form-control" name="code" value="<?php echo set_value('code');?>" placeholder="Mã code">
-									<div class="error" id="password_error" style="color: red"><?php echo form_error('code')?></div>
+									<div class="error maudo" id="password_error"><?php echo form_error('code')?></div>
 								</div>
 								<div class="form-group">
 									<label>Từ khóa <span class = "maudo">(*)</span></label>
 									<input type="text" class="form-control" name="keyword" value="<?php echo set_value('keyword');?>" placeholder="Từ khóa">
 									<span style="font-style: italic; line-height: 32px;">Chú ý: Mỗi từ khóa phân cách bởi một dấu ",". Ví dụ: laptop, camera</span>
-									<div class="error" id="password_error" style="color: red"><?php echo form_error('keyword')?></div>
+									<div class="error maudo" id="password_error"><?php echo form_error('keyword')?></div>
 								</div>
 								<div class="form-group">
 									<label>Trạng thái</label>
 									<select name="status" class="form-control">
-										<option value="1">Xuất bản</option>
-										<option value="0">Chưa xuất bản</option>
+										<option <?php if (set_value('status') == 1) echo 'selected' ?> value="1">Xuất bản</option>
+										<option <?php if (set_value('status') == "0") echo 'selected' ?> value="0">Chưa xuất bản</option>
 									</select>
 								</div>
 							</div>

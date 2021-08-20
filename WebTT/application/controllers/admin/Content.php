@@ -19,15 +19,27 @@ class Content extends CI_Controller {
 	
 	public function index()
 	{
-		$this->load->library('phantrang');
-		$limit=10;
-		$current=$this->phantrang->PageCurrent();
-		$first=$this->phantrang->PageFirst($limit, $current);
-		$total=$this->Mcontent->content_count();
-		$this->data['strphantrang']=$this->phantrang->PagePer($total, $current, $limit, $url='admin/content');
-		$this->data['list']=$this->Mcontent->content_all($limit,$first);
-		$this->data['view']='index';
-		$this->data['title']='Danh sách bài viết';
+		$this->load->library('pagination');
+
+        $limit = 10;
+        $start_index = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+        $config['base_url'] = 'http://localhost/WebTT/WebTT/admin/content/';
+        $config['total_rows'] = $this->Mcontent->content_count();
+        $config['per_page'] = $limit;
+        $config['reuse_query_string'] = true;
+
+		$this->data['list'] = $this->Mcontent->content_all($limit, $start_index, '');
+        $this->data['view'] = 'index';
+		$this->data['title'] = 'Danh sách bài viết';
+
+        if (isset($_GET['search'])) {
+            $this->data['list'] = $this->Mcontent->content_all($limit, $start_index, $_GET['search']);
+            $config['total_rows'] = $this->Mcontent->count_search_news($_GET['search']);
+        }
+
+        $this->pagination->initialize($config);
+		$this->data['pagination'] = $this->pagination->create_links();
+
 		$this->load->view('backend/layout', $this->data);
 	}
 

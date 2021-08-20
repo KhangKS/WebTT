@@ -20,24 +20,23 @@
 					<div class="box" id="view">
 						<div class="box-body">
 							<div class="col-md-9">
-							<?php echo validation_errors(); ?>
 								<div class="box-body">
 									<div class="col-md-9">
 										<div class="form-group">
 											<label>Tên nhà cung cấp</label>
 											<input type="text" class="form-control" name="name" placeholder="Tên nhà cung cấp" value="<?php echo $row['name'] ?>">
-											<div class="error" id="password_error" style="color: red"><?php echo form_error('name')?></div>
+											<div class="error maudo" id="password_error"><?php echo form_error('name')?></div>
 										</div>
 										<div class="form-group">
 											<label>Mã code <span class = "maudo">(*)</span></label>
 											<input type="text" class="form-control" name="code" placeholder="Mã code" disabled value="<?php echo $row['code'] ?>">
-											<div class="error" id="password_error" style="color: red"><?php echo form_error('code')?></div>
+											<div class="error maudo" id="password_error"><?php echo form_error('code')?></div>
 										</div>
 										<div class="form-group">
 											<label>Từ khóa <span class = "maudo">(*)</span></label>
 											<input type="text" class="form-control" name="keyword" placeholder="Từ khóa" value="<?php echo $row['keyword'] ?>">
 											<span style="font-style: italic; line-height: 32px;">Chú ý: Mỗi từ khóa phân cách bởi một dấu ",". Ví dụ: dienthoai, laptop</span>
-											<div class="error" id="password_error" style="color: red"><?php echo form_error('keyword')?></div>
+											<div class="error maudo" id="password_error"><?php echo form_error('keyword')?></div>
 										</div>
 										<div class="form-group">
 											<label>Trạng thái</label>

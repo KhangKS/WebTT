@@ -20,16 +20,27 @@ class Category extends CI_Controller {
 	
 	public function index()
 	{
-		$this->load->library('phantrang');
 		$this->load->library('alias');
-		$limit=10;
-		$current=$this->phantrang->PageCurrent();
-		$first=$this->phantrang->PageFirst($limit, $current);
-		$total=$this->Mcategory->category_count();
-		$this->data['strphantrang']=$this->phantrang->PagePer($total, $current, $limit, $url='admin/category');
-		$this->data['list']=$this->Mcategory->category_all($limit,$first);
-		$this->data['view']='index';
+		$this->load->library('pagination');
+
+        $limit = 10;
+        $start_index = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+        $config['base_url'] = 'http://localhost/WebTT/WebTT/admin/category/';
+        $config['total_rows'] = $this->Mcategory->category_count();
+        $config['per_page'] = $limit;
+        $config['reuse_query_string'] = true;
+
+		$this->data['list']=$this->Mcategory->all_category($limit, $start_index, '');
+        $this->data['view']='index';
 		$this->data['title']='Loại sản phẩm';
+
+        if (isset($_GET['search'])) {
+            $this->data['list'] = $this->Mcategory->all_category($limit, $start_index, $_GET['search']);
+            $config['total_rows'] = $this->Mcategory->count_search_category($_GET['search']);
+        }
+
+        $this->pagination->initialize($config);
+		$this->data['pagination'] = $this->pagination->create_links();
 		$this->load->view('backend/layout', $this->data);
 	}
 
@@ -43,7 +54,7 @@ class Category extends CI_Controller {
 		$this->load->library('alias');
 		$this->load->library('form_validation');
 		$today=$d['year']."/".$d['mon']."/".$d['mday']." ".$d['hours'].":".$d['minutes'].":".$d['seconds'];
-		$this->form_validation->set_rules('name', 'Loại sản phẩm', 'required|is_unique[db_category.name]|max_length[25]');
+		$this->form_validation->set_rules('name', 'Tên danh mục', 'required|is_unique[db_category.name]|max_length[25]');
 		if ($this->form_validation->run() == TRUE) 
 		{
 			$mydata= array(

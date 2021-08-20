@@ -7,8 +7,8 @@
 				<button type = "submit" class="btn btn-primary btn-sm">
 					<span class="glyphicon glyphicon-floppy-save"></span>
 					Lưu
-					</button
-				</div>
+				</button>
+			</div>
 			</section>
 			<!-- Main content -->
 			<section class="content">
@@ -17,32 +17,36 @@
 						<div class="box" id="view">
 							<div class="box-body">
 								<div class="col-md-9">
-									<?php echo validation_errors(); ?>
 									<div class="form-group">
 										<label> Mail smtp <span class = "maudo">(*)</span></label>
 										<input type="email" class="form-control" name="mail_smtp" style="width:100%" placeholder="Mail cấu hình" value="<?php echo $row['mail_smtp'] ?>">
+										<div class="error maudo"><?php echo form_error('mail_smtp')?></div>
 									</div>
 									<div class="form-group">
 										<label>Password Mail smtp</label>
 										<input type="password" class="form-control" name="mail_smtp_password" style="width:100%" placeholder=" Password Mail cấu hình" value="<?php echo $row['mail_smtp_password'] ?>">
+										<div class="error maudo"><?php echo form_error('mail_smtp_password')?></div>
 									</div>
 									<div class="form-group">
 										<label>Mail admin</label>
 										<input type="text" class="form-control" name="mail_noreply" style="width:100%" placeholder="Mail nhận thông tin đơn hàng" value="<?php echo $row['mail_noreply'] ?>">
+										<div class="error maudo"><?php echo form_error('mail_noreply')?></div>
 									</div>
 									<div class="form-group">
 										<label> PriceShip <span class = "maudo">(*)</span></label>
-										<input type="number" class="form-control" name="priceShip" style="width:100%" placeholder=" priceShip" value="<?php echo $row['priceShip'] ?>">
+										<input type="number" class="form-control" name="priceShip" style="width:100%" placeholder="Giá ship" value="<?php echo $row['priceShip'] ?>">
 
+										<div class="error maudo"><?php echo form_error('priceShip')?></div>
 									</div>
 									<div class="form-group">
 										<label> Title <span class = "maudo">(*)</span></label>
-										<input type="text" class="form-control" name="title" style="width:100%" placeholder=" title" value="<?php echo $row['title'] ?>">
+										<input type="text" class="form-control" name="title" style="width:100%" placeholder=" Tiêu đề" value="<?php echo $row['title'] ?>">
 
+										<div class="error maudo"><?php echo form_error('title')?></div>
 									</div>
 									<div class="form-group">
 										<label> Description <span class = "maudo">(*)</span></label>
-										<input type="text" class="form-control" name="description" style="width:100%" placeholder=" description" value="<?php echo $row['description'] ?>">
+										<input type="text" class="form-control" name="description" style="width:100%" placeholder="Description" value="<?php echo $row['description'] ?>">
 									</div>
 								</div>
 							</div>

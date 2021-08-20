@@ -18,17 +18,28 @@ class Product extends CI_Controller {
 		$this->data['com']='product';
 	}
 
-	public function index(){
-		$this->load->library('phantrang');
+	public function index() {
 		$this->load->library('session');
-		$limit=10;
-		$current=$this->phantrang->PageCurrent();
-		$first=$this->phantrang->PageFirst($limit, $current);
-		$total=$this->Mproduct->product_sanpham_count();
-		$this->data['strphantrang']=$this->phantrang->PagePer($total, $current, $limit, $url='admin/product');
-		$this->data['list']=$this->Mproduct->product_sanpham($limit,$first);
-		$this->data['view']='index';
+        $this->load->library('pagination');
+
+        $limit = 10;
+        $start_index = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+        $config['base_url'] = 'http://localhost/WebTT/WebTT/admin/product/';
+        $config['total_rows'] = $this->Mproduct->product_sanpham_count();
+        $config['per_page'] = $limit;
+        $config['reuse_query_string'] = true;
+
+        $this->data['list'] = $this->Mproduct->all_product($limit, $start_index, '');
+        $this->data['view']='index';
 		$this->data['title']='Danh mục sản phẩm';
+
+        if (isset($_GET['search'])) {
+            $this->data['list'] = $this->Mproduct->all_product($limit, $start_index, $_GET['search']);
+            $config['total_rows'] = $this->Mproduct->count_search_product($_GET['search']);
+        }
+
+        $this->pagination->initialize($config);
+		$this->data['pagination'] = $this->pagination->create_links();
 		$this->load->view('backend/layout', $this->data);
 	}
 
@@ -49,7 +60,8 @@ class Product extends CI_Controller {
 		$this->form_validation->set_rules('name', 'Tên sản phẩm', 'required|is_unique[db_product.name]');
 		$this->form_validation->set_rules('catid', 'Loại sản phẩm', 'required');
 		$this->form_validation->set_rules('producer', 'Nhà cung cấp', 'required');
-		$this->form_validation->set_rules('price_buy','Giá bán','required|callback_check');
+		// $this->form_validation->set_rules('price_buy','Giá bán','required|callback_check');
+    $this->form_validation->set_rules('price_buy','Giá bán','required');
 		if ($this->form_validation->run() == TRUE){
 			$mydata= array(
 				'catid'=>$_POST['catid'],
@@ -148,7 +160,8 @@ class Product extends CI_Controller {
             $this->form_validation->set_rules('name', 'Tên sản phẩm', 'required');
             $this->form_validation->set_rules('catid', 'Loại sản phẩm', 'required');
             $this->form_validation->set_rules('producer', 'Nhà cung cấp', 'required');
-            $this->form_validation->set_rules('price_buy','Giá bán','required|callback_check');
+            $this->form_validation->set_rules('price_buy','Giá bán','required');
+            // $this->form_validation->set_rules('price_buy','Giá bán','required|callback_check');
             if ($this->form_validation->run() == TRUE){
                 $mydata= array(
                     'catid'=>$_POST['catid'],

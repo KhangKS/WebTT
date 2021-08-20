@@ -23,7 +23,7 @@
                            <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
                            <input type="text" name="username" class="form-control" value="<?php echo set_value('username');?>" placeholder="Tên đăng nhập">          
                         </div>
-                        <div class="error" id="password_error"><?php echo form_error('username')?></div>
+                        <div class="error mt-1" id="password_error"><?php echo form_error('username')?></div>
                     </div>
                     <div class="row form-row">
                         <div class="input-group">
@@ -31,7 +31,7 @@
                            <input type="password" name="password" class="form-control" value="<?php echo set_value('password');?>" placeholder="Mật khẩu">
                           
                         </div>
-                        <div class="error" id="password_error"><?php echo form_error('password')?></div>
+                        <div class="error mt-1" id="password_error"><?php echo form_error('password')?></div>
                     </div>
                     <div class="row form-row" style="width:100%; margin-top: 15px;">
                         <button type="submit" class="form-control btn btn-primary btn-login">Đăng nhập</button>

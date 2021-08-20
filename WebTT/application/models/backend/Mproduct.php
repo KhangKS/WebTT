@@ -7,6 +7,34 @@ class Mproduct extends CI_Model {
 		parent::__construct();
 		$this->table = $this->db->dbprefix('product');
 	}
+
+    public function get_all_product($limit, $start) 
+    {
+        $this->db->limit($limit, $start);
+        $this->db->where('status', 1);
+        $this->db->where('trash', 1);
+        $query = $this->db->get($this->table);
+        return $query->result_array();
+    }
+
+    public function all_product($limit, $start, $search) 
+    {
+        $this->db->limit($limit, $start);
+        $this->db->where('status', 1);
+        $this->db->where('trash', 1);
+        $this->db->like('name', $search);
+        $query = $this->db->get($this->table);
+        return $query->result_array();
+    }
+
+    public function count_search_product($search) 
+    {
+        $this->db->where('trash', 1);
+        $this->db->like('name', $search);
+        $query = $this->db->get($this->table);
+        return count($query->result_array());
+    }
+
     //index
 	public function product_sanpham_count()
     {

@@ -53,7 +53,7 @@
         <!-- <?php 
             $this->load->view('frontend/modules/category');
         ?> -->
-        <section id="menu-slider">
+        <section id="menu-slider" class="border">
             <?php 
                 $this->load->view('frontend/modules/panel-left');
             ?>

@@ -17,31 +17,36 @@
 					<div class="box" id="view">
 						<div class="box-body">
 							<div class="col-md-9">
-								<?php echo validation_errors(); ?>
 								<div class="form-group">
 									<label> Tên đầy đủ <span class = "maudo">(*)</span></label>
 									<input type="text" class="form-control" name="fullname" style="width:100%" placeholder="Tên đầy đủ" value="<?php echo $row['fullname'] ?>">
+									<div class="error maudo"><?php echo form_error('fullname')?></div>
 								</div>
 								<div class="form-group">
 									<label>Tên viết tắt</label>
 									<input type="text" class="form-control" name="abbreviation_name" style="width:100%" placeholder="Tên viết tắt" value="<?php echo $row['abbreviation_name'] ?>">
+									<div class="error maudo"><?php echo form_error('abbreviation_name')?></div>
 								</div>
 								<div class="form-group">
 									<label>Địa chỉ</label>
 									<input type="text" class="form-control" name="address" style="width:100%" placeholder="Địa chỉ" value="<?php echo $row['address'] ?>">
+									<div class="error maudo"><?php echo form_error('address')?></div>
 								</div>
 								<div class="form-group">
 									<label>Email <span class = "maudo">(*)</span></label>
 									<input type="email" class="form-control" name="email" style="width:100%" placeholder=" Email" value="<?php echo $row['email'] ?>">
 
+									<div class="error maudo"><?php echo form_error('email')?></div>
 								</div>
 								<div class="form-group">
 									<label>Văn phòng <span class = "maudo">(*)</span></label>
 									<input type="text" class="form-control" name="office" style="width:100%" placeholder=" Văn phòng" value="<?php echo $row['office'] ?>">
+									<div class="error maudo"><?php echo form_error('office')?></div>
 								</div>
 								<div class="form-group">
 									<label>Số điện thoại <span class = "maudo">(*)</span></label>
 									<input type="number" class="form-control" name="phone" style="width:100%" placeholder="Số điện thoại" value="<?php echo $row['phone'] ?>">
+									<div class="error maudo"><?php echo form_error('phone')?></div>
 								</div>
 								<div class="form-group">
 									<label>Mô tả <span class = "maudo">(*)</span></label>
@@ -51,6 +56,7 @@
 								<div class="form-group">
 									<label>MST <span class = "maudo">(*)</span></label>
 									<input type="text" class="form-control" name="tax_code" style="width:100%" placeholder="Mã số thuế" value="<?php echo $row['tax_code'] ?>">
+									<div class="error maudo"><?php echo form_error('tax_code')?></div>
 								</div>
 							</div>
 						</div>
