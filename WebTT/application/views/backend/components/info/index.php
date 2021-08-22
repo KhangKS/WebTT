@@ -28,7 +28,7 @@
 									<div class="error maudo"><?php echo form_error('abbreviation_name')?></div>
 								</div>
 								<div class="form-group">
-									<label>Địa chỉ</label>
+									<label>Địa chỉ<span class = "maudo">(*)</span></label>
 									<input type="text" class="form-control" name="address" style="width:100%" placeholder="Địa chỉ" value="<?php echo $row['address'] ?>">
 									<div class="error maudo"><?php echo form_error('address')?></div>
 								</div>

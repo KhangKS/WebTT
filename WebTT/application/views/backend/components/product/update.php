@@ -78,14 +78,14 @@ foreach ($listProducer as $r) {
 									<textarea name="sortDesc" class="form-control" ><?php echo $row['sortDesc'] ?></textarea>
 								</div>
 								<div class="form-group">
-									<label>Chi tiết sản phẩm</label>
+									<label>Chi tiết sản phẩm<span class = "maudo">(*)</span></label>
 									<textarea name="detail" id="detail" class="form-control"><?php echo $row['detail'] ?></textarea>
 									<script>CKEDITOR.replace('detail');</script>
 								</div>
 							</div>
 							<div class="col-md-3">
 								<div class="form-group">
-									<label>Giá gốc</label>
+									<label>Giá gốc<span class = "maudo">(*)</span></label>
 									<input name="price_root" class="form-control" type="number" value="<?php echo $row['price'] ?>" min="0" step="10000" max="1000000000">
 								</div>
 								<div class="form-group">
@@ -93,7 +93,7 @@ foreach ($listProducer as $r) {
 									<input name="sale_of" class="form-control" type="number" value="<?php echo $row['sale'] ?>">
 								</div>
 								<div class="form-group">
-									<label>Giá bán</label>
+									<label>Giá bán<span class = "maudo">(*)</span></label>
 									<input name="price_buy" class="form-control" type="number" value="<?php echo $row['price_sale'] ?>" min="0" step="10000" max="1000000000">
 									<div class="error maudo" id="password_error"><?php echo form_error('price_buy')?></div>
 								</div>
@@ -106,11 +106,11 @@ foreach ($listProducer as $r) {
 									<input name="number" class="form-control" type="number" value="<?php echo $row['number_buy'] ?>" min="1" step="1" max="1000" disabled>
 								</div>
 								<div class="form-group">
-                                    <label>Hình đại diện</label>
+                                    <label>Hình đại diện<span class = "maudo">(*)</span></label>
                                     <input type="file"  id="image_list" name="img" style="width: 100%">
                                 </div>
 								<div class="form-group">
-									<label>Hình ảnh sản phẩm</label>
+									<label>Hình ảnh sản phẩm<span class = "maudo">(*)</span></label>
 									<input type="file"  id="image_list" name="image_list">
 								</div>
 								<div class="form-group">

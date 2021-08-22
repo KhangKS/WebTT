@@ -68,7 +68,7 @@
                                     </select>
                                 </div> -->
                                 <div class="form-group">
-                                    <label>Ảnh đại diện</label>
+                                    <label>Ảnh đại diện<span class = "maudo">(*)</span></label>
                                     <input type="file"  id="image_list" name="img" value="<?php echo set_value('img');?>">
                                 </div>
                                 <div class="form-group">

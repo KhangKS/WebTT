@@ -77,7 +77,7 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label>Ảnh đại diện</label>
+                                    <label>Ảnh đại diện<span class = "maudo">(*)</span></label>
                                     <input type="file"  id="image_list" name="image" style="width: 100%">
                                 </div>
                                 <!-- <?php if ($user['role'] == 1): ?>

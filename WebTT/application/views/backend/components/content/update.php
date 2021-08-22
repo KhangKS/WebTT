@@ -21,7 +21,7 @@
 						<div class="box-body">
 							<div class="col-md-9">
 								<div class="form-group">
-									<label>Tiêu bài viết</label>
+									<label>Tiêu đề bài viết<span class = "maudo">(*)</span></label>
 									<input type="text" class="form-control" name="name" style="width:100%" placeholder="Tiêu đề bài viết" value="<?php echo $row['title'] ?>">
 									<div class="error maudo" id="password_error"><?php echo form_error('name')?></div>
 								</div>
@@ -48,7 +48,7 @@
 							</div>
 							<div class="col-md-3">
 								<div class="form-group">
-                                    <label>Hình đại diện</label>
+                                    <label>Hình đại diện<span class = "maudo">(*)</span></label>
                                     <input type="file" id="image_list" name="img">
                                 </div>
 								<div class="form-group">

@@ -21,22 +21,22 @@
 						<div class="box-body">
 							<div class="col-md-6">
 								<div class="form-group">
-									<label>Mã giảm giá</label>
+									<label>Mã giảm giá<span class = "maudo">(*)</span></label>
 									<input type="text" class="form-control" name="code" style="width:100%" placeholder="Mã giảm giá" value="<?php echo set_value('code');?>">
 									<div class="error maudo" id="password_error"><?php echo form_error('code')?></div>
 								</div>
 								<div class="form-group">
-									<label>Số tiền giảm giá</label>
+									<label>Số tiền giảm giá<span class = "maudo">(*)</span></label>
 									<input type="number" class="form-control" name="discount" style="width:100%" placeholder="Số tiền giảm giá" value="<?php echo set_value('discount');?>">
 									<div class="error maudo" id="password_error"><?php echo form_error('discount')?></div>
 								</div>
 								<div class="form-group">
-									<label>Số lần giới hạn nhập</label>
+									<label>Số lần giới hạn nhập<span class = "maudo">(*)</span></label>
 									<input type="number" class="form-control" name="limit_number" style="width:100%" placeholder="Số lần giới hạn nhập" value="<?php echo set_value('limit_number');?>">
 									<div class="error maudo" id="password_error"><?php echo form_error('limit_number')?></div>
 								</div>
 								<div class="form-group">
-									<label>Số tiền đơn hàng tối thiểu được áp dụng</label>
+									<label>Số tiền đơn hàng tối thiểu được áp dụng<span class = "maudo">(*)</span></label>
 									<input type="number" class="form-control" name="payment_limit" style="width:100%" placeholder="Đơn hàng tối thiểu được áp dụng" value="<?php echo set_value('payment_limit');?>">
 									<div class="error maudo" id="password_error"><?php echo form_error('payment_limit')?></div>
 								</div>
@@ -44,7 +44,7 @@
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
-									<label>Ngày giới hạn nhập</label>
+									<label>Ngày giới hạn nhập<span class = "maudo">(*)</span></label>
 									<div class="form-group">
 										<input type="date"  style="width:100%" name="expiration_date" required value="<?php echo set_value('expiration_date');?>">
 									</div>

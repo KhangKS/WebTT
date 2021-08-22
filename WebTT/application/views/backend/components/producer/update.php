@@ -23,7 +23,7 @@
 								<div class="box-body">
 									<div class="col-md-9">
 										<div class="form-group">
-											<label>Tên nhà cung cấp</label>
+											<label>Tên nhà cung cấp<span class = "maudo">(*)</span></label>
 											<input type="text" class="form-control" name="name" placeholder="Tên nhà cung cấp" value="<?php echo $row['name'] ?>">
 											<div class="error maudo" id="password_error"><?php echo form_error('name')?></div>
 										</div>

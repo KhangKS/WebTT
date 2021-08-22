@@ -59,14 +59,14 @@
 									<textarea name="sortDesc" value="<?php echo set_value('sortDesc');?>" class="form-control" ></textarea>
 								</div>
 								<div class="form-group">
-									<label>Chi tiết sản phẩm</label>
+									<label>Chi tiết sản phẩm<span class = "maudo">(*)</span></label>
 									<textarea name="detail" id="detail" class="form-control" value="<?php echo set_value('detail');?>"></textarea>
       								<script>CKEDITOR.replace('detail');</script>
 								</div>
 							</div>
 							<div class="col-md-3">
 								<div class="form-group">
-									<label>Giá gốc</label>
+									<label>Giá gốc<span class = "maudo">(*)</span></label>
 									<input name="price_root" class="form-control" value="<?php echo set_value('price_root');?>" type="number" value="0" min="0" step="1" max="1000000000">
 								</div>
 								<div class="form-group">
@@ -74,20 +74,20 @@
 									<input name="sale_of" class="form-control" value="<?php echo set_value('sale_of');?>" type="number">
 								</div>
 								<div class="form-group">
-									<label>Giá bán</label>
+									<label>Giá bán<span class = "maudo">(*)</span></label>
 									<input name="price_buy" value="<?php echo set_value('price_buy');?>" class="form-control" type="number" value="0" min="0" step="1" max="1000000000">
 									<div class="error maudo" id="password_error"><?php echo form_error('price_buy')?></div>
 								</div>
 								<div class="form-group">
-									<label>Số lượng</label>
+									<label>Số lượng<span class = "maudo">(*)</span></label>
 									<input name="number" class="form-control" value="<?php echo set_value('number');?>" type="number" value="1" min="1" step="1" max="1000">
 								</div>
 								<div class="form-group">
-                                    <label>Hình đại diện</label>
+                                    <label>Hình đại diện<span class = "maudo">(*)</span></label>
                                     <input type="file"  id="image_list" name="img" value="<?php echo set_value('img');?>" required style="width: 100%">
                                 </div>
 								<div class="form-group">
-									<label>Hình ảnh sản phẩm</label>
+									<label>Hình ảnh sản phẩm<span class = "maudo">(*)</span></label>
 									<input type="file"  id="image_list" name="image_list[]" value="<?php echo set_value('img_list[]');?>" multiple required>
 								</div>
 								<div class="form-group">
