@@ -1,6 +1,12 @@
 <div class="content-wrapper">
 	<section class="content-header">
 		<h1><i class="glyphicon glyphicon-cd"></i> Quản lý kho</h1>
+		<form class="mt-2" action="<?php echo base_url() ?>admin/warehouse" method="GET" accept-charset="utf-8">
+			<div class="form-group col-md-3">
+				<input type="text" name="search" class="form-control" placeholder="Tên sản phẩm">
+			</div>
+			<button type="submit" class="btn btn-success">Tìm kiếm</button>
+		</form>
 	</section>
 	<!-- Main content -->
 	<section class="content">
@@ -8,13 +14,6 @@
 			<div class="col-md-12">
 				<div class="box" id="view">
 					<div class="box-header with-border">
-						<form class="mt-2" action="<?php echo base_url() ?>admin/warehouse" method="GET" accept-charset="utf-8">
-							<div class="form-group col-md-3">
-								<input type="text" name="search" class="form-control" placeholder="Tên sản phẩm">
-							</div>
-							<button type="submit" class="btn btn-success">Tìm kiếm</button>
-						</form>
-						<div class="clear"></div>
 						<!-- /.box-header -->
 						<div class="box-body">
 							<?php  if($this->session->flashdata('success')):?>

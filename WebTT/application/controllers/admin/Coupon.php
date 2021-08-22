@@ -33,7 +33,7 @@ class Coupon extends CI_Controller {
 
         $limit = 10;
         $start_index = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-        $config['base_url'] = 'http://localhost/WebTT/WebTT/admin/coupon/';
+        $config['base_url'] = base_url().'admin/coupon/';
         $config['total_rows'] = $this->Mcoupon->coupon_count();
         $config['per_page'] = $limit;
         $config['reuse_query_string'] = true;
@@ -64,7 +64,7 @@ class Coupon extends CI_Controller {
 		$this->load->library('session');
 		$this->form_validation->set_rules('discount', 'Số tiền giảm giá', 'required');
 		$this->form_validation->set_rules('limit_number', 'Số lần giới hạn nhập', 'required');
-		$this->form_validation->set_rules('code', 'Mã giảm giá', 'required|is_unique[db_discount.code]|min_length[5]|max_length[10]');
+		$this->form_validation->set_rules('code', 'Mã giảm giá', 'required|is_unique[db_discount.code]|min_length[5]|max_length[10]|alpha_numeric');
 		if ($this->form_validation->run() == TRUE) 
 		{
 			$mydata= array(
@@ -101,7 +101,7 @@ class Coupon extends CI_Controller {
 		$this->load->library('form_validation');
 		$this->load->library('session');
 		$this->form_validation->set_rules('discount', 'Số tiền giảm giá', 'required');
-		$this->form_validation->set_rules('code', 'Mã giảm giá', 'required|min_length[6]|max_length[10]');
+		$this->form_validation->set_rules('code', 'Mã giảm giá', 'required|min_length[6]|max_length[10]|alpha_numeric');
 		if ($this->form_validation->run() == TRUE) 
 		{
 			$mydata= array(

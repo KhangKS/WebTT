@@ -28,7 +28,7 @@ class Orders extends CI_Controller {
 
     $limit = 10;
     $start_index = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-    $config['base_url'] = 'http://localhost/WebTT/WebTT/admin/orders/';
+    $config['base_url'] = base_url().'admin/orders/';
     $config['total_rows'] = $this->Morders->orders_count();
     $config['per_page'] = $limit;
     $config['reuse_query_string'] = true;

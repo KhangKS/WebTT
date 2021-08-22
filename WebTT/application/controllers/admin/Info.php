@@ -23,8 +23,8 @@ class Info extends CI_Controller {
 
 		$this->load->library('form_validation');
 		$this->load->library('session');	
-		$this->form_validation->set_rules('fullname', 'Tên đầy đủ', 'required');
-		$this->form_validation->set_rules('abbreviation_name', 'Tên viết tắt', 'required');
+		$this->form_validation->set_rules('fullname', 'Tên đầy đủ', 'required|alpha_numeric');
+		$this->form_validation->set_rules('abbreviation_name', 'Tên viết tắt', 'required|alpha_numeric');
 		$this->form_validation->set_rules('address', 'Địa chỉ', 'required');
 		$this->form_validation->set_rules('email', 'Email', 'required');
 		$this->form_validation->set_rules('office', 'Văn phòng', 'required');

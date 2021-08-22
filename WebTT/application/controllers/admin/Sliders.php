@@ -23,7 +23,7 @@ class Sliders extends CI_Controller {
 
 		$limit = 10;
 		$start_index = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-		$config['base_url'] = 'http://localhost/WebTT/WebTT/admin/sliders/';
+		$config['base_url'] = base_url().'admin/sliders/';
 		$config['total_rows'] = $this->Msliders->slider_count();
 		$config['per_page'] = $limit;
 		$config['reuse_query_string'] = true;
@@ -53,7 +53,7 @@ class Sliders extends CI_Controller {
 		$this->load->library('form_validation');
 		$this->load->library('session');
 		$this->load->library('alias');
-		$this->form_validation->set_rules('name', 'Tên sliders', 'required');
+		$this->form_validation->set_rules('name', 'Tên sliders', 'required|alpha_numeric');
 		if ($this->form_validation->run() == TRUE) 
 		{
 			$mydata= array(
@@ -100,8 +100,8 @@ class Sliders extends CI_Controller {
 		$this->load->library('form_validation');
 		$this->load->library('session');
 		$this->load->library('alias');
-		$this->form_validation->set_rules('name', 'Tên sliders', 'required');
-		$this->form_validation->set_rules('link', 'Liên kết', 'required');
+		$this->form_validation->set_rules('name', 'Tên sliders', 'required|alpha_numeric');
+		$this->form_validation->set_rules('link', 'Liên kết', 'required|alpha_numeric');
 		if ($this->form_validation->run() == TRUE) 
 		{
 			$mydata= array(

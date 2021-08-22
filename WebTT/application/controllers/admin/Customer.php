@@ -23,7 +23,7 @@ class Customer extends CI_Controller {
 
 		$limit = 10;
 		$start_index = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-		$config['base_url'] = 'http://localhost/WebTT/WebTT/admin/customer/';
+		$config['base_url'] = base_url().'admin/customer/';
 		$config['total_rows'] = $this->Mcustomer->customer_count();
 		$config['per_page'] = $limit;
 		$config['reuse_query_string'] = true;
