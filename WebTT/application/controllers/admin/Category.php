@@ -22,10 +22,9 @@ class Category extends CI_Controller {
 	{
 		$this->load->library('alias');
 		$this->load->library('pagination');
-
         $limit = 10;
         $start_index = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-        $config['base_url'] = 'http://localhost/WebTT/WebTT/admin/category/';
+        $config['base_url'] = base_url().'admin/category/';
         $config['total_rows'] = $this->Mcategory->category_count();
         $config['per_page'] = $limit;
         $config['reuse_query_string'] = true;
@@ -54,7 +53,7 @@ class Category extends CI_Controller {
 		$this->load->library('alias');
 		$this->load->library('form_validation');
 		$today=$d['year']."/".$d['mon']."/".$d['mday']." ".$d['hours'].":".$d['minutes'].":".$d['seconds'];
-		$this->form_validation->set_rules('name', 'Tên danh mục', 'required|is_unique[db_category.name]|max_length[25]');
+		$this->form_validation->set_rules('name', 'Tên danh mục', 'required|is_unique[db_category.name]|max_length[25]|alpha_numeric');
 		if ($this->form_validation->run() == TRUE) 
 		{
 			$mydata= array(
@@ -104,7 +103,7 @@ class Category extends CI_Controller {
 		$today=$d['year']."/".$d['mon']."/".$d['mday']." ".$d['hours'].":".$d['minutes'].":".$d['seconds'];
 		$this->load->library('alias');
 		$this->load->library('form_validation');
-		$this->form_validation->set_rules('name', 'Tên danh mục', 'required|max_length[25]');
+		$this->form_validation->set_rules('name', 'Tên danh mục', 'required|max_length[25]|alpha_numeric');
 		if ($this->form_validation->run() == TRUE) 
 		{
 			$mydata= array(

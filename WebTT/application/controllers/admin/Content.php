@@ -23,7 +23,7 @@ class Content extends CI_Controller {
 
         $limit = 10;
         $start_index = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-        $config['base_url'] = 'http://localhost/WebTT/WebTT/admin/content/';
+        $config['base_url'] = base_url().'admin/content/';
         $config['total_rows'] = $this->Mcontent->content_count();
         $config['per_page'] = $limit;
         $config['reuse_query_string'] = true;
@@ -50,7 +50,8 @@ class Content extends CI_Controller {
 		$this->load->library('form_validation');
 		$this->load->library('session');
 		$this->load->library('alias');
-		$this->form_validation->set_rules('name', 'Tên bài viết', 'required|is_unique[db_content.title]');
+		$this->form_validation->set_rules('name', 'Tiêu đề bài viết', 'required|is_unique[db_content.title]|alpha_numeric');
+		$this->form_validation->set_rules('fulltext', 'Chi tiết bài viết', 'required');
 		if ($this->form_validation->run() == TRUE) 
 		{
 			$mydata= array(
@@ -100,7 +101,7 @@ class Content extends CI_Controller {
 		$this->load->library('form_validation');
 		$this->load->library('session');
 		$this->load->library('alias');
-		$this->form_validation->set_rules('name', 'Tên bài viết', 'required');
+		$this->form_validation->set_rules('name', 'Tiêu đề bài viết', 'required|alpha_numeric');
 		if ($this->form_validation->run() == TRUE) 
 		{
 			$mydata= array(

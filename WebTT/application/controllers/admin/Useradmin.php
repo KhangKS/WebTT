@@ -25,7 +25,7 @@ class Useradmin extends CI_Controller {
 
 		$limit = 10;
 		$start_index = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-		$config['base_url'] = 'http://localhost/WebTT/WebTT/admin/useradmin/';
+		$config['base_url'] = base_url().'admin/useradmin/';
 		$config['total_rows'] = $this->Muser->users_count();
 		$config['per_page'] = $limit;
 		$config['reuse_query_string'] = true;
@@ -53,7 +53,7 @@ class Useradmin extends CI_Controller {
 		$today=$d['year']."/".$d['mon']."/".$d['mday']." ".$d['hours'].":".$d['minutes'].":".$d['seconds'];
 		$this->load->library('form_validation');
 		$this->load->library('alias');
-		$this->form_validation->set_rules('fullname', 'Họ và tên', 'required');
+		$this->form_validation->set_rules('fullname', 'Họ và tên', 'required|alpha_numeric');
 		$this->form_validation->set_rules('phone', 'Số điện thoại', 'required|is_unique[db_user.phone]');
 		$this->form_validation->set_rules('email', 'Địa chỉ email', 'required|is_unique[db_user.email]');
 		$this->form_validation->set_rules('address', 'Địa chỉ', 'required');
@@ -102,7 +102,7 @@ class Useradmin extends CI_Controller {
 		$today=$d['year']."/".$d['mon']."/".$d['mday']." ".$d['hours'].":".$d['minutes'].":".$d['seconds'];
 		$this->load->library('form_validation');
 		$this->load->library('alias');
-		$this->form_validation->set_rules('fullname', 'Họ và tên', 'required');
+		$this->form_validation->set_rules('fullname', 'Họ và tên', 'required|alpha_numeric');
 		$this->form_validation->set_rules('address', 'Địa chỉ', 'required');
 		$this->form_validation->set_rules('password', 'Mật khẩu', 'required|min_length[5]|max_length[32]');
 
