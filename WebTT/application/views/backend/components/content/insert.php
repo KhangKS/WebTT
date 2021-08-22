@@ -45,6 +45,7 @@
 									<label>Chi tiết bài viết<span class = "maudo">(*)</span></label>
 									<textarea name="fulltext" id="fulltext" class="form-control" ><?php echo set_value('fulltext'); ?></textarea>
       								<script>CKEDITOR.replace('fulltext');</script>
+      								<div class="error maudo" id="password_error"><?php echo form_error('fulltext')?></div>
 								</div>
 							</div>
 							<div class="col-md-4">

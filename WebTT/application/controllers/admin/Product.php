@@ -24,7 +24,7 @@ class Product extends CI_Controller {
 
         $limit = 10;
         $start_index = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-        $config['base_url'] = 'http://localhost/WebTT/WebTT/admin/product/';
+        $config['base_url'] = base_url().'admin/product/';
         $config['total_rows'] = $this->Mproduct->product_sanpham_count();
         $config['per_page'] = $limit;
         $config['reuse_query_string'] = true;
@@ -57,7 +57,7 @@ class Product extends CI_Controller {
 		$this->load->library('form_validation');
 		$this->load->library('session');
 		$this->load->library('alias');
-		$this->form_validation->set_rules('name', 'Tên sản phẩm', 'required|is_unique[db_product.name]');
+		$this->form_validation->set_rules('name', 'Tên sản phẩm', 'required|is_unique[db_product.name]|alpha_numeric');
 		$this->form_validation->set_rules('catid', 'Loại sản phẩm', 'required');
 		$this->form_validation->set_rules('producer', 'Nhà cung cấp', 'required');
 		// $this->form_validation->set_rules('price_buy','Giá bán','required|callback_check');
@@ -157,7 +157,7 @@ class Product extends CI_Controller {
             $this->load->library('form_validation');
             $this->load->library('session');
             $this->load->library('alias');
-            $this->form_validation->set_rules('name', 'Tên sản phẩm', 'required');
+            $this->form_validation->set_rules('name', 'Tên sản phẩm', 'required|alpha_numeric');
             $this->form_validation->set_rules('catid', 'Loại sản phẩm', 'required');
             $this->form_validation->set_rules('producer', 'Nhà cung cấp', 'required');
             $this->form_validation->set_rules('price_buy','Giá bán','required');

@@ -13,18 +13,18 @@
 				<span class="glyphicon glyphicon-trash"></span> Thùng rác(<?php $total=$this->Msliders->slider_trash_count(); echo $total; ?>)
 			</a>
 		</div>
+		<form class="mt-2" action="<?php echo base_url() ?>admin/sliders" method="GET" accept-charset="utf-8">
+			<div class="form-group col-md-3">
+				<input type="text" name="search" class="form-control" placeholder="Tên sliders">
+			</div>
+			<button type="submit" class="btn btn-success">Tìm kiếm</button>
+		</form>
 	</section>
 	<!-- Main content -->
 	<section class="content">
 		<div class="row">
 			<div class="col-md-12">
 				<div class="box" id="view">
-					<form class="mt-2" action="<?php echo base_url() ?>admin/sliders" method="GET" accept-charset="utf-8">
-						<div class="form-group col-md-3">
-							<input type="text" name="search" class="form-control" placeholder="Tên sliders">
-						</div>
-						<button type="submit" class="btn btn-success">Tìm kiếm</button>
-					</form>
 					<div class="box-header with-border">
 					<!-- /.box-header -->
 					<div class="box-body">
