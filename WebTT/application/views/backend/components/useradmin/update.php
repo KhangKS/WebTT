@@ -4,7 +4,7 @@
         <section class="content-header">
             <h1><i class="fa fa-user-plus"></i> Cập nhật tài khoản</h1>
             <div class="breadcrumb">
-                <button type = "submit" class="btn btn-primary btn-sm">
+                <button type = "submit" class="btn btn-primary btn-sm" id="btn">
                     <span class="glyphicon glyphicon-floppy-save"></span>
                     Lưu[Sửa]
                 </button>
@@ -39,7 +39,7 @@
                                 <div class="form-group">
                                     <label>Họ và tên <span class = "maudo">(*)</span></label>
                                     <input type="text"  class="form-control" name="fullname" value="<?php echo $row['fullname'] ?>" >
-                                    <div class="error"  style="color: red;"><?php echo form_error('fullname')?></div>
+                                    <div class="error" id="error-fullname"  style="color: red;"><?php echo form_error('fullname')?></div>
                                 </div>
                                 <div class="form-group">
                                     <label>Email <span class = "maudo">(*)</span></label>
@@ -49,7 +49,7 @@
                                 <div class="form-group">
                                     <label>Tên đăng nhập <span class = "maudo">(*)</span></label>
                                     <input type="text" class="form-control" name="username" value="<?php echo $row['username']?>" >
-                                    <div class="error"  style="color: red;"><?php echo form_error('username')?></div>
+                                    <div class="error" id="error-username" style="color: red;"><?php echo form_error('username')?></div>
                                 </div>
                                 <div class="form-group">
                                     <label>Mật khẩu <span class = "maudo">(*)</span></label>
@@ -100,3 +100,34 @@
     </form>
 <!-- /.content -->
 </div><!-- /.content-wrapper -->
+<script src="public/js/jquery-2.2.3.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $(`#btn`).click(function(event) {
+            var iChars = "!`@#$%^&*()+=-[]\\\';,./{}|\":<>?~_";   
+            var fullname = $(`input[name="fullname"]`).val();
+
+            for (var i = 0; i < fullname.length; i++)
+            {      
+                if (iChars.indexOf(fullname.charAt(i)) != -1)
+                {    
+                    event.preventDefault();
+                    $(`#error-fullname`).html(`Họ và tên không được chứa ký tự đặc biệt.`);
+                    break;
+                }
+            }
+
+            var username = $(`input[name="username"]`).val();
+
+            for (var i = 0; i < username.length; i++)
+            {      
+                if (iChars.indexOf(username.charAt(i)) != -1)
+                {    
+                    event.preventDefault();
+                    $(`#error-username`).html(`Tên đăng nhập không được chứa ký tự đặc biệt.`);
+                    break;
+                }
+            }
+        })
+    });
+</script>
