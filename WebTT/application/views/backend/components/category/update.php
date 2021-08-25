@@ -33,7 +33,7 @@
 		<section class="content-header">
 			<h1><i class="glyphicon glyphicon-cd"></i> Cập nhật loại sản phẩm</h1>
 			<div class="breadcrumb">
-				<button type = "submit" class="btn btn-primary btn-sm">
+				<button type = "submit" class="btn btn-primary btn-sm" id="btn">
 					<span class="glyphicon glyphicon-floppy-save"></span>
 					Lưu[Cập nhật]
 				</button>
@@ -91,3 +91,22 @@
 	</form>
 <!-- /.content -->
 </div><!-- /.content-wrapper -->
+<script src="public/js/jquery-2.2.3.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$(`#btn`).click(function(event) {
+			var iChars = "!`@#$%^&*()+=-[]\\\';,./{}|\":<>?~_";   
+			var data = $(`input[name="name"]`).val();
+
+			for (var i = 0; i < data.length; i++)
+			{      
+				if (iChars.indexOf(data.charAt(i)) != -1)
+				{    
+					event.preventDefault();
+					$(`input[name="name"]`).after(`<div class="error maudo">Tên danh mục không được chứa ký tự đặc biệt.</div>`);
+					return false;
+				}
+			}
+		})
+	});
+</script>

@@ -57,7 +57,7 @@ class Product extends CI_Controller {
 		$this->load->library('form_validation');
 		$this->load->library('session');
 		$this->load->library('alias');
-		$this->form_validation->set_rules('name', 'Tên sản phẩm', 'required|is_unique[db_product.name]|alpha_numeric');
+		$this->form_validation->set_rules('name', 'Tên sản phẩm', 'required|is_unique[db_product.name]');
 		$this->form_validation->set_rules('catid', 'Loại sản phẩm', 'required');
 		$this->form_validation->set_rules('producer', 'Nhà cung cấp', 'required');
 		// $this->form_validation->set_rules('price_buy','Giá bán','required|callback_check');
@@ -157,7 +157,7 @@ class Product extends CI_Controller {
             $this->load->library('form_validation');
             $this->load->library('session');
             $this->load->library('alias');
-            $this->form_validation->set_rules('name', 'Tên sản phẩm', 'required|alpha_numeric');
+            $this->form_validation->set_rules('name', 'Tên sản phẩm', 'required');
             $this->form_validation->set_rules('catid', 'Loại sản phẩm', 'required');
             $this->form_validation->set_rules('producer', 'Nhà cung cấp', 'required');
             $this->form_validation->set_rules('price_buy','Giá bán','required');

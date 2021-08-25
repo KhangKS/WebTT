@@ -50,7 +50,7 @@ class Content extends CI_Controller {
 		$this->load->library('form_validation');
 		$this->load->library('session');
 		$this->load->library('alias');
-		$this->form_validation->set_rules('name', 'Tiêu đề bài viết', 'required|is_unique[db_content.title]|alpha_numeric');
+		$this->form_validation->set_rules('name', 'Tiêu đề bài viết', 'required|is_unique[db_content.title]');
 		$this->form_validation->set_rules('fulltext', 'Chi tiết bài viết', 'required');
 		if ($this->form_validation->run() == TRUE) 
 		{
@@ -101,7 +101,7 @@ class Content extends CI_Controller {
 		$this->load->library('form_validation');
 		$this->load->library('session');
 		$this->load->library('alias');
-		$this->form_validation->set_rules('name', 'Tiêu đề bài viết', 'required|alpha_numeric');
+		$this->form_validation->set_rules('name', 'Tiêu đề bài viết', 'required');
 		if ($this->form_validation->run() == TRUE) 
 		{
 			$mydata= array(

@@ -53,7 +53,7 @@ class Category extends CI_Controller {
 		$this->load->library('alias');
 		$this->load->library('form_validation');
 		$today=$d['year']."/".$d['mon']."/".$d['mday']." ".$d['hours'].":".$d['minutes'].":".$d['seconds'];
-		$this->form_validation->set_rules('name', 'Tên danh mục', 'required|is_unique[db_category.name]|max_length[25]|alpha_numeric');
+		$this->form_validation->set_rules('name', 'Tên danh mục', 'required|is_unique[db_category.name]|max_length[25]');
 		if ($this->form_validation->run() == TRUE) 
 		{
 			$mydata= array(
@@ -103,7 +103,7 @@ class Category extends CI_Controller {
 		$today=$d['year']."/".$d['mon']."/".$d['mday']." ".$d['hours'].":".$d['minutes'].":".$d['seconds'];
 		$this->load->library('alias');
 		$this->load->library('form_validation');
-		$this->form_validation->set_rules('name', 'Tên danh mục', 'required|max_length[25]|alpha_numeric');
+		$this->form_validation->set_rules('name', 'Tên danh mục', 'required|max_length[25]');
 		if ($this->form_validation->run() == TRUE) 
 		{
 			$mydata= array(

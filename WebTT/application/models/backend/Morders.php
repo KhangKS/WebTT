@@ -51,7 +51,7 @@ class Morders extends CI_Model {
     public function orders_customerid($customerid)
     {
         $this->db->where('customerid',$customerid);
-        $this->db->where('status', 1);
+        // $this->db->where('status', 1);
         $this->db->where('trash', 1);
         $query = $this->db->get($this->table);
         return $query->result_array();

@@ -50,7 +50,7 @@ class Producer extends CI_Controller {
 		$this->load->library('form_validation');
 		$this->load->library('session');
 		$this->load->library('alias');
-		$this->form_validation->set_rules('name', 'Tên nhà cung cấp', 'required|is_unique[db_producer.name]|alpha_numeric');
+		$this->form_validation->set_rules('name', 'Tên nhà cung cấp', 'required|is_unique[db_producer.name]');
 		$this->form_validation->set_rules('code', 'Mã code', 'required|is_unique[db_producer.code]|alpha_numeric');
 		$this->form_validation->set_rules('keyword', 'Từ khóa', 'required');
 		if ($this->form_validation->run() == TRUE){
@@ -86,7 +86,7 @@ class Producer extends CI_Controller {
 		$this->load->library('form_validation');
 		$this->load->library('session');
 		$this->load->library('alias');
-		$this->form_validation->set_rules('name', 'Tên nhà cung cấp', 'required|alpha_numeric');
+		$this->form_validation->set_rules('name', 'Tên nhà cung cấp', 'required');
 		$this->form_validation->set_rules('keyword', 'Từ khóa', 'required|alpha_numeric');
 		if ($this->form_validation->run() == TRUE) {
 			$mydata= array(
@@ -129,6 +129,13 @@ class Producer extends CI_Controller {
 	}
 
 	public function trash($id){
+		$count_product = $this->Mproduct->number_product_by_producer($id);
+		if($count_product > 0)
+		{
+			$this->session->set_flashdata('error', 'Nhà cung cấp này còn sản phẩm bên trong! Hãy xóa sản phẩm trước !');
+			redirect('admin/producer','refresh');
+		}
+
 		$mydata= array('trash' => 0);
 		$this->Mproducer->producer_update($mydata, $id);
 		$this->session->set_flashdata('success', 'Xóa nhà cung cấp vào thùng rác thành công');
