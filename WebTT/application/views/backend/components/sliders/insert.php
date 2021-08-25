@@ -4,7 +4,7 @@
         <section class="content-header">
             <h1><i class="glyphicon glyphicon-picture"></i> Thêm Sliders</h1>
             <div class="breadcrumb">
-                <button name="THEM_NEW" type="submit" class="btn btn-primary btn-sm">
+                <button name="THEM_NEW" type="submit" class="btn btn-primary btn-sm" id="btn">
                     <span class="glyphicon glyphicon-floppy-save"></span> Lưu[Thêm]
                 </button>
                 <a class="btn btn-primary btn-sm" href="admin/sliders" role="button">
@@ -24,7 +24,7 @@
                             <div class="form-group">
                                 <label>Tên sliders<span class = "maudo">(*)</span></label>
                                 <input type="text" name="name" placeholder="Tên sliders" class="form-control" value="<?php echo set_value('name');?>">
-                                <div class="error maudo" id="password_error"><?php echo form_error('name')?></div>
+                                <div class="error maudo" id="error-name"><?php echo form_error('name')?></div>
                             </div>
                             <!--/.ND-->
                         </div>
@@ -49,3 +49,22 @@
         </section><!-- /.content -->
     </form>         
 </div>
+<script src="public/js/jquery-2.2.3.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $(`#btn`).click(function(event) {
+            var iChars = "!`@#$%^&*()+=-[]\\\';,./{}|\":<>?~_";   
+            var name = $(`input[name="name"]`).val();
+
+            for (var i = 0; i < name.length; i++)
+            {      
+                if (iChars.indexOf(name.charAt(i)) != -1)
+                {    
+                    event.preventDefault();
+                    $(`#error-name`).html(`Tên sliders không được chứa ký tự đặc biệt.`);
+                    break;
+                }
+            }
+        })
+    });
+</script>

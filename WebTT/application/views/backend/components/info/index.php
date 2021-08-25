@@ -4,7 +4,7 @@
 		<section class="content-header">
 			<h1><i class="glyphicon glyphicon-text-background"></i> Hệ Thống</h1>
 			<div class="breadcrumb">
-				<button type = "submit" class="btn btn-primary btn-sm">
+				<button type = "submit" class="btn btn-primary btn-sm" id="btn">
 					<span class="glyphicon glyphicon-floppy-save"></span>
 					Lưu
 				</button>
@@ -20,12 +20,12 @@
 								<div class="form-group">
 									<label> Tên đầy đủ <span class = "maudo">(*)</span></label>
 									<input type="text" class="form-control" name="fullname" style="width:100%" placeholder="Tên đầy đủ" value="<?php echo $row['fullname'] ?>">
-									<div class="error maudo"><?php echo form_error('fullname')?></div>
+									<div class="error maudo" id="error-fullname"><?php echo form_error('fullname')?></div>
 								</div>
 								<div class="form-group">
 									<label>Tên viết tắt</label>
 									<input type="text" class="form-control" name="abbreviation_name" style="width:100%" placeholder="Tên viết tắt" value="<?php echo $row['abbreviation_name'] ?>">
-									<div class="error maudo"><?php echo form_error('abbreviation_name')?></div>
+									<div class="error maudo" id="error-abbreviation-name"><?php echo form_error('abbreviation_name')?></div>
 								</div>
 								<div class="form-group">
 									<label>Địa chỉ<span class = "maudo">(*)</span></label>
@@ -73,3 +73,33 @@
 </form>
 <!-- /.content -->
 </div><!-- /.content-wrapper -->
+<script src="public/js/jquery-2.2.3.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$(`#btn`).click(function(event) {
+			var iChars = "!`@#$%^&*()+=-[]\\\';,./{}|\":<>?~_";   
+			var fullname = $(`input[name="fullname"]`).val();
+
+			for (var i = 0; i < fullname.length; i++)
+			{      
+				if (iChars.indexOf(fullname.charAt(i)) != -1)
+				{    
+					event.preventDefault();
+					$(`#error-fullname`).html(`Tên đầy đủ không được chứa ký tự đặc biệt.`);
+					break;
+				}
+			}
+
+			var abbreviation_name = $(`input[name="abbreviation_name"]`).val();
+			for (var i = 0; i < abbreviation_name.length; i++)
+			{      
+				if (iChars.indexOf(abbreviation_name.charAt(i)) != -1)
+				{    
+					event.preventDefault();
+					$(`#error-abbreviation-name`).html(`Tên viết tắt không được chứa ký tự đặc biệt.`);
+					break;
+				}
+			}
+		})
+	});
+</script>

@@ -53,19 +53,57 @@
         <!-- <?php 
             $this->load->view('frontend/modules/category');
         ?> -->
-        <section id="menu-slider" class="border">
-            <?php 
-                $this->load->view('frontend/modules/panel-left');
-            ?>
+
+
+
+
+
+
+
+
+
+
+
+
+        <section id="menu-slider">
+            <div class="container">
+                <div class="border">
+                    <?php 
+                        $this->load->view('frontend/modules/panel-left');
+                    ?>
+            
+
+
+
+
+                <!--CONTENT-->
+                <?php 
+                    if(isset($com,$view)){
+                        $this->load->view('frontend/components/'.$com.'/'.$view);
+                    }
+                    else
+                        $this->load->view('frontend/components/Error404/index');
+                ?>
+                </div>
+            </div>
         </section>
-        <!--CONTENT-->
-        <?php 
-            if(isset($com,$view)){
-                $this->load->view('frontend/components/'.$com.'/'.$view);
-            }
-            else
-                $this->load->view('frontend/components/Error404/index');
-        ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <!--FOOTER-->
         <?php 
             $this->load->view('frontend/modules/footer');

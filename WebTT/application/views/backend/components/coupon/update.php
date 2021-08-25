@@ -4,7 +4,7 @@
 		<section class="content-header">
 			<h1><i class="glyphicon glyphicon-text-background"></i> Cập nhật mã giảm giá</h1>
 			<div class="breadcrumb">
-				<button type = "submit" class="btn btn-primary btn-sm">
+				<button type = "submit" class="btn btn-primary btn-sm" id="btn">
 					<span class="glyphicon glyphicon-floppy-save"></span>
 					Lưu[Cập nhật]
 				</button>
@@ -23,7 +23,7 @@
 								<div class="form-group">
 									<label>Mã giảm giá<span class = "maudo">(*)</span></label>
 									<input type="text" class="form-control" name="code" style="width:100%" placeholder="Mã giảm giá" value="<?php echo $row['code'] ?>">
-									<div class="error maudo" id="password_error"><?php echo form_error('code')?></div>
+									<div class="error maudo" id="error-code"><?php echo form_error('code')?></div>
 								</div>
 								<div class="form-group">
 									<label>Số tiền giảm giá<span class = "maudo">(*)</span></label>
@@ -80,3 +80,22 @@
 	</form>
 	<!-- /.coupon -->
 </div><!-- /.coupon-wrapper -->
+<script src="public/js/jquery-2.2.3.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$(`#btn`).click(function(event) {
+			var iChars = "!`@#$%^&*()+=-[]\\\';,./{}|\":<>?~_";   
+			var code = $(`input[name="code"]`).val();
+
+			for (var i = 0; i < code.length; i++)
+			{      
+				if (iChars.indexOf(code.charAt(i)) != -1)
+				{    
+					event.preventDefault();
+					$(`#error-code`).html(`Mã giảm giá không được chứa ký tự đặc biệt.`);
+					break;
+				}
+			}
+		})
+	});
+</script>

@@ -4,7 +4,7 @@
 		<section class="content-header">
 			<h1><i class="glyphicon glyphicon-text-background"></i> Cập nhật nhà cung cấp</h1>
 			<div class="breadcrumb">
-				<button type = "submit" class="btn btn-primary btn-sm">
+				<button type = "submit" class="btn btn-primary btn-sm" id="btn">
 					<span class="glyphicon glyphicon-floppy-save"></span>
 					Lưu[Cập nhật]
 				</button>
@@ -58,3 +58,33 @@
 	</form>
 <!-- /.content -->
 </div><!-- /.content-wrapper -->
+<script src="public/js/jquery-2.2.3.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$(`#btn`).click(function(event) {
+			var iChars = "!`@#$%^&*()+=-[]\\\';,./{}|\":<>?~_";   
+			var name = $(`input[name="name"]`).val();
+
+			for (var i = 0; i < name.length; i++)
+			{      
+				if (iChars.indexOf(name.charAt(i)) != -1)
+				{    
+					event.preventDefault();
+					$(`#error-name`).html(`Tên nhà cung cấp không được chứa ký tự đặc biệt.`);
+					break;
+				}
+			}
+
+			var code = $(`input[name="code"]`).val();
+			for (var i = 0; i < code.length; i++)
+			{      
+				if (iChars.indexOf(code.charAt(i)) != -1)
+				{    
+					event.preventDefault();
+					$(`#error-code`).html(`Mã code không được chứa ký tự đặc biệt.`);
+					break;
+				}
+			}
+		})
+	});
+</script>
