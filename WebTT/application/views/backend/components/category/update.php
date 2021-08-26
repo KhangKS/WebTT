@@ -52,7 +52,7 @@
 								<div class="form-group">
 									<label>Tên loại sản phẩm <span class = "maudo">(*)</span></label>
 									<input type="text" class="form-control" name="name" style="width:300px;" placeholder="Tên loại sản phẩm" value="<?php echo $row['name'] ?>">
-									<div class="error maudo" id="password_error"><?php echo form_error('name')?></div>
+									<div class="error maudo" id="error-name"><?php echo form_error('name')?></div>
 								</div>
 								<div class="form-group">
 									<label>Chủ đề cha</label>
@@ -103,8 +103,8 @@
 				if (iChars.indexOf(data.charAt(i)) != -1)
 				{    
 					event.preventDefault();
-					$(`input[name="name"]`).after(`<div class="error maudo">Tên danh mục không được chứa ký tự đặc biệt.</div>`);
-					return false;
+					$(`#error-name`).html(`Tên danh mục không được chứa ký tự đặc biệt.`);
+					break;
 				}
 			}
 		})
