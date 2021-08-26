@@ -174,6 +174,7 @@ class Mproduct extends CI_Model {
 
     public function product_list_cat_camera($listcat, $limit)
     {
+        $this->db->where('status', 1);
         $this->db->where('trash', 1);
         $this->db->group_start();
         //$d=0;

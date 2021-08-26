@@ -55,7 +55,7 @@
 								</div>
 								<div class="form-group">
 									<label>Ngày giới hạn nhập</label>
-									<input type="text" class="form-control" name="expiration_date" style="width:100%" placeholder="Số lần giới hạn nhập" value="<?php echo $row['expiration_date'] ?>">
+									<input type="text" class="form-control" name="expiration_date" min="<?php echo date("Y-m-d") ?>" style="width:100%" placeholder="Số lần giới hạn nhập" value="<?php echo $row['expiration_date'] ?>">
 								</div>
 								<div class="form-group">
 									<label>Mô tả ngắn</label>

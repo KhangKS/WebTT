@@ -849,6 +849,12 @@ span.small-text {font-size: 14px;color: #888;}
 	margin: 0;
 	padding: 15px;
 }*/
+.pt-5 {
+	padding-top: 5px;
+}
+.pb-5 {
+	padding-bottom: 5px;
+}
 .padding-5 {
 	padding: 5px!important;
 }
