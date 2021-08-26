@@ -25,7 +25,7 @@
 										<div class="form-group">
 											<label>Tên nhà cung cấp</label>
 											<input type="text" class="form-control" name="name" placeholder="Tên nhà cung cấp" value="<?php echo $row['name'] ?>">
-											<div class="error maudo" id="password_error"><?php echo form_error('name')?></div>
+											<div class="error maudo" id="error-name"><?php echo form_error('name')?></div>
 										</div>
 										<div class="form-group">
 											<label>Mã code <span class = "maudo">(*)</span></label>
@@ -71,17 +71,6 @@
 				{    
 					event.preventDefault();
 					$(`#error-name`).html(`Tên nhà cung cấp không được chứa ký tự đặc biệt.`);
-					break;
-				}
-			}
-
-			var code = $(`input[name="code"]`).val();
-			for (var i = 0; i < code.length; i++)
-			{      
-				if (iChars.indexOf(code.charAt(i)) != -1)
-				{    
-					event.preventDefault();
-					$(`#error-code`).html(`Mã code không được chứa ký tự đặc biệt.`);
 					break;
 				}
 			}

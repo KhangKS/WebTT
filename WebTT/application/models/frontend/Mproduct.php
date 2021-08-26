@@ -163,24 +163,25 @@ class Mproduct extends CI_Model {
         return $query->result_array();
     }
 
-    public function count_product_by_category($category_id)
+    public function count_product_by_category($array_category)
     {
         $this->db->where('status', 1);
         $this->db->where('trash', 1);
-        $this->db->where('catid', $category_id);
+        $this->db->where_in('catid', $array_category);
         $query = $this->db->get($this->table);
         return count($query->result_array());
     }
 
-    public function product_list_cat_camera($listcat, $limit)
+    public function product_list_category($listcat, $limit)
     {
         $this->db->where('status', 1);
         $this->db->where('trash', 1);
         $this->db->group_start();
-        //$d=0;
+
         foreach ($listcat as $value) {
             $this->db->or_where('catid', $value);
         }
+        
         $this->db->group_end();
         $query = $this->db->get($this->table, $limit);
         return $query->result_array();
