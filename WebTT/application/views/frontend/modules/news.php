@@ -16,8 +16,8 @@
 							<a href="tin-tuc/<?php echo $value['alias'] ?>">
 								<?php
                                     $str = strip_tags($value['title']);
-                                    if(strlen($str)>58) {
-                                        $strCut = substr($str, 0, 58);
+                                    if(strlen($str)>35) {
+                                        $strCut = substr($str, 0, 35);
                                         $str = substr($strCut, 0, strrpos($strCut, ' ')).' ... ';
                                     }
                                     echo $str;
