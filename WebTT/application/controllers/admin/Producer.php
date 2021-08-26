@@ -87,7 +87,7 @@ class Producer extends CI_Controller {
 		$this->load->library('session');
 		$this->load->library('alias');
 		$this->form_validation->set_rules('name', 'Tên nhà cung cấp', 'required');
-		$this->form_validation->set_rules('keyword', 'Từ khóa', 'required|alpha_numeric');
+		$this->form_validation->set_rules('keyword', 'Từ khóa', 'required');
 		if ($this->form_validation->run() == TRUE) {
 			$mydata= array(
 				'name' =>$_POST['name'], 

@@ -44,7 +44,7 @@ foreach ($listProducer as $r) {
 								<div class="form-group">
 									<label>Tên sản phẩm <span class = "maudo">(*)</span></label>
 									<input type="text" class="form-control" name="name" style="width:100%" placeholder="Tên sản phẩm" value="<?php echo $row['name'] ?>">
-									<div class="error maudo" id="password_error"><?php echo form_error('name')?></div>
+									<div class="error maudo" id="error-name"><?php echo form_error('name')?></div>
 								</div>
 								<div class="row">
 									<div class="col-md-12">
@@ -143,8 +143,8 @@ foreach ($listProducer as $r) {
 				if (iChars.indexOf(data.charAt(i)) != -1)
 				{    
 					event.preventDefault();
-					$(`input[name="name"]`).after(`<div class="error maudo">Tên sản phẩm không được chứa ký tự đặc biệt.</div>`);
-					return false;
+					$(`#error-name`).html(`Tên sản phẩm không được chứa ký tự đặc biệt.`);
+					break;
 				}
 			}
 		})

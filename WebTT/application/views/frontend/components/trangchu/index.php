@@ -16,7 +16,7 @@
 
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
         <!-- Camera -->
-        <div class="sale-title">
+        <!-- <div class="sale-title mb-1">
             <a href="san-pham/camera"><span>Camera (<?php echo $number_product_camera; ?> sản phẩm)</span></a>
             <?php 
                 foreach ($sub_category_camera as $row) :?>
@@ -54,10 +54,10 @@
                         </div>
                     </div>
             <?php endforeach; ?>
-        </div>
+        </div> -->
 
         <!-- Laptop -->
-        <div class="sale-title mt-1">
+        <!-- <div class="sale-title mb-1">
             <?php $number = $this->Mproduct->count_product_by_category(3); ?>
             <a href="san-pham/laptop"><span>Laptop (<?php echo $number; ?> sản phẩm)</span></a>
         </div>
@@ -93,10 +93,10 @@
                         </div>
                     </div>
             <?php endforeach; ?>
-        </div>
+        </div> -->
 
         <!-- Máy tính để bàn -->
-        <div class="sale-title mt-1">
+        <!-- <div class="sale-title mb-1">
             <?php $number = $this->Mproduct->count_product_by_category(2); ?>
             <a href="san-pham/may-tinh-de-ban"><span>Máy tính để bàn (<?php echo $number; ?> sản phẩm)</span></a>
         </div>
@@ -132,10 +132,10 @@
                         </div>
                     </div>
             <?php endforeach; ?>
-        </div>
+        </div> -->
 
         <!-- Máy in - photo -->
-        <div class="sale-title mt-1">
+        <!-- <div class="sale-title mb-1">
             <?php $number = $this->Mproduct->count_product_by_category(1); ?>
             <a href="san-pham/may-in-photo"><span>Máy in - photo (<?php echo $number; ?> sản phẩm)</span></a>
         </div>
@@ -171,10 +171,10 @@
                         </div>
                     </div>
             <?php endforeach; ?>
-        </div>
+        </div> -->
 
         <!-- Thiết bị y tế -->
-        <div class="sale-title mt-1">
+        <!-- <div class="sale-title mb-1">
             <?php $number = $this->Mproduct->count_product_by_category(5); ?>
             <a href="san-pham/thiet-bi-y-te"><span>Thiết bị y tế (<?php echo $number; ?> sản phẩm)</span></a>
         </div>
@@ -210,10 +210,10 @@
                         </div>
                     </div>
             <?php endforeach; ?>
-        </div>
+        </div> -->
 
         <!-- Phần mềm -->
-        <div class="sale-title mt-1">
+        <!-- <div class="sale-title mb-1">
             <?php $number = $this->Mproduct->count_product_by_category(7); ?>
             <a href="san-pham/phan-mem"><span>Phần mềm (<?php echo $number; ?> sản phẩm)</span></a>
         </div>
@@ -249,10 +249,10 @@
                         </div>
                     </div>
             <?php endforeach; ?>
-        </div>
+        </div> -->
 
         <!-- Báo trộm - Báo cháy -->
-        <div class="sale-title mt-1">
+        <!-- <div class="sale-title mb-1">
             <?php $number = $this->Mproduct->count_product_by_category(13); ?>
             <a href="san-pham/bao-trom-bao-chay"><span>Báo trộm - Báo cháy (<?php echo $number; ?> sản phẩm)</span></a>
         </div>
@@ -288,10 +288,10 @@
                         </div>
                     </div>
             <?php endforeach; ?>
-        </div>
+        </div> -->
 
         <!-- Vật tư ngành vàng -->
-        <div class="sale-title mt-1">
+        <!-- <div class="sale-title mb-1">
             <?php $number = $this->Mproduct->count_product_by_category(8); ?>
             <a href="san-pham/vat-tu-nganh-vang"><span>Vật tư ngành vàng (<?php echo $number; ?> sản phẩm)</span></a>
         </div>
@@ -327,10 +327,10 @@
                         </div>
                     </div>
             <?php endforeach; ?>
-        </div>
+        </div> -->
 
         <!-- Điện - Điện Máy -->
-        <div class="sale-title mt-1">
+        <!-- <div class="sale-title mb-1">
             <?php $number = $this->Mproduct->count_product_by_category(10); ?>
             <a href="san-pham/dien-dien-may"><span>Điện - Điện Máy (<?php echo $number; ?> sản phẩm)</span></a>
         </div>
@@ -366,7 +366,56 @@
                         </div>
                     </div>
             <?php endforeach; ?>
-        </div>
+        </div> -->
+
+
+        <?php foreach ($categories as $category) :?>
+            <div class="sale-title mb-1">
+                <?php 
+                    $array_category = $this->Mcategory->category_listcat($category['id']);
+                    $number = $this->Mproduct->count_product_by_category($array_category); 
+                ?>
+                <a href="san-pham/<?php echo $category['link'] ?>"><span><?php echo $category['name'] ?> (<?php echo $number; ?> sản phẩm)</span></a>
+
+                <?php $sub_categories = $this->Mcategory->category_menu($category['id']); ?>
+                <?php foreach ($sub_categories as $sub_category) :?>
+                    <a href="san-pham/<?php echo $sub_category['link'] ?>" class="float-right d-block mr-1"><span><?php echo $sub_category['name']; ?></span></a>
+                <?php endforeach; ?>
+            </div>
+            <div class="row">
+                <?php 
+                    $products = $this->Mproduct->product_list_category($array_category, $limit);
+                    foreach ($products as $product) :?>
+                        <div class="col-lg-4 pt-5 pb-5">
+                            <div class="product ">
+                                <?php if($product['sale'] > 0) :?>
+                                    <div class="giam-percent">
+                                        <span class="text-giam-percent">Giảm <?php echo $product['sale'] ?>%</span>
+                                    </div>
+                                <?php endif; ?>
+                                <a href="<?php echo $product['alias'] ?>" title="<?php echo $product['name'] ?>" >
+                                    <img class="img-p border"src="public/images/products/<?php echo $product['avatar'] ?>" alt="" style="height:60px;max-width:100px;">
+                                </a>
+                                <a href="<?php echo $product['alias'] ?>" title="<?php echo $product['name'] ?>" class="text-center title-product">
+                                    <h3>
+                                        <?php
+                                            $str = strip_tags($product['name']);
+                                            if(strlen($str)>21) {
+                                                $strCut = substr($str, 0, 21);
+                                                $str = substr($strCut, 0, strrpos($strCut, ' ')).' ... ';
+                                            }
+                                            echo $str;
+                                        ?>
+                                    </h3>
+                                </a>
+                                <p class="price-product1">
+                                    <?php echo number_format($product['price_sale'] - ($product['price_sale'] * $product['sale'] / 100)) ?>₫
+                                </p>
+                            </div>
+                        </div>
+                <?php endforeach; ?>
+            </div>
+        <?php endforeach; ?>
 
     </div>
 

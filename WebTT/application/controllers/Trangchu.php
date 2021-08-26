@@ -18,15 +18,8 @@ class Trangchu extends CI_Controller {
         $this->data['title'] = 'Smart Store - Điện thoại, Laptop, Link kiện chính hãng';
         $this->data['view'] = 'index';
 
-
-        $id_camera = 4;
-        $limit = 3;
-        $list_category_camera = $this->Mcategory->category_listcat($id_camera);
-        $number_product_camera = $this->Mproduct->product_chude_count($list_category_camera);
-        // Đang xử lý
-        $this->data['product_camera'] = $this->Mproduct->product_list_cat_camera($list_category_camera, $limit);
-        $this->data['sub_category_camera'] = $this->Mcategory->category_menu($id_camera);
-        $this->data['number_product_camera'] = $number_product_camera;
+        $this->data['limit'] = 3;
+        $this->data['categories'] = $this->Mcategory->category_menu(0);
 
 		$this->load->view('frontend/layout', $this->data);
 	}
