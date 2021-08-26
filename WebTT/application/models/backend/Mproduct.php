@@ -20,7 +20,7 @@ class Mproduct extends CI_Model {
     public function all_product($limit, $start, $search) 
     {
         $this->db->limit($limit, $start);
-        $this->db->where('status', 1);
+        // $this->db->where('status', 1);
         $this->db->where('trash', 1);
         $this->db->like('name', $search);
         $query = $this->db->get($this->table);
@@ -38,7 +38,7 @@ class Mproduct extends CI_Model {
     //index
 	public function product_sanpham_count()
     {
-        $this->db->where('status', 1);
+        // $this->db->where('status', 1);
         $this->db->where('trash', 1);
         $query = $this->db->get($this->table);
         return count($query->result_array());

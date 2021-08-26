@@ -8,7 +8,7 @@
 
 <div class="row" style="margin-top: 20px; margin-bottom: 20px;">
     <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 list-menu pull-left">
+        <div class="list-menu">
             <?php $this->load->view('frontend/modules/category'); ?>
         </div>
         <?php $this->load->view('frontend/modules/news'); ?> 
@@ -26,7 +26,7 @@
         <div class="row">
             <?php 
                 foreach ($product_camera as $row) :?>
-                    <div class="col-lg-4 padding-5">
+                    <div class="col-lg-4 pt-5 pb-5">
                         <div class="product ">
                             <?php if($row['sale'] > 0) :?>
                                 <div class="giam-percent">
@@ -57,7 +57,7 @@
         </div>
 
         <!-- Laptop -->
-        <div class="sale-title">
+        <div class="sale-title mt-1">
             <?php $number = $this->Mproduct->count_product_by_category(3); ?>
             <a href="san-pham/laptop"><span>Laptop (<?php echo $number; ?> sản phẩm)</span></a>
         </div>
@@ -65,7 +65,7 @@
             <?php 
                 $product_sale = $this->Mproduct->product_by_category(3, 3);
                 foreach ($product_sale as $row) :?>
-                    <div class="col-lg-4 padding-5">
+                    <div class="col-lg-4 pt-5 pb-5">
                         <div class="product ">
                             <?php if($row['sale'] > 0) :?>
                                 <div class="giam-percent">
@@ -96,7 +96,7 @@
         </div>
 
         <!-- Máy tính để bàn -->
-        <div class="sale-title">
+        <div class="sale-title mt-1">
             <?php $number = $this->Mproduct->count_product_by_category(2); ?>
             <a href="san-pham/may-tinh-de-ban"><span>Máy tính để bàn (<?php echo $number; ?> sản phẩm)</span></a>
         </div>
@@ -104,7 +104,7 @@
             <?php 
                 $product_sale = $this->Mproduct->product_by_category(2, 3);
                 foreach ($product_sale as $row) :?>
-                    <div class="col-lg-4 padding-5">
+                    <div class="col-lg-4 pt-5 pb-5">
                         <div class="product ">
                             <?php if($row['sale'] > 0) :?>
                                 <div class="giam-percent">
@@ -135,7 +135,7 @@
         </div>
 
         <!-- Máy in - photo -->
-        <div class="sale-title">
+        <div class="sale-title mt-1">
             <?php $number = $this->Mproduct->count_product_by_category(1); ?>
             <a href="san-pham/may-in-photo"><span>Máy in - photo (<?php echo $number; ?> sản phẩm)</span></a>
         </div>
@@ -143,7 +143,7 @@
             <?php 
                 $product_sale = $this->Mproduct->product_by_category(1, 3);
                 foreach ($product_sale as $row) :?>
-                    <div class="col-lg-4 padding-5">
+                    <div class="col-lg-4 pt-5 pb-5">
                         <div class="product ">
                             <?php if($row['sale'] > 0) :?>
                                 <div class="giam-percent">
@@ -174,7 +174,7 @@
         </div>
 
         <!-- Thiết bị y tế -->
-        <div class="sale-title">
+        <div class="sale-title mt-1">
             <?php $number = $this->Mproduct->count_product_by_category(5); ?>
             <a href="san-pham/thiet-bi-y-te"><span>Thiết bị y tế (<?php echo $number; ?> sản phẩm)</span></a>
         </div>
@@ -182,7 +182,7 @@
             <?php 
                 $product_sale = $this->Mproduct->product_by_category(5, 3);
                 foreach ($product_sale as $row) :?>
-                    <div class="col-lg-4 padding-5">
+                    <div class="col-lg-4 pt-5 pb-5">
                         <div class="product ">
                             <?php if($row['sale'] > 0) :?>
                                 <div class="giam-percent">
@@ -213,7 +213,7 @@
         </div>
 
         <!-- Phần mềm -->
-        <div class="sale-title">
+        <div class="sale-title mt-1">
             <?php $number = $this->Mproduct->count_product_by_category(7); ?>
             <a href="san-pham/phan-mem"><span>Phần mềm (<?php echo $number; ?> sản phẩm)</span></a>
         </div>
@@ -221,7 +221,7 @@
             <?php 
                 $product_sale = $this->Mproduct->product_by_category(7, 3);
                 foreach ($product_sale as $row) :?>
-                    <div class="col-lg-4 padding-5">
+                    <div class="col-lg-4 pt-5 pb-5">
                         <div class="product ">
                             <?php if($row['sale'] > 0) :?>
                                 <div class="giam-percent">
@@ -252,7 +252,7 @@
         </div>
 
         <!-- Báo trộm - Báo cháy -->
-        <div class="sale-title">
+        <div class="sale-title mt-1">
             <?php $number = $this->Mproduct->count_product_by_category(13); ?>
             <a href="san-pham/bao-trom-bao-chay"><span>Báo trộm - Báo cháy (<?php echo $number; ?> sản phẩm)</span></a>
         </div>
@@ -260,7 +260,7 @@
             <?php 
                 $product_sale = $this->Mproduct->product_by_category(13, 3);
                 foreach ($product_sale as $row) :?>
-                    <div class="col-lg-4 padding-5">
+                    <div class="col-lg-4 pt-5 pb-5">
                         <div class="product ">
                             <?php if($row['sale'] > 0) :?>
                                 <div class="giam-percent">
@@ -291,7 +291,7 @@
         </div>
 
         <!-- Vật tư ngành vàng -->
-        <div class="sale-title">
+        <div class="sale-title mt-1">
             <?php $number = $this->Mproduct->count_product_by_category(8); ?>
             <a href="san-pham/vat-tu-nganh-vang"><span>Vật tư ngành vàng (<?php echo $number; ?> sản phẩm)</span></a>
         </div>
@@ -299,7 +299,7 @@
             <?php 
                 $product_sale = $this->Mproduct->product_by_category(8, 3);
                 foreach ($product_sale as $row) :?>
-                    <div class="col-lg-4 padding-5">
+                    <div class="col-lg-4 pt-5 pb-5">
                         <div class="product ">
                             <?php if($row['sale'] > 0) :?>
                                 <div class="giam-percent">
@@ -330,7 +330,7 @@
         </div>
 
         <!-- Điện - Điện Máy -->
-        <div class="sale-title">
+        <div class="sale-title mt-1">
             <?php $number = $this->Mproduct->count_product_by_category(10); ?>
             <a href="san-pham/dien-dien-may"><span>Điện - Điện Máy (<?php echo $number; ?> sản phẩm)</span></a>
         </div>
@@ -338,7 +338,7 @@
             <?php 
                 $product_sale = $this->Mproduct->product_by_category(10, 3);
                 foreach ($product_sale as $row) :?>
-                    <div class="col-lg-4 padding-5">
+                    <div class="col-lg-4 pt-5 pb-5">
                         <div class="product ">
                             <?php if($row['sale'] > 0) :?>
                                 <div class="giam-percent">

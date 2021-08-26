@@ -54,8 +54,8 @@
 									<input type="number" class="form-control" name="payment_limit" style="width:100%" placeholder="Số tiền đơn hàng tối thiểu được áp dụng" value="<?php echo $row['payment_limit'] ?>">
 								</div>
 								<div class="form-group">
-									<label>Ngày giới hạn nhập<span class = "maudo">(*)</span></label>
-									<input type="text" class="form-control" name="expiration_date" style="width:100%" placeholder="Số lần giới hạn nhập" value="<?php echo $row['expiration_date'] ?>">
+									<label>Ngày giới hạn nhập<span class = "maudo">(*)</span>/label>
+									<input type="text" class="form-control" name="expiration_date" min="<?php echo date("Y-m-d") ?>" style="width:100%" placeholder="Số lần giới hạn nhập" value="<?php echo $row['expiration_date'] ?>">
 								</div>
 								<div class="form-group">
 									<label>Mô tả ngắn</label>

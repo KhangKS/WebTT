@@ -1,8 +1,8 @@
 <?php echo form_open( base_url()."lien-he"); ?>
 <section>
-	<div class="container">
+	<div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 list-menu pull-left">
+			<div class="list-menu">
 				<?php $this->load->view('frontend/modules/category'); ?>
 			</div>
 			<?php $this->load->view('frontend/modules/news'); ?> 
