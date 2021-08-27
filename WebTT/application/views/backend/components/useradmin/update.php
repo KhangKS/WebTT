@@ -104,7 +104,7 @@
 <script type="text/javascript">
     $(document).ready(function() {
         $(`#btn`).click(function(event) {
-            var iChars = "!`@#$%^&*()+=-[]\\\';,./{}|\":<>?~_";   
+            var iChars = "!`@#$%^&*()+=-[]\\\';,./{}|\":<>?~_1234567890";   
             var fullname = $(`input[name="fullname"]`).val();
 
             for (var i = 0; i < fullname.length; i++)
@@ -112,7 +112,7 @@
                 if (iChars.indexOf(fullname.charAt(i)) != -1)
                 {    
                     event.preventDefault();
-                    $(`#error-fullname`).html(`Họ và tên không được chứa ký tự đặc biệt.`);
+                    $(`#error-fullname`).html(`Họ và tên không được chứa ký tự đặc biệt và số.`);
                     break;
                 }
             }
