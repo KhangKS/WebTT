@@ -91,7 +91,7 @@
 	</form>
 <!-- /.content -->
 </div><!-- /.content-wrapper -->
-<script src="public/js/jquery-2.2.3.min.js"></script>
+<!-- <script src="public/js/jquery-2.2.3.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		$(`#btn`).click(function(event) {
@@ -109,4 +109,4 @@
 			}
 		})
 	});
-</script>
+</script> -->

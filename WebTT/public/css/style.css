@@ -1959,7 +1959,7 @@ select {
 }
 .panel-left-body{
 	width: 100%;
-	height: 350px;
+	/*height: 350px;*/
 	overflow: auto;
 }
 .news img{
