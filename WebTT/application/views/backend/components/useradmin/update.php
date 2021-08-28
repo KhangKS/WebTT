@@ -58,7 +58,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Số điện thoại <span class = "maudo">(*)</span></label>
-                                    <input type="text" class="form-control" name="phone" value="<?php echo $row['phone'] ?>" >
+                                    <input type="number" class="form-control" name="phone" value="<?php echo $row['phone'] ?>" >
                                     <div class="error"  style="color: red;"><?php echo form_error('phone')?></div>
                                 </div>
                                 <div class="form-group">
