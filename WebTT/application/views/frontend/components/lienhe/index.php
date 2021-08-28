@@ -1,6 +1,11 @@
 <?php echo form_open( base_url()."lien-he"); ?>
 <section>
 	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 slider-main pull-left mb-1">
+	        <?php 
+	        $this->load->view('frontend/modules/slider');
+	        ?>
+	    </div>
 		<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
 			<div class="list-menu">
 				<?php $this->load->view('frontend/modules/category'); ?>

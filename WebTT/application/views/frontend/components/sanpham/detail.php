@@ -1,7 +1,14 @@
 <section id="product-detail">
+		<div class="row">
+		    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 slider-main pull-left">
+		        <?php 
+		        $this->load->view('frontend/modules/slider');
+		        ?>
+		    </div>
+		</div>
 		<div class="products-wrap">
 			<?php if($row):?>
-				<div class="breadcrumbs">
+				<div class="breadcrumbs pl-2">
 					<ul>
 						<li class="home">
 							<a href="trang-chu" title="Go to Home Page">Trang chủ</a>

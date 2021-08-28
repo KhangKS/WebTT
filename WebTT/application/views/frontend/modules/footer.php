@@ -212,8 +212,7 @@ font-family: Arial;" href="tel:0939771987">
                 <div class="col-xs-12 col-sm-4">
                     <h3 class="footer-title">HỖ TRỢ KHÁCH HÀNG</h3>
                     <ul class="list-unstyled linklists">
-                        <li><a href="chinh-sach">Hướng dẫn thanh toán</a></li>          
-                        <li><a href="chinh-sach">Hướng dẫn đặt hàng</a></li>
+                        <li><a href="huong-dan-dat-hang">Hướng dẫn đặt hàng</a></li>
                         <li><a href="dieu-khoan">Điều khoản</a></li>                   
                     </ul>
                 </div>

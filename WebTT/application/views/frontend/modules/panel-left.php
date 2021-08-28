@@ -55,12 +55,12 @@
                     <ul class="menu-right" style="display: inline-block;">
                         <li class="pull-left"><a href="">Trang chủ</a></li>
                         <li class="pull-left"><a href="gioi-thieu">Giới thiệu</a></li>
-                        <li class="pull-left"><a href="tin-tuc/1?id=2">Khách hàng tiêu biểu</a></li>
+                        <li class="pull-left"><a href="khach-hang-tieu-bieu">Khách hàng tiêu biểu</a></li>
                         <li class="pull-left"><a href="san-pham">Sản phẩm</a></li>
-                        <li class="pull-left"><a href="tin-tuc/1?id=3">Tuyển dụng</a></li>
-                        <li class="pull-left"><a href="tin-tuc/1?id=1">Tin tức</a></li>
-                        <li class="pull-left"><a href="tin-tuc/1?id=4">Dịch vụ </a></li>
-                        <li class="pull-left"><a href="tin-tuc/1?id=5">Nông nghiệp</a></li>
+                        <li class="pull-left"><a href="tuyen-dung">Tuyển dụng</a></li>
+                        <li class="pull-left"><a href="tin-tuc">Tin tức</a></li>
+                        <li class="pull-left"><a href="dich-vu">Dịch vụ </a></li>
+                        <li class="pull-left"><a href="nong-nghiep">Nông nghiệp</a></li>
                         <li class="pull-left"><a href="lien-he">Liên hệ</a></li>
                     </ul>
                 </div>

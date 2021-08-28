@@ -2,7 +2,7 @@
 	<p>Tin tức thủ thuật</p>
 	<div class="tab-container ">
 		<?php  
-		$posts = $this->Mcontent->content_get_tips_news(5);
+		$posts = $this->Mcontent->content_get_tips_news(10);
 		foreach ($posts as $value) :?>
 			<div class="spost clearfix">
 				<div class="entry-image e-img">

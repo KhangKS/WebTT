@@ -3,35 +3,60 @@
         <p>Sản phẩm khuyến mãi</p>
         <div class="panel-left-body">
             <?php
-                $list = $this->Mproduct->product_sale('4');
-                $html_menu='<div id="post-list-footer" class="sidebar_menu">';
-                foreach ($list as $menu) {
-                    if($menu['sale'] > 0){
-                        $html_menu.="<div class = 'spost clearfix'>";
-                            $html_menu.="<div class='entry-image'>";
-                                $html_menu.="<a href=".$menu['alias']." title=' ".$menu['name']."'>";
-                                    $html_menu.="<img src='public/images/products/".$menu['img']."'>";
-                                $html_menu.="</a>";
-                            $html_menu.='</div>';
-                            $html_menu.='<div class="entry-c" style="width:194px;">';
-                                $html_menu.='<div class="entry-title">';
-                                    $html_menu.="<a class='ws-nw overflow ellipsis' href=".$menu['alias']." title=' ".$menu['name']."'>";
-                                        $html_menu.=$menu['name'];
-                                    $html_menu.="</a>";
-                                $html_menu.='</div>';
-                                $html_menu.='<ul class="entry-meta">';
-                                    $html_menu.='<li class="color">';
-                                        $html_menu.="<ins>".number_format($menu['price_sale'] - ($menu['price_sale'] * $menu['sale'] / 100)).'₫'."</ins>";
-                                        $html_menu.="<del>".number_format($menu['price_sale']).'₫'."</del>";
-                                    $html_menu.='</li>';
-                                $html_menu.='</ul>';
-                            $html_menu.='</div>';
-                        $html_menu.="</div>";
-                    }
-                }
-                $html_menu.="</div>";
-            echo $html_menu;
-            ?>
+                $products = $this->Mproduct->product_sale('4');
+                foreach ($products as $product):?>
+                    <!-- <div id="post-list-footer" class="sidebar_menu">
+                        <div class="spost clearfix">
+                            <div class="entry-image">
+                                <a href="<?php echo $product['alias'] ?>" title="<?php echo $product['name'] ?>">
+                                    <img src="public/images/products/<?php echo $product['img'] ?>">
+                                </a>
+                            </div>
+                            <div class="entry-c">
+                                <div class="entry-title">
+                                    <a class="ws-nw overflow ellipsis" href="<?php echo $product['alias'] ?>" title="$product['name']"><?php echo $product['name'] ?></a>
+                                </div>
+                                <ul class="entry-meta">
+                                    <li class="color">
+                                        <ins><?php echo number_format($product['price_sale'] - ($product['price_sale'] * $product['sale'] / 100)) ?>₫</ins>
+                                        <del><?php echo number_format($product['price_sale']) ?>₫</del>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div> -->
+
+
+
+
+                    <div class="col-lg-12 padding-5">
+                        <div class="product">
+                            <?php if($product['sale'] > 0) :?>
+                                <div class="giam-percent">
+                                    <span class="text-giam-percent">Giảm <?php echo $product['sale'] ?>%</span>
+                                </div>
+                            <?php endif; ?>
+                            <a href="<?php echo $product['alias'] ?>" title="<?php echo $product['name'] ?>" >
+                                <img class="img-p border"src="public/images/products/<?php echo $product['avatar'] ?>" alt="" style="height: 105px;max-width: 175px;">
+                            </a>
+                            <a href="<?php echo $product['alias'] ?>" title="<?php echo $product['name'] ?>" class="text-center title-product">
+                                <h3>
+                                    <?php
+                                        $str = strip_tags($product['name']);
+                                        if(strlen($str)>30) {
+                                            $strCut = substr($str, 0, 30);
+                                            $str = substr($strCut, 0, strrpos($strCut, ' ')).' ... ';
+                                        }
+                                        echo $str;
+                                    ?>
+                                </h3>
+                            </a>
+                            <p class="price-product1">
+                                <?php echo number_format($product['price_sale'] - ($product['price_sale'] * $product['sale'] / 100)) ?>₫
+                            </p>
+                        </div>
+                    </div>
+            <?php endforeach; ?>
         </div>
     </div>
 <!-- </div> -->

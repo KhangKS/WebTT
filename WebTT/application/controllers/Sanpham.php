@@ -12,6 +12,7 @@ class Sanpham extends CI_Controller {
         $this->load->library('session');
         $this->load->library('phantrang');
         $this->load->model('frontend/Mcontent');
+        $this->load->model('frontend/Mslider');
     }
        
     public function index(){
