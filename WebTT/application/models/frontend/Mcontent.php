@@ -16,6 +16,25 @@ class Mcontent extends CI_Model {
         return $query->result_array();
     }
 
+    public function news($limit, $start, $news_id){
+        $this->db->limit($limit, $start);
+        $this->db->where('id_categorypost', $news_id);
+        $this->db->where('trash', 1);
+        $this->db->where('status', 1);
+        $this->db->order_by('created', 'desc');
+        $query = $this->db->get($this->table);
+        return $query->result_array();
+    }
+
+    public function news_count($news_id)
+    {
+        $this->db->where('id_categorypost', $news_id);
+        $this->db->where('status', 1);
+        $this->db->where('trash', 1);
+        $query = $this->db->get($this->table);
+        return count($query->result_array());
+    }
+
     public function content_get_detail($link){
         $this->db->where('status', 1);
         $this->db->where('trash', 1);
@@ -24,7 +43,7 @@ class Mcontent extends CI_Model {
         $query = $this->db->get($this->table);
         return $query->row_array();
     }
-     public function content_count()
+    public function content_count()
     {
         $this->db->where('status', 1);
         $this->db->where('trash', 1);

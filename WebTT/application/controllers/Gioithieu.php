@@ -10,6 +10,7 @@ class Gioithieu extends CI_Controller {
         $this->load->model('frontend/Mproduct');
         $this->load->model('frontend/Mcontent');
         $this->load->model('backend/Minfo');
+        $this->load->model('frontend/Mslider');
     }
       
 	public function index(){
