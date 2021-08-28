@@ -28,12 +28,12 @@
 								<div class="form-group">
 									<label>Loại bài viết</label>
 									<select name="catepost" class="form-control" style="width:235px">
-									<option value="1">Tin tức</option>
-										<option value="2">Khách hàng tiêu biểu</option>
-										<option value="3">Tuyển dụng</option>
-										<option value="4">Dịch vụ</option>
-										<option value="5">Nông nghiệp</option>
-										<option value="7">Tin thủ thuật</option>
+									<option <?php if($row['id_categorypost'] == 1) {echo 'selected';}?> value="1">Tin tức</option>
+										<option <?php if($row['id_categorypost'] == 2) {echo 'selected';}?> value="2">Khách hàng tiêu biểu</option>
+										<option <?php if($row['id_categorypost'] == 3) {echo 'selected';}?> value="3">Tuyển dụng</option>
+										<option <?php if($row['id_categorypost'] == 4) {echo 'selected';}?> value="4">Dịch vụ</option>
+										<option <?php if($row['id_categorypost'] == 5) {echo 'selected';}?> value="5">Nông nghiệp</option>
+										<option <?php if($row['id_categorypost'] == 7) {echo 'selected';}?> value="7">Tin thủ thuật</option>
 									</select>
 								</div>
 								<div class="form-group">

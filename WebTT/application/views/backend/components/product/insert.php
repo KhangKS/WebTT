@@ -67,7 +67,7 @@
 							<div class="col-md-3">
 								<div class="form-group">
 									<label>Giá gốc<span class = "maudo">(*)</span></label>
-									<input name="price_root" class="form-control" value="<?php echo set_value('price_root');?>" type="number" value="0" min="0" step="1" max="1000000000">
+									<input name="price_root" class="form-control" value="<?php echo set_value('price_root');?>" type="number" value="0" min="0">
 								</div>
 								<div class="form-group">
 									<label>Khuyến mãi (%)</label>
@@ -75,7 +75,7 @@
 								</div>
 								<div class="form-group">
 									<label>Giá bán<span class = "maudo">(*)</span></label>
-									<input name="price_buy" value="<?php echo set_value('price_buy');?>" class="form-control" type="number" value="0" min="0" step="1" max="1000000000">
+									<input name="price_buy" value="<?php echo set_value('price_buy');?>" class="form-control" type="number" value="0" min="0">
 									<div class="error maudo" id="password_error"><?php echo form_error('price_buy')?></div>
 								</div>
 								<div class="form-group">
