@@ -58,7 +58,7 @@ class Content extends CI_Controller {
 				'title' =>$_POST['name'], 
 				'alias' =>$string=$this->alias->str_alias($_POST['name']),
 				'fulltext'=>$_POST['fulltext'], 
-				'introtext'=>'',
+				'introtext'=>$_POST['introtext'],
 				'created'=>$today,
 				'created_by'=>$this->session->userdata('id'),
 				'modified'=>$today,
