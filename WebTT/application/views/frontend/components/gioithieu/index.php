@@ -1,4 +1,11 @@
 <section id="content">
+	<div class="row">
+	    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 slider-main pull-left mb-1">
+	        <?php 
+	        $this->load->view('frontend/modules/slider');
+	        ?>
+	    </div>
+	</div>
 	<div class="row wraper">
 		<div class="banner-product">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">

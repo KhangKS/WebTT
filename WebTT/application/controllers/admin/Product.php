@@ -24,6 +24,7 @@ class Product extends CI_Controller {
 
         $limit = 10;
         $start_index = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+        // var_dump($start_index);exit();
         $config['base_url'] = base_url().'admin/product/';
         $config['total_rows'] = $this->Mproduct->product_sanpham_count();
         $config['per_page'] = $limit;

@@ -11,6 +11,24 @@ $route['san-pham/(:any)/(:num)'] = 'sanpham/category/$1';
 
 $route['comment/delete/(:num)'] ='sanpham/deleteComment/$1';
 
+$route['huong-dan-dat-hang'] = 'hotrokhachhang/orderGuide';
+$route['dieu-khoan'] = 'hotrokhachhang/rules';
+
+$route['tuyen-dung'] = 'tintuc/recruitment';
+$route['tuyen-dung/(:num)'] = 'tintuc/recruitment/$1';
+
+$route['tin-tuc'] = 'tintuc/news';
+$route['tin-tuc/(:num)'] = 'tintuc/news/$1';
+
+$route['dich-vu'] = 'tintuc/service';
+$route['dich-vu/(:num)'] = 'tintuc/service/$1';
+
+$route['nong-nghiep'] = 'tintuc/agriculture';
+$route['nong-nghiep/(:num)'] = 'tintuc/agriculture/$1';
+
+$route['khach-hang-tieu-bieu/(:num)'] = 'tintuc/typical_customer_news/$1';
+$route['khach-hang-tieu-bieu'] = 'tintuc/typical_customer_news';
+
 $route['tin-tuc/(:num)'] = 'tintuc/index/$1';
 $route['tin-tuc/(:any)'] = 'tintuc/detail';
 $route['lien-he'] = 'lienhe/index';
