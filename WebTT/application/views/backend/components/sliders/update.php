@@ -1,4 +1,4 @@
-<?php echo form_open_multipart('admin/sliders/update/'.$row['id']); ?>
+<?php echo form_open_multipart('admin/sliders/update/'.$row['id'].'/'.$this->uri->segment(5)); ?>
 <div class="content-wrapper" style="min-height: 454px;">
     <form action="<?php echo base_url() ?>admin/sliders/update.html" enctype="multipart/form-data" method="post" accept-charset="utf-8">
         <section class="content-header">

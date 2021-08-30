@@ -92,8 +92,11 @@ class Category extends CI_Controller {
 		}
 	}
 
-	public function update($id)
+	public function update($id, $number_paginate)
 	{
+		if ($number_paginate == 1) {
+			$number_paginate = '';
+		}
 		$user_role=$this->session->userdata('sessionadmin');
 		if($user_role['role']==2){
 			redirect('admin/E403/index','refresh');
@@ -130,7 +133,7 @@ class Category extends CI_Controller {
         
 			$this->Mcategory->category_update($mydata, $id);
 			$this->session->set_flashdata('success', 'Cập nhật danh mục thành công');
-			redirect('admin/category','refresh');
+			redirect('admin/category/'.$number_paginate,'refresh');
 		} 
 		$this->data['view']='update';
 		$this->data['title']='Cập nhật danh mục';
@@ -155,21 +158,21 @@ class Category extends CI_Controller {
 		if($count_product > 0)
 		{
 			$this->session->set_flashdata('error', 'Danh mục này còn sản phẩm bên trong! Hãy xóa sản phẩm trước !');
-			redirect('admin/category','refresh');
+			redirect($_POST['url_index'],'refresh');
 		}
 		else
 		{
 			if($count_category > 0)
 			{
 				$this->session->set_flashdata('error', 'Danh mục này còn danh mục con bên trong! Không thể thực hiện !');
-				redirect('admin/category','refresh');
+				redirect($_POST['url_index'],'refresh');
 			}
 			else
 			{
 				$mydata= array('trash' => 0);
 				$this->Mcategory->category_update($mydata, $id);
 				$this->session->set_flashdata('success', 'Xóa loại sản phẩm vào thùng rác thành công');
-				redirect('admin/category','refresh');
+				redirect($_POST['url_index'],'refresh');
 			}
 		}
 	}

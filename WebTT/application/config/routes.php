@@ -26,6 +26,9 @@ $route['dich-vu/(:num)'] = 'tintuc/service/$1';
 $route['nong-nghiep'] = 'tintuc/agriculture';
 $route['nong-nghiep/(:num)'] = 'tintuc/agriculture/$1';
 
+$route['tin-thu-thuat'] = 'tintuc/tipNews';
+$route['tin-thu-thuat/(:num)'] = 'tintuc/tipNews/$1';
+
 $route['khach-hang-tieu-bieu/(:num)'] = 'tintuc/typical_customer_news/$1';
 $route['khach-hang-tieu-bieu'] = 'tintuc/typical_customer_news';
 
@@ -113,7 +116,7 @@ $route['category/restore/(:num)'] ='category/restore/$1';
 
 $route['admin/content'] ='admin/content';
 $route['admin/content/(:num)'] ='admin/content/index/$1';
-$route['content/update/(:num)'] ='content/update/$1';
+$route['content/update/(:num)'] ='content/update/$1/$2';
 $route['content/status/(:num)'] ='content/status/$1';
 $route['content/insert'] ='content/insert';
 $route['content/recyclebin'] ='content/recyclebin';

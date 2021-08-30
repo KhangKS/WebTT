@@ -68,7 +68,7 @@ class Contact extends CI_Controller {
 		$mydata= array('trash' => 0);
 		$this->Mcontact->contact_update($mydata,$id);
 		$this->session->set_flashdata('success', 'Xóa vào thùng rác thành công');
-		redirect('admin/contact','refresh');
+		redirect($_POST['url_index'],'refresh');
 	}
 	public function recyclebin()
 	{

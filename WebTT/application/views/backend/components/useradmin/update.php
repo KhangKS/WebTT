@@ -1,4 +1,4 @@
-<?php echo form_open_multipart('admin/useradmin/update/'.$row['id']); ?>
+<?php echo form_open_multipart('admin/useradmin/update/'.$row['id'].'/'.$this->uri->segment(5)); ?>
 <div class="content-wrapper">
     <form action="<?php echo base_url() ?>admin/useradmin/update.html" enctype="multipart/form-data" method="POST" accept-charset="utf-8">
         <section class="content-header">
@@ -105,6 +105,7 @@
     $(document).ready(function() {
         $(`#btn`).click(function(event) {
             var iChars = "!`@#$%^&*()+=-[]\\\';,./{}|\":<>?~_1234567890";   
+            var iChars1 = "!`@#$%^&*()+=-[]\\\';,./{}|\":<>?~_";   
             var fullname = $(`input[name="fullname"]`).val();
 
             for (var i = 0; i < fullname.length; i++)
@@ -121,7 +122,7 @@
 
             for (var i = 0; i < username.length; i++)
             {      
-                if (iChars.indexOf(username.charAt(i)) != -1)
+                if (iChars1.indexOf(username.charAt(i)) != -1)
                 {    
                     event.preventDefault();
                     $(`#error-username`).html(`Tên đăng nhập không được chứa ký tự đặc biệt.`);
