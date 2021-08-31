@@ -71,7 +71,7 @@
 								</div>
 								<div class="form-group">
 									<label>Khuyến mãi (%)</label>
-									<input name="sale_of" class="form-control" value="<?php echo set_value('sale_of');?>" type="number">
+									<input name="sale_of" class="form-control" max="100" min="0" value="<?php echo set_value('sale_of');?>" type="number">
 								</div>
 								<div class="form-group">
 									<label>Giá bán<span class = "maudo">(*)</span></label>

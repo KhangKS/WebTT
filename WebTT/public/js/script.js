@@ -1,7 +1,7 @@
 // Slider
 var Slider=function(){
-	if($('.slider').length>0){
-		$('.slider').slick({
+	if($('.slider-banner').length>0){
+		$('.slider-banner').slick({
 			infinite: true,
 			arrows: true,
 			dots: false,
