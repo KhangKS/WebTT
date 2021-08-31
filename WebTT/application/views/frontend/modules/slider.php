@@ -7,7 +7,7 @@
    <?php endforeach; ?>
 </div> -->
 
-<div class="slider">
+<div class="slider-banner">
     <?php
 	    $list_banner = $this->Mslider->list_img_banner();
 	    foreach ($list_banner as $value) : ?>
