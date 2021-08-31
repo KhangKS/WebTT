@@ -1,4 +1,4 @@
-<?php echo form_open_multipart('admin/category/update/'.$row['id']); ?>
+<?php echo form_open_multipart('admin/category/update/'.$row['id'].'/'.$this->uri->segment(5)); ?>
 <?php
 	$list=$this->Mcategory->category_list();
 	$option_parentid="";

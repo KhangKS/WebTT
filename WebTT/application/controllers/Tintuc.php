@@ -105,9 +105,26 @@ class Tintuc extends CI_Controller {
         $config['total_rows'] = $this->Mcontent->news_count(5);
         $config['per_page'] = $limit;
 
-		$this->data['list'] = $this->Mcontent->news($limit, $start_index, 1);
+		$this->data['list'] = $this->Mcontent->news($limit, $start_index, 5);
         $this->data['view'] = 'index';
 		$this->data['title'] = 'TMĐT - Nông nghiệp';
+        $this->pagination->initialize($config);
+		$this->data['pagination'] = $this->pagination->create_links();
+
+		$this->load->view('frontend/layout',$this->data);
+	}
+
+	public function tipNews(){
+		$this->load->library('pagination');
+        $limit = 10;
+        $start_index = ($this->uri->segment(2)) ? $this->uri->segment(2) : 0;
+        $config['base_url'] = base_url().'tin-thu-thuat';
+        $config['total_rows'] = $this->Mcontent->news_count(7);
+        $config['per_page'] = $limit;
+
+		$this->data['list'] = $this->Mcontent->news($limit, $start_index, 7);
+        $this->data['view'] = 'index';
+		$this->data['title'] = 'TMĐT - Tin thủ thuật';
         $this->pagination->initialize($config);
 		$this->data['pagination'] = $this->pagination->create_links();
 

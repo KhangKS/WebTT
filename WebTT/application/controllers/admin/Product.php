@@ -147,7 +147,10 @@ class Product extends CI_Controller {
           }
         }
 
-        public function update($id){
+        public function update($id, $number_paginate){
+            if ($number_paginate == 1) {
+              $number_paginate = '';
+            }
             $user_role=$this->session->userdata('sessionadmin');
             if($user_role['role']==2){
                 redirect('admin/E403/index','refresh');
@@ -201,7 +204,7 @@ class Product extends CI_Controller {
 
                 $this->Mproduct->product_update($mydata, $id);
                 $this->session->set_flashdata('success', 'Cập nhật sản phẩm thành công');
-                redirect('admin/product','refresh');
+                redirect('admin/product/'.$number_paginate ,'refresh');
             } 
             $this->data['view']='update';
             $this->data['title']='Cập nhật sản phẩm';
@@ -234,12 +237,12 @@ class Product extends CI_Controller {
            $row = $this->Morderdetail->orderdetail_detail($id);
            if(count($row) > 0){
             $this->session->set_flashdata('error', 'Đã có khách hàng đặt mua, không thể xóa !');
-            redirect('admin/product','refresh');
+            redirect($_POST['url_index'] ,'refresh');
           }else{
             $mydata= array('trash' => 0,'modified_by'=>$this->session->userdata('id'),);
             $this->Mproduct->product_update($mydata, $id);
             $this->session->set_flashdata('success', 'Xóa sản phẩm vào thùng rác thành công');
-            redirect('admin/product','refresh');
+            redirect($_POST['url_index'] ,'refresh');
           }
         }
 

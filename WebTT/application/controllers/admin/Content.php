@@ -39,6 +39,7 @@ class Content extends CI_Controller {
 
         $this->pagination->initialize($config);
 		$this->data['pagination'] = $this->pagination->create_links();
+		// var_dump($this->data['pagination']);exit();
 
 		$this->load->view('backend/layout', $this->data);
 	}
@@ -93,8 +94,11 @@ class Content extends CI_Controller {
 		}
 	}
 
-	public function update($id)
+	public function update($id, $number_paginate)
 	{
+		if ($number_paginate == 1) {
+			$number_paginate = '';
+		}
 		$this->data['row']=$this->Mcontent->content_detail($id);
 		$d=getdate();
 		$today=$d['year']."/".$d['mon']."/".$d['mday']." ".$d['hours'].":".$d['minutes'].":".$d['seconds'];
@@ -130,7 +134,7 @@ class Content extends CI_Controller {
 
 			$this->Mcontent->content_update($mydata, $id);
 			$this->session->set_flashdata('success', 'Cập nhật bài viết thành công');
-			redirect('admin/content/','refresh');
+			redirect('admin/content/'.$number_paginate ,'refresh');
 		} 
 		$this->data['view']='update';
 		$this->data['title']='Cập nhật bài viết';
@@ -152,7 +156,7 @@ class Content extends CI_Controller {
 		$mydata= array('trash' => 0);
 		$this->Mcontent->content_update($mydata, $id);
 		$this->session->set_flashdata('success', 'Xóa bài viết vào thùng rác thành công');
-		redirect('admin/content','refresh');
+		redirect($_POST['url_index'] ,'refresh');
 	}
 
 	public function recyclebin()

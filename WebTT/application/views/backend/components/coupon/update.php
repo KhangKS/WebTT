@@ -1,4 +1,4 @@
-<?php echo form_open_multipart('admin/coupon/update/'.$row['id']); ?>
+<?php echo form_open_multipart('admin/coupon/update/'.$row['id'].'/'.$this->uri->segment(5)); ?>
 <div class="content-wrapper">
 	<form action="<?php echo base_url() ?>admin/coupon/update.html" enctype="multipart/form-data" method="POST" accept-charset="utf-8">
 		<section class="content-header">

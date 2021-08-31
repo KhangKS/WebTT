@@ -84,7 +84,7 @@
 												</a>
 											</td>
 											<td class="text-center">
-												<?php
+												<!-- <?php
 												if($user['role']==1){
 													echo '<a class="btn btn-success btn-xs" href="'.base_url().'admin/coupon/update/'.$row['id'].'" role = "button">
 													<span class="glyphicon glyphicon-edit"></span>Sửa
@@ -92,12 +92,35 @@
 												}else{
 													echo '<p class="fa fa-lock" style="color:red"> Không thể sửa</p>';
 												}
-												?>
+												?> -->
+
+												<?php if($user['role']==1) :?>
+													<td class="text-center">
+														<a class="btn btn-success btn-xs" href="<?php echo base_url() ?>admin/coupon/update/<?php echo $row['id']?>/<?php 
+															if ($this->uri->segment(3))
+															{
+																echo $this->uri->segment(3);
+															} 
+															else {
+																echo 1;
+															} 
+															?>" role = "button">
+															<span class="glyphicon glyphicon-edit"></span>Sửa
+														</a>
+													</td>
+												<?php endif; ?>
 											</td>
 											<td class="text-center">
-												<a class="btn btn-danger btn-xs" href="<?php echo base_url() ?>admin/coupon/trash/<?php echo $row['id'] ?>"  onclick="return confirm('Xác nhận Xóa Mã giảm giá này ?')" role = "button">
+												<!-- <a class="btn btn-danger btn-xs" href="<?php echo base_url() ?>admin/coupon/trash/<?php echo $row['id'] ?>"  onclick="return confirm('Xác nhận Xóa Mã giảm giá này ?')" role = "button">
 													<span class="glyphicon glyphicon-trash"></span>Xóa
-												</a>
+												</a> -->
+
+												<form action="<?php echo base_url() ?>admin/coupon/trash/<?php echo $row['id'] ?>" method="POST" accept-charset="utf-8">
+													<input type="text" name="url_index" value="<?php echo base_url().$this->uri->uri_string ?>" hidden>
+													<button type="submit" class="btn btn-danger btn-xs" onclick="return confirm('Xác nhận xóa mã giảm giá này ?')">
+														<span class="glyphicon glyphicon-trash"></span>Xóa
+													</button>
+												</form>
 											</td>
 										</tr>
 									<?php endforeach; ?>
