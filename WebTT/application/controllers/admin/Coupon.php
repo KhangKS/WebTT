@@ -91,8 +91,10 @@ class Coupon extends CI_Controller {
 		}
 	}
 
-	public function update($id)
-	{
+	public function update($id, $number_paginate){
+        if ($number_paginate == 1) {
+          $number_paginate = '';
+        }
 		$user_role=$this->session->userdata('sessionadmin');
 		if($user_role['role']==2){
 			redirect('admin/E403/index','refresh');
@@ -116,7 +118,7 @@ class Coupon extends CI_Controller {
 			);
 			$this->Mcoupon->coupon_update($mydata, $id);
 			$this->session->set_flashdata('success', 'Cập nhật mã giảm giá thành công');
-			redirect('admin/coupon/','refresh');
+			redirect('admin/coupon/'.$number_paginate ,'refresh');
 		} 
 		$this->data['view']='update';
 		$this->data['title']='Cập nhật mã giảm giá';
@@ -138,7 +140,7 @@ class Coupon extends CI_Controller {
 		$mydata= array('trash' => 0);
 		$this->Mcoupon->coupon_update($mydata, $id);
 		$this->session->set_flashdata('success', 'Xóa mã giảm giá vào thùng rác thành công');
-		redirect('admin/coupon','refresh');
+		redirect($_POST['url_index'] ,'refresh');
 	}
 
 	public function recyclebin()

@@ -88,8 +88,10 @@ class Sliders extends CI_Controller {
 		}
 	}
 
-	public function update($id)
-	{
+	public function update($id, $number_paginate){
+        if ($number_paginate == 1) {
+          $number_paginate = '';
+        }
 		$user_role=$this->session->userdata('sessionadmin');
 		if($user_role['role']==2){
 			redirect('admin/E403/index','refresh');
@@ -123,7 +125,7 @@ class Sliders extends CI_Controller {
 			}
 			$this->Msliders->slider_update($mydata, $id);
 			$this->session->set_flashdata('success', 'Cập nhật slider thành công');
-			redirect('admin/sliders/','refresh');
+			redirect('admin/sliders/'.$number_paginate ,'refresh');
 		} 
 		$this->data['view']='update';
 		$this->data['title']='Cập nhật sliders';
@@ -149,7 +151,7 @@ class Sliders extends CI_Controller {
 		$mydata= array('trash' => 0);
 		$this->Msliders->slider_update($mydata, $id);
 		$this->session->set_flashdata('success', 'Xóa slider vào thùng rác thành công');
-		redirect('admin/sliders','refresh');
+		redirect($_POST['url_index'] ,'refresh');
 	}
 
 	public function status($id)

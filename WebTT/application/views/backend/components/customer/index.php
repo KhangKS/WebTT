@@ -68,9 +68,15 @@
 												</a>
 											</td>
 											<td class="text-center">
-												<a class="btn btn-danger btn-xs" href="<?php echo base_url() ?>admin/customer/trash/<?php echo $row['id'] ?>" onclick="return confirm('Xác nhận xóa thông tin khách hàng này ?')" role = "button">
+												<!-- <a class="btn btn-danger btn-xs" href="<?php echo base_url() ?>admin/customer/trash/<?php echo $row['id'] ?>" onclick="return confirm('Xác nhận xóa thông tin khách hàng này ?')" role = "button">
 													<span class="glyphicon glyphicon-trash"></span>Xóa
-												</a>
+												</a> -->
+												<form action="<?php echo base_url() ?>admin/customer/trash/<?php echo $row['id'] ?>" method="POST" accept-charset="utf-8">
+													<input type="text" name="url_index" value="<?php echo base_url().$this->uri->uri_string ?>" hidden>
+													<button type="submit" class="btn btn-danger btn-xs" onclick="return confirm('Xác nhận xóa thông tin khách hàng này ?')">
+														<span class="glyphicon glyphicon-trash"></span>Xóa
+													</button>
+												</form>
 											</td>
 										</tr>
 									<?php endforeach; ?>

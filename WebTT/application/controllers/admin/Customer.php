@@ -70,14 +70,14 @@ class Customer extends CI_Controller {
 		if(count($row) > 0)
 		{
 			$this->session->set_flashdata('error', 'Khách hàng đã đặt hàng, không thể xóa !');
-			redirect('admin/customer','refresh');
+			redirect($_POST['url_index'] ,'refresh');
 		}
 		else
 		{
 			$mydata= array('trash' => 0);
 			$this->Mcustomer->customer_update($mydata, $id);
 			$this->session->set_flashdata('success', 'Xóa khách hàng vào thùng rác thành công');
-			redirect('admin/customer','refresh');
+			redirect($_POST['url_index'] ,'refresh');
 		}
 	}
 	public function restore($id)

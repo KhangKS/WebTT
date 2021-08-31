@@ -75,7 +75,10 @@ class Producer extends CI_Controller {
 		}
 	}
 
-	public function update($id){
+	public function update($id, $number_paginate){
+        if ($number_paginate == 1) {
+          $number_paginate = '';
+        }
 		$user_role=$this->session->userdata('sessionadmin');
 		if($user_role['role']==2){
 			redirect('admin/E403/index','refresh');
@@ -99,7 +102,7 @@ class Producer extends CI_Controller {
 			);
 			$this->Mproducer->producer_update($mydata, $id);
 			$this->session->set_flashdata('success', 'Cập nhật nhà cung cấp thành công');
-			redirect('admin/producer/','refresh');
+			redirect('admin/producer/'.$number_paginate ,'refresh');
 		} 
 		$this->data['view']='update';
 		$this->data['title']='Cập nhật nhà cung cấp';
@@ -133,13 +136,13 @@ class Producer extends CI_Controller {
 		if($count_product > 0)
 		{
 			$this->session->set_flashdata('error', 'Nhà cung cấp này còn sản phẩm bên trong! Hãy xóa sản phẩm trước !');
-			redirect('admin/producer','refresh');
+			redirect($_POST['url_index'] ,'refresh');
 		}
 
 		$mydata= array('trash' => 0);
 		$this->Mproducer->producer_update($mydata, $id);
 		$this->session->set_flashdata('success', 'Xóa nhà cung cấp vào thùng rác thành công');
-		redirect('admin/producer','refresh');
+		redirect($_POST['url_index'] ,'refresh');
 	}
 
 	public function restore($id)

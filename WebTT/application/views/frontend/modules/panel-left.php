@@ -59,6 +59,7 @@
                         <li class="pull-left"><a href="san-pham">Sản phẩm</a></li>
                         <li class="pull-left"><a href="tuyen-dung">Tuyển dụng</a></li>
                         <li class="pull-left"><a href="tin-tuc">Tin tức</a></li>
+                        <li class="pull-left"><a href="tin-thu-thuat">Tin thủ thuật</a></li>
                         <li class="pull-left"><a href="dich-vu">Dịch vụ </a></li>
                         <li class="pull-left"><a href="nong-nghiep">Nông nghiệp</a></li>
                         <li class="pull-left"><a href="lien-he">Liên hệ</a></li>

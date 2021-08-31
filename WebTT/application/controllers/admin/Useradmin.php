@@ -94,7 +94,10 @@ class Useradmin extends CI_Controller {
 		}
 	}
 
-	public function update($id){
+	public function update($id, $number_paginate){
+        if ($number_paginate == 1) {
+          $number_paginate = '';
+        }
 		$user=$this->session->userdata('sessionadmin');
 		$row=$this->Muser->user_detail_id($id);
 		$this->data['row']=$row;
@@ -159,7 +162,7 @@ class Useradmin extends CI_Controller {
 			}
 			$this->Muser->user_update($mydata, $id);
 			$this->session->set_flashdata('success', 'Cập nhật tài khoản thành công');
-			redirect('admin/useradmin/update/'.$id,'refresh');
+			redirect('admin/useradmin/'.$number_paginate,'refresh');
 		} 
 		// $this->data['user'] = $user;
 		$this->data['view']='update';
@@ -186,12 +189,12 @@ class Useradmin extends CI_Controller {
 		$row=$this->data['user'];
 		if($row['role']==2){
 			$this->session->set_flashdata('error', 'Không có quyền thao tác');
-			redirect('admin/useradmin','refresh');
+			redirect($_POST['url_index'] ,'refresh');
 		}else{
 			$mydata= array('trash' => 0);
 			$this->Muser->user_update($mydata, $id);
 			$this->session->set_flashdata('success', 'Xóa tài khoản vào thùng rác thành công');
-			redirect('admin/useradmin','refresh');
+			redirect($_POST['url_index'] ,'refresh');
 		}
 	}
 

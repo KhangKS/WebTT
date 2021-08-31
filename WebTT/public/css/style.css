@@ -2313,3 +2313,19 @@ a.fright {
 .pl-2 {
 	padding-left: 20px;
 }
+
+.slider .prev, .slider .next {
+  position: absolute;
+  top: 50%;
+  color: #ffffff;
+  z-index: 1;
+  font-size: 35px;
+  background: #ebebebba;
+  padding: 0px 16px;
+  transform: rotate(45deg); }
+.slider i {
+  transform: rotate(-45deg); }
+.slider .prev {
+  left: 40px; }
+.slider .next {
+  right: 40px; }
