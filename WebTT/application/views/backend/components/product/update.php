@@ -90,7 +90,7 @@ foreach ($listProducer as $r) {
 								</div>
 								<div class="form-group">
 									<label>Khuyến mãi (%)</label>
-									<input name="sale_of" class="form-control" min="0"> max="100" type="number" value="<?php echo $row['sale'] ?>">
+									<input name="sale_of" class="form-control" min="0" max="100" type="number" value="<?php echo $row['sale'] ?>">
 								</div>
 								<div class="form-group">
 									<label>Giá bán<span class = "maudo">(*)</span></label>
