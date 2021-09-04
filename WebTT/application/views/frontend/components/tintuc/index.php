@@ -6,12 +6,12 @@
             ?>
         </div>
     </div>
-    <!-- <div class="row wraper">
-        <div class="banner-product">
-          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <img src="public/images/sp.png">
-        </div>
-    </div> -->
+    <div class="row wraper">
+        <!-- <div class="banner-product">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <img src="public/images/sp.png">
+            </div>
+        </div> -->
     <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
         <div class="list-menu">
             <?php $this->load->view('frontend/modules/category'); ?> 

@@ -190,15 +190,21 @@ font-family: Arial;" href="tel:0939771987">
                 </div>
                 <div class="col-xs-12 col-sm-4">
                     <div class="f-contact">
-                        <h3>Thông tin liên hệ</h3>
+                        <h3>THÔNG TIN CÔNG TY</h3>
+                        <h4>CÔNG TY TNHH TM DV CÔNG NGHỆ HUY MINH PRO (HMPRO)</h4>
                         <ul class="list-unstyled">
+                            
+                            <li class="clearfix">
+                                <i class="fa fa-flag"></i>
+                                <span>Chịu trách nhiệm: Nguyễn Đăng Khoa</span>
+                            </li>
                             <li class="clearfix">
                                 <i class="fa fa-map-marker"></i>
-                                <span>43 Đường số 9,Thới Nhựt 2 ,P.An Khánh, Q.Ninh Kiều, TP.Cần Thơ.</span>
+                                <span>Địa chỉ: 43 Đường số 9,Thới Nhựt 2 ,P.An Khánh, Q.Ninh Kiều, TP.Cần Thơ.</span>
                             </li>
                             <li class="clearfix">
                                 <i class="fa fa-phone"></i>
-                                <span>0939771987
+                                <span>Điện thoại: 0939771987
                                 </span>
                             </li>
                             <li class="clearfix">
