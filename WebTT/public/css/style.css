@@ -2314,7 +2314,7 @@ a.fright {
 	padding-left: 20px;
 }
 
-.slider .prev, .slider .next {
+.slider-banner .prev, .slider-banner .next {
   position: absolute;
   top: 50%;
   color: #ffffff;
@@ -2323,9 +2323,9 @@ a.fright {
   background: #ebebebba;
   padding: 0px 16px;
   transform: rotate(45deg); }
-.slider i {
+.slider-banner i {
   transform: rotate(-45deg); }
-.slider .prev {
+.slider-banner .prev {
   left: 40px; }
-.slider .next {
+.slider-banner .next {
   right: 40px; }
