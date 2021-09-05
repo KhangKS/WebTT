@@ -1,7 +1,7 @@
 <section id="content">
 	<div class="container account">
         <?php  if($this->session->flashdata('success')):?>
-                <div class="alert alert-success" style="margin-top: 20px;">
+                <div class="alert alert-success" style="margin-top: 5px; margin-left:-15px; width:1140px">
                     <?php echo $this->session->flashdata('success'); ?>
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                 </div>
@@ -9,7 +9,7 @@
         <aside class="col-right sidebar col-md-3 col-xs-12">
             <div class="block block-account">
                 <div class="general__title">
-                    <h2><span>Thông tin tài khoản</span></h2>
+                    <h3><span>Thông tin tài khoản</span></h3>
                 </div>
                 <div class="block-content">
                     <p>Tài khoản: <strong><?php echo $info['username'] ?></strong></p>
@@ -72,7 +72,7 @@
             ?>
             
             <div class="general__title">
-                <h2><span>Danh sách đơn hàng</span></h2>
+                <h3><span>Danh sách đơn hàng</span></h3>
             </div>
             <div class="table-order">
                 <table style="padding-right: 10px; width: 100%;">
