@@ -93,13 +93,13 @@ class Thongtin extends CI_Controller {
         $is_unique_phone = '|is_unique[db_customer.phone]';
 
         if (isset($_POST['email'])) {
-            if ($_POST['email'] == $row['email']) {
+            if ($_POST['email'] == $customer['email']) {
                 $is_unique_email = '';
             }
         }
 
         if (isset($_POST['phone'])) {
-            if ($_POST['phone'] == $row['phone']) {
+            if ($_POST['phone'] == $customer['phone']) {
                 $is_unique_phone = '';
             }
         }
