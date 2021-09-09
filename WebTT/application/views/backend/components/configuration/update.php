@@ -16,6 +16,12 @@
 					<div class="col-md-12">
 						<div class="box" id="view">
 							<div class="box-body">
+								<?php  if($this->session->flashdata('success')):?>
+									<div class="alert alert-success">
+										<?php echo $this->session->flashdata('success'); ?>
+										<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+									</div>
+								<?php  endif;?>
 								<div class="col-md-9">
 									<div class="form-group">
 										<label> Mail smtp <span class = "maudo">(*)</span></label>
