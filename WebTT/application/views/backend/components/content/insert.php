@@ -27,7 +27,7 @@
 									<div class="error maudo" id="password_error"><?php echo form_error('name')?></div>
 								</div>
 								<div class="form-group">
-									<label>Loại bài viết</label>
+									<label>Loại bài viết<span class = "maudo">(*)</span></label>
 									<select name="catepost" class="form-control" style="width:235px">
 										<option <?php if (set_value('catepost') == 1) echo 'selected' ?> value="1">Tin tức</option>
 										<option <?php if (set_value('catepost') == 2) echo 'selected' ?> value="2">Khách hàng tiêu biểu</option>

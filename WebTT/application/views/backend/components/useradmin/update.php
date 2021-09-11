@@ -70,7 +70,7 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label>Giới tính</label>
+                                    <label>Giới tính<span class = "maudo">(*)</span></label>
                                     <select name="gender" class="form-control">
                                         <option value="1" <?php if($row['gender'] == 1) {echo 'selected';}?> >Nam</option>
                                         <option value="0" <?php if($row['gender'] == 0) {echo 'selected';}?>>Nữ</option>
@@ -78,7 +78,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Ảnh đại diện<span class = "maudo">(*)</span></label>
-                                    <input type="file"  id="image_list" name="image" style="width: 100%">
+                                    <input type="file"  id="image_list" name="image" style="width: 100%" multiple required>
                                 </div>
                                 <!-- <?php if ($user['role'] == 1): ?>
                                     <div class="form-group">
